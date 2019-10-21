@@ -1,25 +1,27 @@
 package hw.hw4;
 
+import java.util.Arrays;
+
 public class Human {
     String name;
     String surname;
-    short year;
-    byte iq;
+    int year;
+    int iq;   //  a whole number from 1 to 100
     Pet pet;
-    Human mother = new Human();
-    Human father = new Human();
-    String [][] schedule = new String[7][2];
+    Human mother;
+    Human father;
+    String [][] schedule;   // 2d array: [day of the week] x [type of the activity]
 
-    public Human() {
+    public Human() {     // constructor
     }
 
-    public Human(String name, String surname, short year) {
+    public Human(String name, String surname, int year) {      // constructor
         this.name = name;
         this.surname = surname;
         this.year = year;
     }
 
-    public Human(String name, String surname, short year, Human father, Human mother) {
+    public Human(String name, String surname, int year, Human father, Human mother) {   // constructor
         this.name = name;
         this.surname = surname;
         this.year = year;
@@ -27,7 +29,7 @@ public class Human {
         this.mother = mother;
     }
 
-    public Human(String name, String surname, short year, byte iq, Pet pet, Human father, Human mother) {
+    public Human(String name, String surname, int year, int iq, Pet pet, Human father, Human mother) {    // constructor
         this.name = name;
         this.surname = surname;
         this.year = year;
@@ -37,17 +39,18 @@ public class Human {
         this.mother = mother;
     }
 
-    public void greetPet(String petName){
-        System.out.println("Hello, " + petName);
+    public void greetPet(Human h){
+        System.out.println("Hello, " + h.pet.nickname);
     }
 
-    public void describePet(){
-        System.out.println("I have a [species], he is [age] years old, he is [very sly]>50/[almost not sly]<50");
+    public void describePet(Human h){
+        String trickLevel = h.pet.trickLevel > 50 ? "very sly" : "almost not sly";
+        System.out.println("I have a " + h.pet.species + ", he is " + h.pet.age + " years old, he is " + trickLevel);
     }
 
     public String toString(Human h) {
-            return "{name=" + h.name + ", surname=" + h.surname + ", year=" + h.year + ", iq=" + h.iq +
-                    ", mother=" + h.mother.name + " " + h.mother.surname + ", father=" + h.father.name + h.father.surname +
-                    ", pet=" + h.pet + "}";
+            return "Human{name='" + h.name + "', surname='" + h.surname + "', year=" + h.year + ", iq=" + h.iq
+                    +  ", mother=" + h.mother.name + " " + h.mother.surname + ", father=" + h.father.name + " " + h.father.surname
+                    + ", pet=" + h.pet.toString(h.pet) + "}";
     }
 }

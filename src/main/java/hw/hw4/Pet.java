@@ -1,22 +1,23 @@
 package hw.hw4;
 
-public class Pet {
+import java.util.Arrays;
 
+public class Pet {
     String species;
     String nickname;
-    byte age;
-    byte trickLevel;
-    String [] habits = new String [50];
+    int age;
+    int trickLevel;    // a whole number from 1 to 100
+    String [] habits;
 
-    public Pet() {
+    public Pet() {    // constructor
     }
 
-    public Pet(String species, String nickname) {
+    public Pet(String species, String nickname) {     // constructor
         this.species = species;
         this.nickname = nickname;
     }
 
-    public Pet(String species, String nickname, byte age, byte trickLevel, String [] habits) {
+    public Pet(String species, String nickname, int age, int trickLevel, String [] habits) {     // constructor
         this.species = species;
         this.nickname = nickname;
         this.age = age;
@@ -28,8 +29,8 @@ public class Pet {
         System.out.println("I am eating");
     }
 
-    public void respond(String petName){
-        System.out.println("Hello, owner. I am - " + petName + ". I miss you!");
+    public void respond(Pet p){
+        System.out.println("Hello, owner. I am - " + p.nickname + ". I miss you!");
     }
 
     public void foul(){
@@ -37,6 +38,7 @@ public class Pet {
     }
 
     public String toString(Pet p) {
-        return p.species + "{nikname=" + p.nickname + ", age=" + p.age + ", tricLevel=" + p.trickLevel + ", habits=" + p.habits.toString() + "}";
+        return p.species + "{nikname='" + p.nickname + "', age=" + p.age + ", trickLevel=" + p.trickLevel
+                + ", habits=" + Arrays.toString(p.habits) + "}";
     }
 }
