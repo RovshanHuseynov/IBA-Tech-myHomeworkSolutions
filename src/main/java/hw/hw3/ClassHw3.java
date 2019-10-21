@@ -30,9 +30,9 @@ public class ClassHw3 {
                 break;     // end the infinite loop
             }
 
-            while(true){
-                if(checkTask(input)){
-                    break;
+            while(true){    // the program goes to the next iteration until the user enters a valid weekday
+                if(checkValidWeekday(input)){
+                    break;   // valid weekday found
                 }
                 System.out.println("Sorry, I don't understand you, please try again.");
                 input = in.nextLine();
@@ -42,7 +42,7 @@ public class ClassHw3 {
         }
     }
 
-    public static boolean checkTask(String s) {
+    public static boolean checkValidWeekday(String s) {    // check the input is whether a valid weekday
         if(s.charAt(s.length()-1) == ' '){
             s = s.substring(0,(s.length()-1));
             // take into account that the user may have accidentally
@@ -57,7 +57,7 @@ public class ClassHw3 {
         return false;
     }
 
-    public static void getTask(String s){
+    public static void getTask(String s){     // returns task of the valid weekday
         if(s.charAt(s.length()-1) == ' '){
             s = s.substring(0,(s.length()-1));
             // take into account that the user may have accidentally
