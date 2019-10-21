@@ -3,11 +3,11 @@ package hw.hw3;
 import java.util.Scanner;
 
 public class ClassHw3 {
-    static String [][] schedule = new String [7][2];
+    static String [][] schedule = new String [7][2];   // I will used this array in Main method as well as in other methods
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String input;
+        String input = "";
         schedule[0][0] = "Sunday";
         schedule[0][1] = "do home work";
         schedule[1][0] = "Monday";
@@ -23,18 +23,41 @@ public class ClassHw3 {
         schedule[6][0] = "Saturday";
         schedule[6][1] = "have a rest";
 
-        while(true) {
+        while(true) {       // infinite loop
             System.out.print("Please, input the day of the week: ");
             input = in.nextLine();
             if(input.equals("exit")){
-                break;
+                break;     // end the infinite loop
             }
 
-            task(input);
+            while(true){
+                if(checkTask(input)){
+                    break;
+                }
+                System.out.println("Sorry, I don't understand you, please try again.");
+                input = in.nextLine();
+            }
+
+            getTask(input);
         }
     }
 
-    public static void task(String s){
+    public static boolean checkTask(String s) {
+        if(s.charAt(s.length()-1) == ' '){
+            s = s.substring(0,(s.length()-1));
+            // take into account that the user may have accidentally
+            // entered a space after the day of the week.
+        }
+
+        for(int i=0; i<7; i++) {
+            if (s.toLowerCase().equals(schedule[i][0].toLowerCase())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void getTask(String s){
         if(s.charAt(s.length()-1) == ' '){
             s = s.substring(0,(s.length()-1));
             // take into account that the user may have accidentally
@@ -48,5 +71,6 @@ public class ClassHw3 {
         }
 
         System.out.println("Sorry, I don't understand you, please try again.");
+        return;
     }
 }
