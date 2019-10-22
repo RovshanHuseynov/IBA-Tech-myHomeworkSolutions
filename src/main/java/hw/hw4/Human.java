@@ -1,6 +1,6 @@
 package hw.hw4;
 
-import java.util.Arrays;
+import java.util.Random;
 
 public class Human {
     String name;
@@ -52,5 +52,20 @@ public class Human {
             return "Human{name='" + h.name + "', surname='" + h.surname + "', year=" + h.year + ", iq=" + h.iq
                     +  ", mother=" + h.mother.name + " " + h.mother.surname + ", father=" + h.father.name + " " + h.father.surname
                     + ", pet=" + h.pet.toString(h.pet) + "}";
+    }
+
+    public boolean feedPet(Human h){
+        System.out.println("isn't it time for feeding?");
+        Random random = new Random();
+        int x = random.nextInt(100);
+
+        if(x < h.pet.trickLevel){
+            System.out.println("I think " + h.pet.nickname + " is not hungry.");
+            return false;
+        }
+        else{
+            System.out.println("Hm... I will feed " + h.pet.nickname + "'s");
+            return true;
+        }
     }
 }

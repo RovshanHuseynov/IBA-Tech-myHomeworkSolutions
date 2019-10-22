@@ -8,6 +8,7 @@ public class Main {
         Pet myCat1 = new Pet();
         Pet myDog2 = new Pet("dog","Ares");
         Pet myCat2 = new Pet("cat", "Luna", 1,30, new String[]{"jump", "lick", "sleep"});
+        Pet myDog3 = new Pet("dog","Zeus", 2, 20, new String[]{"bark","run fast","smell well"});
 
         myDog1.eat();
         myCat1.eat();
@@ -22,10 +23,11 @@ public class Main {
         Human human5 = new Human("Sabina", "Quluzade", 1993, 60, myDog2, human3, human2);
         Human human6 = new Human("Kamil", "Eliyev", 1997, 80, myCat2, human3, human2);
         Human human7 = new Human("Elekber", "Soltanli", 1990, 90, myCat2, human3, human2);
+        Human human8 = new Human("Ramin", "Orucov" , 1980 , 80, myDog3 , human3 , human2);
 
         human5.greetPet(human5);
         human6.describePet(human6);
         System.out.println(human7.toString(human7));
-
+        boolean isFeed = human8.feedPet(human8);
     }
 }
