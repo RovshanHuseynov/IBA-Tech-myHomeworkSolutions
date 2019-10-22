@@ -14,7 +14,7 @@ public class Main {
         myCat1.eat();
         myDog2.foul();
         myDog2.respond(myDog2);
-        System.out.println(myCat2.toString(myCat2));
+        System.out.println(myCat2.toString());
 
         Human human1 = new Human();
         Human human2 = new Human("Sevinc", "Huseynova" ,1967);
@@ -27,7 +27,7 @@ public class Main {
 
         human5.greetPet(human5);
         human6.describePet(human6);
-        System.out.println(human7.toString(human7));
+        System.out.println(human7.toString());
         boolean isFeed = human8.feedPet(human8);
     }
 }

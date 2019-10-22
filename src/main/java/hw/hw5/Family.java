@@ -6,10 +6,10 @@ public class Family {
     Human[] children;
     Pet pet;
 
-    public Family(Human mother, Human father, Human[] children) {
+    public Family(Human mother, Human father) {
         this.mother = mother;
         this.father = father;
-        this.children = children;
+        this.children = new Human[]{};
     }
 
     @Override

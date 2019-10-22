@@ -48,11 +48,26 @@ public class Human {
         System.out.println("I have a " + h.pet.species + ", he is " + h.pet.age + " years old, he is " + trickLevel);
     }
 
+    @Override
+    public String toString() {
+        return "Human{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", year=" + year +
+                ", iq=" + iq +
+                ", mother=" + mother.name + " " + mother.surname +
+                ", father=" + father.name + " " + father.surname +
+                ", pet=" + pet +
+                '}';
+    }
+
+    /*
     public String toString(Human h) {
             return "Human{name='" + h.name + "', surname='" + h.surname + "', year=" + h.year + ", iq=" + h.iq
                     +  ", mother=" + h.mother.name + " " + h.mother.surname + ", father=" + h.father.name + " " + h.father.surname
                     + ", pet=" + h.pet.toString(h.pet) + "}";
     }
+    */
 
     public boolean feedPet(Human h){
         System.out.println("isn't it time for feeding?");
