@@ -55,13 +55,6 @@ public class Human {
                 '}';
     }
 
-    public String toString(Human h) {
-        return "Human{name='" + h.name + "', surname='" + h.surname + "', year=" + h.year + ", iq=" + h.iq
-                +  ", mother=" + h.family.mother.getName() + " " + h.family.mother.getSurname() + ", father="
-                + h.family.father.getName() + " " + h.family.father.getSurname()
-                + ", pet=" + h.family.pet.toString(h.family.pet) + "}";
-    }
-
     public boolean feedPet(Human h){
         System.out.println("isn't it time for feeding?");
         Random random = new Random();

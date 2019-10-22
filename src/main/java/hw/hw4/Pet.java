@@ -37,13 +37,6 @@ public class Pet {
         System.out.println("'I need to cover it up");
     }
 
-    /*
-    public String toString(Pet p) {
-        return p.species + "{nikname='" + p.nickname + "', age=" + p.age + ", trickLevel=" + p.trickLevel
-                + ", habits=" + Arrays.toString(p.habits) + "}";
-    }
-    */
-
     @Override
     public String toString() {
         return   species + "{" +
