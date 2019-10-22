@@ -22,8 +22,34 @@ public class Family {
                 '}';
     }
 
-    public void deleteChild(Human child){
+    public boolean deleteChild(int index){
+        if(index < children.length){
+            Human [] temp = new Human[children.length-1];
+            int j=0;
+            for(int i=0; i<temp.length; i++){
+                if(j == index){
+                    continue;
+                }
+                else{
+                    temp[j] = children[i];
+                    j++;
+                }
+            }
 
+            children = temp;
+            return true;
+        }
+        else{
+            return  false;
+        }
+    }
+
+    public void addChild(Human child){
+        children[children.length] = child;
+    }
+
+    public int countFamily(){
+        return 2 + children.length;
     }
 
     public Human getMother() {
