@@ -6,42 +6,85 @@ public class Main {
         Pet myCat1 = new Pet("cat", "Luna", 2,30, new String[]{"jump", "lick", "sleep"});
         Pet myDog2 = new Pet("dog","Zeus", 3, 20, new String[]{"bark","run fast","smell well"});
 
-        Human family1Mother1 = new Human("Sevinc", "Huseynova" ,1967);
-        Human family1Father1 = new Human("Mirze", "Quliyev", 1965);
+        Human family1Mother = new Human("Sevinc", "Huseynova" ,1967);
+        Human family1Father = new Human("Mirze", "Huseynov", 1965);
         Human family1Child1 = new Human("Rovshan","Huseynov", 1994);
-        Human family1Child2 = new Human("Sabina", "Quluzade", 1993);
-        Human family1Child3 = new Human("Kamil", "Eliyev", 1997);
-        Human family1Child4 = new Human("Elekber", "Soltanli", 1990);
-        Human family1Child5 = new Human("Ramin", "Orucov" , 1980);
+        Human family1Child2 = new Human("Sabina", "Huseynova", 1993);
+        Human family1Child3 = new Human("Kamil", "Huseynov", 1997);
+        Human family1Child4 = new Human("Elekber", "Huseynov", 1990);
+        Human family1Child5 = new Human("Ramin", "Huseynov" , 1980);
 
-        //Family f1 = new Family();
+        Family f1 = new Family(family1Mother, family1Father);
+        f1.countFamily();
+        f1.addChild(family1Child1);
+        f1.addChild(family1Child2);
+        f1.addChild(family1Child3);
+        f1.addChild(family1Child4);
+        f1.addChild(family1Child5);
+        f1.countFamily();
+        System.out.println(f1.toString());
+        System.out.println(f1.children[0].toString());
 
-        /*
-        Pet myDog1 = new Pet();
-        Pet myCat1 = new Pet();
-        Pet myDog2 = new Pet("dog","Ares");
-        Pet myCat2 = new Pet("cat", "Luna", 1,30, new String[]{"jump", "lick", "sleep"});
-        Pet myDog3 = new Pet("dog","Zeus", 2, 20, new String[]{"bark","run fast","smell well"});
+        f1.deleteChild(0);
+        f1.deleteChild(6);
 
-        myDog1.eat();
-        myCat1.eat();
-        myDog2.foul();
-        myDog2.respond();
-        System.out.println(myCat2.toString());
+        System.out.println(f1.children[0].toString());
+        f1.deleteChild(0);
 
-        Human human1 = new Human();
-        Human human2 = new Human("Sevinc", "Huseynova" ,1967);
-        Human human3 = new Human("Mirze", "Quliyev", 1965);
-        Human human4 = new Human("Rovshan","Huseynov", 1994, human3 ,human2);
-        Human human5 = new Human("Sabina", "Quluzade", 1993, 60, myDog2, human3, human2);
-        Human human6 = new Human("Kamil", "Eliyev", 1997, 80, myCat2, human3, human2);
-        Human human7 = new Human("Elekber", "Soltanli", 1990, 90, myCat2, human3, human2);
-        Human human8 = new Human("Ramin", "Orucov" , 1980 , 80, myDog3 , human3 , human2);
+        f1.countFamily();
+        f1.deleteChild(0);
 
-        human5.greetPet();
-        human6.describePet();
-        System.out.println(human7.toString());
-        boolean isFeed = human8.feedPet();
-         */
+        f1.countFamily();
+        f1.deleteChild(0);
+
+        f1.countFamily();
+        f1.deleteChild(0);
+
+        f1.countFamily();
+        f1.deleteChild(0);
+        f1.countFamily();
+
+        f1.addChild(family1Child1);
+        f1.countFamily();
+
+        f1.addPet(myDog1);
+        System.out.println(f1.toString());
+
+
+        System.out.println("---------------------------------");
+        Human family2Mother = new Human("Ayise", "Agayeva" ,1950);
+        Human family2Father = new Human("Samir", "Agayev", 1945);
+        Human family2Child1 = new Human("Amil","Agayev", 1964);
+        Human family2Child2 = new Human("Selim", "Agayev", 1970);
+
+        Family f2 = new Family(family2Mother, family2Father);
+        f2.addChild(family2Child1);
+        f2.addChild(family2Child2);
+        f2.addPet(myDog2);
+        f2.countFamily();
+        System.out.println(f2.toString());
+
+
+        System.out.println("---------------------------------");
+        Human family3Mother = new Human("Lale", "Melikova" ,1950);
+        Human family3Father = new Human("Zamiq", "Melikov", 1945);
+        Human family3Child1 = new Human("Suqra","Melikova", 1964);
+        Human family3Child2 = new Human("Nergiz", "Melikova", 1970);
+
+        Family f3 = new Family(family3Mother, family3Father);
+        f3.addChild(family3Child1);
+        f3.addChild(family3Child2);
+        f3.addPet(myCat1);
+        f3.countFamily();
+        f3.deleteChild(1);
+        f3.countFamily();
+        System.out.println(f3.toString());
+        f3.pet.eat();
+        f3.pet.respond();
+        f3.pet.foul();
+        System.out.println(f3.pet.toString());
+        //f3.father.greetPet();
+        //f3.father.describePet();
+        //boolean isFeed = f3.father.feedPet();
     }
 }

@@ -6,13 +6,15 @@ public class Family {
     Human mother;
     Human father;
     Human[] children;
+    int countChildren;
     Pet pet;
 
     public Family(Human mother, Human father) {    // constructor
         this.mother = mother;
         this.father = father;
-        this.children = new Human[]{};
-        //this.pet = ????
+        this.children = new Human[10];
+        this.countChildren = 0;
+        this.pet = new Pet();
     }
 
     @Override
@@ -25,36 +27,44 @@ public class Family {
                 '}';
     }
 
-    public boolean deleteChild(int index){
-        System.out.println("children.length: " + children.length);
-        if(index < children.length){
-            Human [] temp = new Human[children.length-1];
-            int j=0;
-            for(int i=0; i<temp.length; i++){
-                if(j == index){
+    public void deleteChild(int index){
+        if(index < countChildren){
+            System.out.print(children[index].getName() + " " + children[index].getSurname() + " Deleted.");
+            Human [] temp = new Human[10];
+            int countTemp=0;
+
+            for(int i=0; i<countChildren; i++){
+                if(i == index){
                     continue;
                 }
                 else{
-                    temp[i] = children[j];
-                    j++;
+                    temp[countTemp++] = children[i];
                 }
             }
 
             children = temp;
-            return true;
+            countChildren--;
         }
         else{
-            return  false;
+            System.out.print("Not Deleted.");
         }
+        System.out.println(" Count Children: " + countChildren);
     }
 
     public void addChild(Human child){
-        System.out.println("children.length:" + children.length);
-        children[children.length] = child;
+        children[countChildren] = child;
+        countChildren++;
+        System.out.println("New Child Added! Count children: " + countChildren);
     }
 
-    public int countFamily(){
-        return 2 + children.length;
+    public void addPet(Pet p){
+        this.pet = p;
+        System.out.println("New Pet Added!");
+    }
+
+    public void countFamily(){
+        int cnt = 2 + countChildren;
+        System.out.println("Count Family: " + cnt);
     }
 
     public Human getMother() {
