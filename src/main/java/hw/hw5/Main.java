@@ -47,7 +47,8 @@ public class Main {
         f1.addChild(family1Child1);
         f1.countFamily();
 
-        f1.addPet(myDog1);
+        f1.setPet(myDog1);
+        //f1.addPet(myDog1);
         System.out.println(f1.toString());
 
 
@@ -60,7 +61,8 @@ public class Main {
         Family f2 = new Family(family2Mother, family2Father);
         f2.addChild(family2Child1);
         f2.addChild(family2Child2);
-        f2.addPet(myDog2);
+        f2.setPet(myDog2);
+        //f2.addPet(myDog2);
         f2.countFamily();
         System.out.println(f2.toString());
 
@@ -74,17 +76,21 @@ public class Main {
         Family f3 = new Family(family3Mother, family3Father);
         f3.addChild(family3Child1);
         f3.addChild(family3Child2);
-        f3.addPet(myCat1);
+        f3.setPet(myCat1);
+        //f3.addPet(myCat1);
+        System.out.println(f3.pet.toString());
         f3.countFamily();
         f3.deleteChild(1);
         f3.countFamily();
         System.out.println(f3.toString());
+
         f3.pet.eat();
         f3.pet.respond();
         f3.pet.foul();
         System.out.println(f3.pet.toString());
-        //f3.father.greetPet();
-        //f3.father.describePet();
-        //boolean isFeed = f3.father.feedPet();
+        f3.greetPet();
+        f3.describePet();
+        boolean isFeed = f3.feedPet();
+        System.out.println("Did the family feed their pet? --> " + isFeed);
     }
 }

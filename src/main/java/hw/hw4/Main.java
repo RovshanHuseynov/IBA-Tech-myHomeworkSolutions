@@ -29,5 +29,6 @@ public class Main {
         human5.describePet();
         System.out.println(human6.toString());
         boolean isFeed = human7.feedPet();
+        System.out.println("Did the family feed their pet? " + isFeed);
     }
 }

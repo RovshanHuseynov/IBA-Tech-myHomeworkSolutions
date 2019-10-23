@@ -1,6 +1,7 @@
 package hw.hw5;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Family {
     Human mother;
@@ -65,6 +66,30 @@ public class Family {
     public void countFamily(){
         int cnt = 2 + countChildren;
         System.out.println("Count Family: " + cnt);
+    }       // count number of members of a family
+
+    public boolean feedPet(){
+        System.out.println("isn't it time for feeding?");
+        Random random = new Random();
+        int x = random.nextInt(100);
+
+        if(x < pet.getTrickLevel()){
+            System.out.println("I think " + pet.getNickname() + " is not hungry.");
+            return false;
+        }
+        else{
+            System.out.println("Hm... I will feed " + pet.getNickname() + "'s");
+            return true;
+        }
+    }
+
+    public void greetPet(){
+        System.out.println("Hello, " + pet.getNickname());
+    }
+
+    public void describePet(){
+        String trickLevel = pet.getTrickLevel() > 50 ? "very sly" : "almost not sly";
+        System.out.println("I have a " + pet.getSpecies() + ", he is " + pet.getAge() + " years old, he is " + trickLevel);
     }
 
     public Human getMother() {
