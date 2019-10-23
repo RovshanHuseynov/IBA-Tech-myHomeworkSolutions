@@ -11,9 +11,6 @@ public class Human {
     Human mother;
     Human father;
 
-    public Human() {     // constructor
-    }
-
     public Human(String name, String surname, int year) {      // constructor
         this.name = name;
         this.surname = surname;
