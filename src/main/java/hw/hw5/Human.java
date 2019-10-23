@@ -35,37 +35,37 @@ public class Human {
         this.family = family;
     }
 
-    public void greetPet(Human h){
-        System.out.println("Hello, " + h.family.pet.getNickname());
+    public void greetPet(){
+        System.out.println("Hello, " + family.pet.getNickname());
     }
 
-    public void describePet(Human h){
-        String trickLevel = h.family.pet.getTrickLevel() > 50 ? "very sly" : "almost not sly";
-        System.out.println("I have a " + h.family.pet.getSpecies() + ", he is " + h.family.pet.getAge() + " years old, he is " + trickLevel);
+    public void describePet(){
+        String trickLevel = family.pet.getTrickLevel() > 50 ? "very sly" : "almost not sly";
+        System.out.println("I have a " + family.pet.getSpecies() + ", he is " + family.pet.getAge() + " years old, he is " + trickLevel);
     }
 
     @Override
     public String toString() {
-        return "Human{" +
+        return   "Human{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", year=" + year +
                 ", iq=" + iq +
-                ", schedule=" + Arrays.toString(schedule) +
-                '}';
+                ", schedule=[" + Arrays.toString(schedule) +
+                "]}";
     }
 
-    public boolean feedPet(Human h){
+    public boolean feedPet(){
         System.out.println("isn't it time for feeding?");
         Random random = new Random();
         int x = random.nextInt(100);
 
-        if(x < h.family.pet.getTrickLevel()){
-            System.out.println("I think " + h.family.pet.getNickname() + " is not hungry.");
+        if(x < family.pet.getTrickLevel()){
+            System.out.println("I think " + family.pet.getNickname() + " is not hungry.");
             return false;
         }
         else{
-            System.out.println("Hm... I will feed " + h.family.pet.getNickname() + "'s");
+            System.out.println("Hm... I will feed " + family.pet.getNickname() + "'s");
             return true;
         }
     }

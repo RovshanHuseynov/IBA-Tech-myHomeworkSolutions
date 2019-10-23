@@ -2,12 +2,38 @@ package hw.hw3;
 
 import java.util.Scanner;
 
-public class ClassHw3 {
-    static String [][] schedule = new String [7][2];   // I will used this array in Main method as well as in other methods
+public class WeekPlanner {
+    static String [][] schedule = new String [7][2];
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String input = "";
+        fillScheduleArray();
+
+        while(true) {       // infinite loop
+            System.out.print("Please, input the day of the week: ");
+            input = in.nextLine();
+            if(input.equals("exit")){
+                break;     // end the infinite loop
+            }
+
+            while(true){    // the program goes to the next iteration until the user enters a valid weekday
+                if(input.equals("exit") || checkValidWeekday(input)){
+                    break;   // valid weekday found
+                }
+                System.out.println("Sorry, I don't understand you, please try again.");
+                input = in.nextLine();
+            }
+
+            if(input.equals("exit")){
+                break;     // end the infinite loop
+            }
+
+            getTask(input);
+        }
+    }
+
+    public static void fillScheduleArray(){   // fill the schedule array
         schedule[0][0] = "Sunday";
         schedule[0][1] = "do home work";
         schedule[1][0] = "Monday";
@@ -22,24 +48,6 @@ public class ClassHw3 {
         schedule[5][1] = "do a course";
         schedule[6][0] = "Saturday";
         schedule[6][1] = "have a rest";
-
-        while(true) {       // infinite loop
-            System.out.print("Please, input the day of the week: ");
-            input = in.nextLine();
-            if(input.equals("exit")){
-                break;     // end the infinite loop
-            }
-
-            while(true){    // the program goes to the next iteration until the user enters a valid weekday
-                if(checkValidWeekday(input)){
-                    break;   // valid weekday found
-                }
-                System.out.println("Sorry, I don't understand you, please try again.");
-                input = in.nextLine();
-            }
-
-            getTask(input);
-        }
     }
 
     public static boolean checkValidWeekday(String s) {    // check the input is whether a valid weekday

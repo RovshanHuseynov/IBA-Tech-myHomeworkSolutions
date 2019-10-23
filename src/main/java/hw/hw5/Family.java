@@ -1,15 +1,18 @@
 package hw.hw5;
 
+import java.util.Arrays;
+
 public class Family {
     Human mother;
     Human father;
     Human[] children;
     Pet pet;
 
-    public Family(Human mother, Human father) {
+    public Family(Human mother, Human father) {    // constructor
         this.mother = mother;
         this.father = father;
         this.children = new Human[]{};
+        //this.pet = ????
     }
 
     @Override
@@ -17,12 +20,13 @@ public class Family {
         return "Family{" +
                 "mother=" + mother +
                 ", father=" + father +
-                ", children=" + children +
-                ", pet=" + pet +
+                ", children=[" + Arrays.toString(children) +
+                "]  , pet=" + pet +
                 '}';
     }
 
     public boolean deleteChild(int index){
+        System.out.println("children.length: " + children.length);
         if(index < children.length){
             Human [] temp = new Human[children.length-1];
             int j=0;
@@ -31,7 +35,7 @@ public class Family {
                     continue;
                 }
                 else{
-                    temp[j] = children[i];
+                    temp[i] = children[j];
                     j++;
                 }
             }
@@ -45,6 +49,7 @@ public class Family {
     }
 
     public void addChild(Human child){
+        System.out.println("children.length:" + children.length);
         children[children.length] = child;
     }
 

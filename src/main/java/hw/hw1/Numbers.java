@@ -3,9 +3,9 @@ package hw.hw1;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ClassHw1 {
-    static int[] a = new int[100];
-    static int cntGuesses = 0;
+public class Numbers {
+    static int[] storedIntegers = new int[100];
+    static int counterofGuesses = 0;
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -26,7 +26,7 @@ public class ClassHw1 {
                 int guessedInt = Integer.parseInt(strIn);
                 storeGuesses(guessedInt);
 
-                if (guessedInt == target) {
+                if (guessedInt == target) {    // end of the infinite loop
                     System.out.printf("Congratulations, %s!\n", name);
                     break;
                 } else if (guessedInt < target) {
@@ -42,22 +42,22 @@ public class ClassHw1 {
     }
 
     public static void storeGuesses(int x) {    // add the number to the array and sort the array descendingly
-        a[cntGuesses] = x;
-        cntGuesses++;
+        storedIntegers[counterofGuesses] = x;
+        counterofGuesses++;
         System.out.print("Your numbers: ");
 
-        for (int i = 0; i < cntGuesses - 1; i++){
-            for (int j = 0; j < cntGuesses - 1; j++){
-                if(a[j] < a[j+1]){
-                    int temp = a[j];
-                    a[j] = a[j+1];
-                    a[j+1] = temp;
+        for (int i = 0; i < counterofGuesses - 1; i++){
+            for (int j = 0; j < counterofGuesses - 1; j++){
+                if(storedIntegers[j] < storedIntegers[j+1]){
+                    int temp = storedIntegers[j];
+                    storedIntegers[j] = storedIntegers[j+1];
+                    storedIntegers[j+1] = temp;
                 }
             }
         }
 
-        for (int i = 0; i < cntGuesses; i++) {
-            System.out.print(a[i] + " ");
+        for (int i = 0; i < counterofGuesses; i++) {
+            System.out.print(storedIntegers[i] + " ");
         }
         System.out.println();
     }

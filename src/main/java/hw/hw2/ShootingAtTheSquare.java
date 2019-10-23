@@ -3,23 +3,23 @@ package hw.hw2;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ClassHw2 {
-    static char [][] a = new char[6][6];;
+public class ShootingAtTheSquare {
+    static char [][] printedArray = new char[6][6];;
     public static void main(String[] args) {
         fillSquare();
         System.out.println("All set. Get ready to rumble!");
         Random random = new Random();
         Scanner in = new Scanner(System.in);
         boolean isInt;
-        int targeti = random.nextInt(4) + 1;  // [1,5]
-        int targetj = random.nextInt(4) + 1;  // [1,5]
+        int targetLine = random.nextInt(4) + 1;  // [1,5]
+        int targetBar = random.nextInt(4) + 1;  // [1,5]
         int guessedLine, guessedBar;
         String test;
 
         while(true){   // infinite loop
             System.out.print("Please enter a line for fire: ");
             test = in.nextLine();
-            if(isInt(test) == false){
+            if(isInt(test) == false){    // check line for fire
                 System.out.println("Wrong input");
                 continue;
             }
@@ -29,7 +29,7 @@ public class ClassHw2 {
 
             System.out.print("Please enter a shooting bar: ");
             test = in.nextLine();
-            if(isInt(test) == false){
+            if(isInt(test) == false){      // check shooting bar
                 System.out.println("Wrong input");
                 continue;
             }
@@ -37,14 +37,14 @@ public class ClassHw2 {
                 guessedBar = Integer.parseInt(test);
             }
 
-            if(targeti == guessedLine && targetj == guessedBar ){
+            if(targetLine == guessedLine && targetBar == guessedBar ){   // end of the infinite loop
                 System.out.println("You have won!");
-                a[guessedLine][guessedBar] = 'x';
+                printedArray[guessedLine][guessedBar] = 'x';
                 printSquare();
                 break;
             }
 
-            a[guessedLine][guessedBar] = '*';
+            printedArray[guessedLine][guessedBar] = '*';
             printSquare();
         }
     }
@@ -57,7 +57,7 @@ public class ClassHw2 {
         for(int i=1; i<=5; i++){
             System.out.print(i + " | ");
             for(int j=1; j<=5; j++){
-                System.out.print(a[i][j] + " | ");
+                System.out.print(printedArray[i][j] + " | ");
             }
             System.out.println();
         }
@@ -67,7 +67,7 @@ public class ClassHw2 {
     public static void fillSquare(){    // fill the square with '-'
         for(int i=1; i<=5; i++){
             for(int j=1; j<=5; j++){
-                a[i][j] = '-';
+                printedArray[i][j] = '-';
             }
         }
     }
@@ -75,14 +75,14 @@ public class ClassHw2 {
     public static boolean isInt(String s){    // is the input string contains only numbers and is the number between 1 and 5 ?
         boolean flag = true;
 
-        for(int i=0; i<s.length(); i++){
+        for(int i=0; i<s.length(); i++){      // is the input string contains only numbers
             if(s.charAt(i) < '0' || s.charAt(i) > '9'){
                 flag = false;
                 break;
             }
         }
 
-        if(flag == true){
+        if(flag == true){     // is the number between 1 and 5 ?
             if(Integer.parseInt(s) < 1 || Integer.parseInt(s) > 5 ){
                 flag = false;
             }

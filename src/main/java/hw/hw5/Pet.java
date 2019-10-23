@@ -29,8 +29,8 @@ public class Pet {
         System.out.println("I am eating");
     }
 
-    public void respond(Pet p){
-        System.out.println("Hello, owner. I am - " + p.nickname + ". I miss you!");
+    public void respond(){
+        System.out.println("Hello, owner. I am - " + getNickname() + ". I miss you!");
     }
 
     public void foul(){

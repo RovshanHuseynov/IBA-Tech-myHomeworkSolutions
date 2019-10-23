@@ -39,13 +39,13 @@ public class Human {
         this.mother = mother;
     }
 
-    public void greetPet(Human h){
-        System.out.println("Hello, " + h.pet.nickname);
+    public void greetPet(){
+        System.out.println("Hello, " + pet.nickname);
     }
 
-    public void describePet(Human h){
-        String trickLevel = h.pet.trickLevel > 50 ? "very sly" : "almost not sly";
-        System.out.println("I have a " + h.pet.species + ", he is " + h.pet.age + " years old, he is " + trickLevel);
+    public void describePet(){
+        String trickLevel = pet.trickLevel > 50 ? "very sly" : "almost not sly";
+        System.out.println("I have a " + pet.species + ", he is " + pet.age + " years old, he is " + trickLevel);
     }
 
     @Override
@@ -61,17 +61,17 @@ public class Human {
                 '}';
     }
 
-    public boolean feedPet(Human h){
+    public boolean feedPet(){
         System.out.println("isn't it time for feeding?");
         Random random = new Random();
         int x = random.nextInt(100);
 
-        if(x < h.pet.trickLevel){
-            System.out.println("I think " + h.pet.nickname + " is not hungry.");
+        if(x < pet.trickLevel){
+            System.out.println("I think " + pet.nickname + " is not hungry.");
             return false;
         }
         else{
-            System.out.println("Hm... I will feed " + h.pet.nickname + "'s");
+            System.out.println("Hm... I will feed " + pet.nickname + "'s");
             return true;
         }
     }
