@@ -10,7 +10,6 @@ public class Human {
     Pet pet;
     Human mother;
     Human father;
-    String [][] schedule;   // 2d array: [day of the week] x [type of the activity]
 
     public Human() {     // constructor
     }
@@ -39,38 +38,31 @@ public class Human {
         this.mother = mother;
     }
 
-    public void greetPet(){
+    public void greetPet() {
         System.out.println("Hello, " + pet.nickname);
     }
 
-    public void describePet(){
+    public void describePet() {
         String trickLevel = pet.trickLevel > 50 ? "very sly" : "almost not sly";
         System.out.println("I have a " + pet.species + ", he is " + pet.age + " years old, he is " + trickLevel);
     }
 
     @Override
     public String toString() {
-        return "Human{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", year=" + year +
-                ", iq=" + iq +
-                ", mother=" + mother.name + " " + mother.surname +
-                ", father=" + father.name + " " + father.surname +
-                ", pet=" + pet +
-                '}';
+        return "Human{name='" + name + '\'' + ", surname='" + surname + '\'' + ", year=" + year
+                + ", iq=" + iq + ", mother=" + mother.name + " " + mother.surname + ", father=" + father.name
+                + " " + father.surname + ", pet=" + pet + "]}";
     }
 
-    public boolean feedPet(){
+    public boolean feedPet() {
         System.out.println("isn't it time for feeding?");
         Random random = new Random();
         int x = random.nextInt(100);
 
-        if(x < pet.trickLevel){
+        if (x < pet.trickLevel) {
             System.out.println("I think " + pet.nickname + " is not hungry.");
             return false;
-        }
-        else{
+        } else {
             System.out.println("Hm... I will feed " + pet.nickname + "'s");
             return true;
         }
