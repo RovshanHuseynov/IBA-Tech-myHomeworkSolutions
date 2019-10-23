@@ -51,11 +51,8 @@ public class WeekPlanner {
     }
 
     public static boolean checkValidWeekday(String s) {    // check the input is whether a valid weekday
-        if(s.charAt(s.length()-1) == ' '){
-            s = s.substring(0,(s.length()-1));
-            // take into account that the user may have accidentally
-            // entered a space after the day of the week.
-        }
+        s = s.trim();        // take into account that the user may have accidentally
+                             // entered a space after the day of the week.
 
         for(int i=0; i<7; i++) {
             if (s.toLowerCase().equals(schedule[i][0].toLowerCase())){
@@ -66,11 +63,9 @@ public class WeekPlanner {
     }
 
     public static void getTask(String s){     // returns task of the valid weekday
-        if(s.charAt(s.length()-1) == ' '){
-            s = s.substring(0,(s.length()-1));
-            // take into account that the user may have accidentally
-            // entered a space after the day of the week.
-        }
+        s = s.trim();      // take into account that the user may have accidentally
+                           // entered a space after the day of the week.
+
         for(int i=0; i<7; i++) {
             if (s.toLowerCase().equals(schedule[i][0].toLowerCase())){
                 System.out.println("Your tasks for " + schedule[i][0] + ": " + schedule[i][1]);
