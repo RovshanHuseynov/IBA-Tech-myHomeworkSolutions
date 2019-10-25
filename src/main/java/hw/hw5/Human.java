@@ -7,7 +7,7 @@ public class Human {
     private String surname;
     private int year;
     private int iq;   //  a whole number from 1 to 100
-    private String [][] schedule;   // 2d array: [day of the week] x [type of the activity]
+    private String[][] schedule;   // 2d array: [day of the week] x [type of the activity]
 
     public Human() {     // constructor
     }
@@ -25,7 +25,7 @@ public class Human {
         this.iq = iq;
     }
 
-    public Human(String name, String surname, int year, int iq, String [][] schedule) {    // constructor
+    public Human(String name, String surname, int year, int iq, String[][] schedule) {    // constructor
         this.name = name;
         this.surname = surname;
         this.year = year;
@@ -35,40 +35,36 @@ public class Human {
 
     @Override
     public String toString() {
-        return   "Human{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", year=" + year +
-                ", iq=" + iq +
-                ", schedule=[" + Arrays.toString(schedule) +
-                "]}";
+        String s = "Human{" + "name='" + name + '\'' + ", surname='" + surname + '\'' +
+                ", year=" + year + ", iq=" + iq + ", schedule=[";
+
+        if (schedule != null) {
+            for (int i = 0; i < schedule.length; i++) {
+                s += Arrays.toString(schedule[i]);
+            }
+        }
+
+        s += "]}";
+        return s;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(obj == null) return false;
-        else if(this == obj) return true;
-        else if(!(obj instanceof Human)) return false;
+        if (obj == null) return false;
+        else if (this == obj) return true;
+        else if (!(obj instanceof Human)) return false;
 
         Human that = (Human) obj;
-        if(this.name == that.name && this.surname == that.surname && this.year == that.year && this.iq == that.iq){
-            if(this.schedule.length == that.schedule.length){   // schedule is 2D array, so I must check all items by one by
-                for(int i=0; i<this.schedule.length; i++){
-                    if(this.schedule[i].length != that.schedule[i].length) {
+        if (this.name.equals(that.name) && this.surname.equals(that.surname) && this.year == that.year && this.iq == that.iq) {
+            if (this.schedule.length == that.schedule.length) {   // schedule is 2D array, so I must check row by row
+                for (int i = 0; i < this.schedule.length; i++) {
+                    if (!Arrays.toString(this.schedule[i]).equals(Arrays.toString(that.schedule[i]))) {
                         return false;
                     }
-
-                    for(int j=0; j<this.schedule[i].length; j++){
-                        if(!this.schedule[i][j].equals(that.schedule[i][j])){
-                            return false;
-                        }
-                    }
                 }
-
                 return true;
             }
         }
-
         return false;
     }
 

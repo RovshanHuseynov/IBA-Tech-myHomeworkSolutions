@@ -2,21 +2,22 @@ package hw.hw5;
 
 public class Main {
     public static void main(String[] args) {
-        Pet myDog1 = new Pet("dog","Ares", 1, 60, new String[]{"bark", "jump", "follow you"});
-        Pet myCat1 = new Pet("cat", "Luna", 2,30, new String[]{"jump", "lick", "sleep"});
-        Pet myDog2 = new Pet("dog","Zeus", 3, 20, new String[]{"bark","run fast","smell well"});
-        Pet myCat2 = new Pet("cat", "Luna", 2,30, new String[]{"jump", "lick", "sleep"});
+        Pet myDog1 = new Pet("dog", "Ares", 1, 60, new String[]{"bark", "jump", "follow you"});
+        Pet myCat1 = new Pet("cat", "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+        Pet myDog2 = new Pet("dog", "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
+        Pet myCat2 = new Pet("cat", "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+        System.out.println(myCat1.toString());
 
-        Human family1Mother = new Human("Sevinc", "Huseynova" ,1967, 80);
+        Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new String[][]{{"Monday", "go shopping"}});
         Human family1Father = new Human("Mirze", "Huseynov", 1965, 90);
-        Human family1Child1 = new Human("Rovshan","Huseynov", 1994);
+        Human family1Child1 = new Human("Rovshan", "Huseynov", 1994);
         Human family1Child2 = new Human("Sabina", "Huseynova", 1993);
         Human family1Child3 = new Human("Kamil", "Huseynov", 1997);
-        Human family1Child4 = new Human("Elekber", "Huseynov", 1990,90, new String[][]{{"Monday","do homework"},{"Sunday","have a rest"}});
-        Human family1Child5 = new Human("Ramin", "Huseynov" , 1980, 80 , new String[][]{{"Monday","do homework"},{"Sunday","have a rest"}});
-        Human family1Child6 = new Human("Ramin", "Huseynov" , 1980, 80 , new String[][]{{"Monday","do homework"},{"Sunday","have a rest"}});
-        Human family1Child7 = new Human("Ramin", "Huseynov" , 1980, 80 , new String[][]{{"Monday","do homework"},{"Tuesday","read books"},{"Sunday","have a rest"}});
-        Human family1Child8 = new Human("Ramin", "Huseynov" , 1980, 80 , new String[][]{{"Monday","sleep"},{"Tuesday","read books"},{"Sunday","have a rest"}});
+        Human family1Child4 = new Human("Elekber", "Huseynov", 1990, 90, new String[][]{{"Monday", "do homework"}, {"Sunday", "have a rest"}});
+        Human family1Child5 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{"Monday", "do homework"}, {"Sunday", "have a rest"}});
+        Human family1Child6 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{"Monday", "do homework"}, {"Sunday", "have a rest"}});
+        Human family1Child7 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{"Monday", "do homework"}, {"Tuesday", "read books"}, {"Sunday", "have a rest"}});
+        Human family1Child8 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{"Monday", "sleep"}, {"Tuesday", "read books"}, {"Sunday", "have a rest"}});
 
 
         System.out.println("Equals mother-father: " + family1Mother.equals(family1Father));
@@ -28,6 +29,7 @@ public class Main {
         System.out.println("Equals: myCat1-myCat2: " + myCat1.equals(myCat2));
 
         Family f1 = new Family(family1Mother, family1Father);
+        System.out.println(f1.toString());
         f1.countFamily();
         f1.addChild(family1Child1);
         f1.addChild(family1Child2);
@@ -36,7 +38,7 @@ public class Main {
         f1.addChild(family1Child5);
         f1.countFamily();
         System.out.println(f1.toString());
-        System.out.println(f1.getChildren()[0].toString());
+        System.out.println(f1.getChildren()[4].toString());
 
         f1.deleteChild(0);
         f1.deleteChild(6);
@@ -66,9 +68,9 @@ public class Main {
 
 
         System.out.println("---------------------------------");
-        Human family2Mother = new Human("Ayise", "Agayeva" ,1950);
+        Human family2Mother = new Human("Ayise", "Agayeva", 1950);
         Human family2Father = new Human("Samir", "Agayev", 1945);
-        Human family2Child1 = new Human("Amil","Agayev", 1964);
+        Human family2Child1 = new Human("Amil", "Agayev", 1964);
         Human family2Child2 = new Human("Selim", "Agayev", 1970);
 
         Family f2 = new Family(family2Mother, family2Father);
@@ -81,13 +83,13 @@ public class Main {
 
 
         System.out.println("---------------------------------");
-        Human family3Mother = new Human("Lale", "Melikova" ,1950);
+        Human family3Mother = new Human("Lale", "Melikova", 1950);
         Human family3Father = new Human("Zamiq", "Melikov", 1945);
-        Human family3Child1 = new Human("Suqra","Melikova", 1964);
+        Human family3Child1 = new Human("Suqra", "Melikova", 1964);
         Human family3Child2 = new Human("Nergiz", "Melikova", 1970);
 
         Family f3 = new Family(family3Mother, family3Father);
-        f3.addChild(family3Child1);
+        f3.addChild(family1Child7);
         f3.addChild(family3Child2);
         f3.setPet(myCat1);
         //f3.addPet(myCat1);
@@ -106,6 +108,11 @@ public class Main {
         boolean isFeed = f3.feedPet();
         System.out.println("Did the family feed their pet? --> " + isFeed);
 
-        //System.out.println("Equals: " + f1.equals(f2));
+        Family f4 = new Family(family3Mother, family3Father);
+        f4.addChild(family1Child7);
+        f4.setPet(myCat1);
+
+        System.out.println("Equals family 1-2: " + f1.equals(f2));
+        System.out.println("Equals family 3-4: " + f3.equals(f4));
     }
 }

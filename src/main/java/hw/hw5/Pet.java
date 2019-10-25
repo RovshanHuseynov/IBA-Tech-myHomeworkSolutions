@@ -7,7 +7,7 @@ public class Pet {
     private String nickname;
     private int age;
     private int trickLevel;    // a whole number from 1 to 100
-    private String [] habits;
+    private String[] habits;
 
     public Pet() {    // constructor
     }
@@ -17,7 +17,7 @@ public class Pet {
         this.nickname = nickname;
     }
 
-    public Pet(String species, String nickname, int age, int trickLevel, String [] habits) {     // constructor
+    public Pet(String species, String nickname, int age, int trickLevel, String[] habits) {     // constructor
         this.species = species;
         this.nickname = nickname;
         this.age = age;
@@ -25,44 +25,38 @@ public class Pet {
         this.habits = habits;
     }
 
-    public void eat(){
+    public void eat() {
         System.out.println("I am eating");
     }
 
-    public void respond(){
+    public void respond() {
         System.out.println("Hello, owner. I am - " + getNickname() + ". I miss you!");
     }
 
-    public void foul(){
+    public void foul() {
         System.out.println("'I need to cover it up");
     }
 
     @Override
     public String toString() {
-        return   species + "{" +
-                "nickname='" + nickname + '\'' +
-                ", age=" + age +
-                ", trickLevel=" + trickLevel +
-                ", habits=" + Arrays.toString(habits) +
-                '}';
+        String s = "Pet{" + "nickname='" + nickname + '\'' + ", age=" + age + ", trickLevel=" + trickLevel + ", habits=[";
+        if (habits != null) {
+            s += Arrays.toString(habits);
+        }
+        s += "]}";
+        return s;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(obj == null) return false;
-        else if(this == obj) return true;
-        else if(!(obj instanceof Pet)) return false;
+        if (obj == null) return false;
+        else if (this == obj) return true;
+        else if (!(obj instanceof Pet)) return false;
 
         Pet that = (Pet) obj;
-        if(that.species == this.species && that.nickname == this.nickname && that.age == this.age && that.trickLevel == this.trickLevel){
-            if(that.habits.length == this.habits.length){  //  habits is 1D array, so I must check all items by one by
-                for(int i=0; i<that.habits.length; i++){
-                    if(!that.habits[i].equals(this.habits[i])){
-                        return false;
-                    }
-                }
-                return true;
-            }
+        if (that.species.equals(this.species) && that.nickname.equals(this.nickname) && that.age == this.age && that.trickLevel == this.trickLevel
+                && Arrays.toString(that.habits).equals(Arrays.toString(this.habits))) {
+            return true;
         }
 
         return false;
