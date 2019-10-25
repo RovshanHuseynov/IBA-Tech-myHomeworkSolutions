@@ -43,9 +43,22 @@ public class Human {
         else if(!(obj instanceof Human)) return false;
 
         Human that = (Human) obj;
-        if(this.name == that.name && this.surname == that.surname
-                && this.year == that.year && this.iq == that.iq
-                && this.schedule == that.schedule) return true;
+        if(this.name == that.name && this.surname == that.surname && this.year == that.year && this.iq == that.iq){
+            if(this.schedule.length == that.schedule.length){   // schedule is 2D array, so I must check all items by one by
+                for(int i=0; i<this.schedule.length; i++){
+                    if(this.schedule[i].length != that.schedule[i].length){
+                        return false;
+                    }
+
+                    for(int j=0; j<this.schedule[i].length; j++){
+                        if(this.schedule[i][j] != that.schedule[i][j]){
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        }
 
         return false;
     }
