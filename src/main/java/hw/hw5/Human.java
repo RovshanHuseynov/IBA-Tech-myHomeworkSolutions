@@ -36,6 +36,20 @@ public class Human {
                 "]}";
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) return false;
+        else if(this == obj) return true;
+        else if(!(obj instanceof Human)) return false;
+
+        Human that = (Human) obj;
+        if(this.name == that.name && this.surname == that.surname
+                && this.year == that.year && this.iq == that.iq
+                && this.schedule == that.schedule) return true;
+
+        return false;
+    }
+
     public String getName() {
         return name;
     }

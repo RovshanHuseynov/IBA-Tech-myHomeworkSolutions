@@ -5,6 +5,7 @@ public class Main {
         Pet myDog1 = new Pet("dog","Ares", 1, 60, new String[]{"bark", "jump", "follow you"});
         Pet myCat1 = new Pet("cat", "Luna", 2,30, new String[]{"jump", "lick", "sleep"});
         Pet myDog2 = new Pet("dog","Zeus", 3, 20, new String[]{"bark","run fast","smell well"});
+        Pet myCat2 = new Pet("cat", "Luna", 2,30, new String[]{"jump", "lick", "sleep"});
 
         Human family1Mother = new Human("Sevinc", "Huseynova" ,1967);
         Human family1Father = new Human("Mirze", "Huseynov", 1965);
@@ -13,6 +14,12 @@ public class Main {
         Human family1Child3 = new Human("Kamil", "Huseynov", 1997);
         Human family1Child4 = new Human("Elekber", "Huseynov", 1990);
         Human family1Child5 = new Human("Ramin", "Huseynov" , 1980);
+        Human family1Child6 = new Human("Ramin", "Huseynov" , 1980);
+
+        System.out.println("Equals: " + family1Child1.equals(family1Child6));
+        System.out.println("Equals: " + family1Child5.equals(family1Child6));
+        System.out.println("Equals: " + myDog1.equals(myCat1));
+        System.out.println("Equals: " + myCat1.equals(myCat2));
 
         Family f1 = new Family(family1Mother, family1Father);
         f1.countFamily();
@@ -23,12 +30,12 @@ public class Main {
         f1.addChild(family1Child5);
         f1.countFamily();
         System.out.println(f1.toString());
-        System.out.println(f1.children[0].toString());
+        System.out.println(f1.getChildren()[0].toString());
 
         f1.deleteChild(0);
         f1.deleteChild(6);
 
-        System.out.println(f1.children[0].toString());
+        System.out.println(f1.getChildren()[0].toString());
         f1.deleteChild(0);
 
         f1.countFamily();
@@ -78,16 +85,16 @@ public class Main {
         f3.addChild(family3Child2);
         f3.setPet(myCat1);
         //f3.addPet(myCat1);
-        System.out.println(f3.pet.toString());
+        System.out.println(f3.getPet().toString());
         f3.countFamily();
         f3.deleteChild(1);
         f3.countFamily();
         System.out.println(f3.toString());
 
-        f3.pet.eat();
-        f3.pet.respond();
-        f3.pet.foul();
-        System.out.println(f3.pet.toString());
+        f3.getPet().eat();
+        f3.getPet().respond();
+        f3.getPet().foul();
+        System.out.println(f3.getPet().toString());
         f3.greetPet();
         f3.describePet();
         boolean isFeed = f3.feedPet();

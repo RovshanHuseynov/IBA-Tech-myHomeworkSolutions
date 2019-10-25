@@ -47,6 +47,27 @@ public class Pet {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) return false;
+        else if(this == obj) return true;
+        else if(!(obj instanceof Pet)) return false;
+
+        Pet that = (Pet) obj;
+        if(that.species == this.species && that.nickname == this.nickname && that.age == this.age && that.trickLevel == this.trickLevel){
+            if(that.habits.length == this.habits.length){
+                for(int i=0; i<that.habits.length; i++){
+                    if(that.habits[i] != this.habits[i]){
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public String getSpecies() {
         return species;
     }

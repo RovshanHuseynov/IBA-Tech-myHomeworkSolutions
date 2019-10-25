@@ -4,11 +4,11 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Family {
-    Human mother;
-    Human father;
-    Human[] children;
-    int countChildren;
-    Pet pet;
+    private Human mother;
+    private Human father;
+    private Human[] children;
+    private int countChildren;
+    private Pet pet;
 
     public Family(Human mother, Human father) {    // constructor
         this.mother = mother;
@@ -90,6 +90,21 @@ public class Family {
     public void describePet(){
         String trickLevel = pet.getTrickLevel() > 50 ? "very sly" : "almost not sly";
         System.out.println("I have a " + pet.getSpecies() + ", he is " + pet.getAge() + " years old, he is " + trickLevel);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) return false;
+        else if(this == obj) return true;
+        else if(!(obj instanceof Family)) return false;
+
+        Family that = (Family) obj;
+        if(this.father.equals(this.father) == that.father.equals(that.father)
+            && this.mother.equals(this.mother) == that.mother.equals(that.mother)
+            && this.children.equals(this.children) == that.children.equals(that.children)
+            && this.pet.equals(this.pet) == that.equals(that.pet)) return true;
+
+        return false;
     }
 
     public Human getMother() {
