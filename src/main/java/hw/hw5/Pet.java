@@ -57,7 +57,7 @@ public class Pet {
         if(that.species == this.species && that.nickname == this.nickname && that.age == this.age && that.trickLevel == this.trickLevel){
             if(that.habits.length == this.habits.length){  //  habits is 1D array, so I must check all items by one by
                 for(int i=0; i<that.habits.length; i++){
-                    if(that.habits[i] != this.habits[i]){
+                    if(!that.habits[i].equals(this.habits[i])){
                         return false;
                     }
                 }
