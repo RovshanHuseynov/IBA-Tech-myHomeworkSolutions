@@ -1,6 +1,7 @@
 package hw.hw5;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Pet {
     private String species;
@@ -60,6 +61,13 @@ public class Pet {
         }
 
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(species, nickname, age, trickLevel);
+        result = 31 * result + Arrays.hashCode(habits);
+        return result;
     }
 
     public String getSpecies() {

@@ -1,5 +1,7 @@
 package hw.hw5;
 
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 
 public class Family {
@@ -115,6 +117,13 @@ public class Family {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(mother, father, countChildren, pet, countPet);
+        result = 31 * result + Arrays.hashCode(children);
+        return result;
     }
 
     public Human getMother() {

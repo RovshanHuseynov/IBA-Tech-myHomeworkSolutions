@@ -1,6 +1,7 @@
 package hw.hw5;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Human {
     private String name;
@@ -66,6 +67,13 @@ public class Human {
             }
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(name, surname, year, iq);
+        result = 31 * result + Arrays.hashCode(schedule);
+        return result;
     }
 
     public String getName() {

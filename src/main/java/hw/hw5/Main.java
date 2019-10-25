@@ -6,7 +6,7 @@ public class Main {
         Pet myCat1 = new Pet("cat", "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
         Pet myDog2 = new Pet("dog", "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
         Pet myCat2 = new Pet("cat", "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
-        System.out.println(myCat1.toString());
+        System.out.println("hashCode(myCat1, myCat2): " + (myCat1.hashCode() == myCat2.hashCode()));
 
         Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new String[][]{{"Monday", "go shopping"}});
         Human family1Father = new Human("Mirze", "Huseynov", 1965, 90);
@@ -18,15 +18,16 @@ public class Main {
         Human family1Child6 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{"Monday", "do homework"}, {"Sunday", "have a rest"}});
         Human family1Child7 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{"Monday", "do homework"}, {"Tuesday", "read books"}, {"Sunday", "have a rest"}});
         Human family1Child8 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{"Monday", "sleep"}, {"Tuesday", "read books"}, {"Sunday", "have a rest"}});
+        System.out.println("hashCode(family1Child1, family1Child2): " + (family1Child1.hashCode() == family1Child2.hashCode()));
 
 
-        System.out.println("Equals mother-father: " + family1Mother.equals(family1Father));
-        System.out.println("Equals child 4-5: " + family1Child4.equals(family1Child5));
-        System.out.println("Equals child 5-6: " + family1Child5.equals(family1Child6));
-        System.out.println("Equals child 6-7: " + family1Child6.equals(family1Child7));
-        System.out.println("Equals child 7-8: " + family1Child7.equals(family1Child8));
-        System.out.println("Equals myDog1-myCat1: " + myDog1.equals(myCat1));
-        System.out.println("Equals: myCat1-myCat2: " + myCat1.equals(myCat2));
+        System.out.println("equals(family1Mother, family1Father): " + family1Mother.equals(family1Father));
+        System.out.println("equals(family1Child4, family1Child5): " + family1Child4.equals(family1Child5));
+        System.out.println("equals(family1Child5, family1Child6): " + family1Child5.equals(family1Child6));
+        System.out.println("equals(family1Child6, family1Child7): " + family1Child6.equals(family1Child7));
+        System.out.println("equals(family1Child7, family1Child8): " + family1Child7.equals(family1Child8));
+        System.out.println("equals(myDog1, myCat1): " + myDog1.equals(myCat1));
+        System.out.println("equals(myCat1, myCat2): " + myCat1.equals(myCat2));
 
         Family f1 = new Family(family1Mother, family1Father);
         System.out.println(f1.toString());
@@ -112,7 +113,8 @@ public class Main {
         f4.addChild(family1Child7);
         f4.setPet(myCat1);
 
-        System.out.println("Equals family 1-2: " + f1.equals(f2));
-        System.out.println("Equals family 3-4: " + f3.equals(f4));
+        System.out.println("hashCode(f1, f2): " + (f1.hashCode() == f2.hashCode()));
+        System.out.println("equals(f1, f2): " + f1.equals(f2));
+        System.out.println("equals(f3, f4): " + f3.equals(f4));
     }
 }
