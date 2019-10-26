@@ -1,4 +1,4 @@
-package hw.hw5;
+package hw.hw7;
 
 import java.util.Arrays;
 import java.util.Objects;
