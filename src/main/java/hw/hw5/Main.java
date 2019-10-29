@@ -2,7 +2,7 @@ package hw.hw5;
 
 public class Main {
     public static void main(String[] args) {
-        Pet myDog1 = new Pet("dog", "Ares", 1, 60, new String[]{"bark", "jump", "follow you"});
+        Pet myDog1 = new Pet("dog", "Ares");
         Pet myCat1 = new Pet("cat", "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
         Pet myDog2 = new Pet("dog", "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
         Pet myCat2 = new Pet("cat", "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
@@ -65,6 +65,7 @@ public class Main {
 
         f1.setPet(myDog1);
         //f1.addPet(myDog1);
+        //System.out.println("almaaaaa");
         System.out.println(f1.toString());
 
 

@@ -11,19 +11,15 @@ public class Human {
     private String[][] schedule;   // 2d array: [day of the week] x [type of the activity]
 
     public Human() {     // constructor
+        this("name", "surname", 0, 0 , new String[][]{});
     }
 
     public Human(String name, String surname, int year) {   // constructor
-        this.name = name;
-        this.surname = surname;
-        this.year = year;
+        this(name, surname, year, 0 , new String[][]{});
     }
 
     public Human(String name, String surname, int year, int iq) {    // constructor
-        this.name = name;
-        this.surname = surname;
-        this.year = year;
-        this.iq = iq;
+        this(name, surname, year, iq , new String[][]{});
     }
 
     public Human(String name, String surname, int year, int iq, String[][] schedule) {    // constructor

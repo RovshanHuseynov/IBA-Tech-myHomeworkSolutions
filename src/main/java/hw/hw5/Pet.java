@@ -11,11 +11,15 @@ public class Pet {
     private String[] habits;
 
     public Pet() {    // constructor
+        this("","",0, 0, new String[]{});
     }
 
     public Pet(String species, String nickname) {     // constructor
-        this.species = species;
-        this.nickname = nickname;
+        this(species,nickname,0, 0, new String[]{});
+    }
+
+    public Pet(String species, String nickname, int age, int trickLevel) {     // constructor
+        this(species,nickname, age, trickLevel, new String[]{});
     }
 
     public Pet(String species, String nickname, int age, int trickLevel, String[] habits) {     // constructor
@@ -40,9 +44,9 @@ public class Pet {
 
     @Override
     public String toString() {
-        String s = "Pet{" + "nickname='" + nickname + '\'' + ", age=" + age + ", trickLevel=" + trickLevel + ", habits=[";
-        if (habits != null) {
-            s += Arrays.toString(habits);
+        String s = getSpecies() + "{" + "nickname='" + getNickname() + '\'' + ", age=" + getAge() + ", trickLevel=" + getTrickLevel() + ", habits=[";
+        if (getHabits() != null) {
+            s += Arrays.toString(getHabits());
         }
         s += "]}";
         return s;
