@@ -63,8 +63,7 @@ public class Main {
         f1.addChild(family1Child1);
         f1.countFamily();
 
-        f1.setPet(myDog1);
-        //f1.addPet(myDog1);
+        f1.addPet(myDog1);
         //System.out.println("almaaaaa");
         System.out.println(f1.toString());
 
@@ -78,8 +77,7 @@ public class Main {
         Family f2 = new Family(family2Mother, family2Father);
         f2.addChild(family2Child1);
         f2.addChild(family2Child2);
-        f2.setPet(myDog2);
-        //f2.addPet(myDog2);
+        f2.addPet(myDog2);
         f2.countFamily();
         System.out.println(f2.toString());
 
@@ -93,8 +91,7 @@ public class Main {
         Family f3 = new Family(family3Mother, family3Father);
         f3.addChild(family1Child7);
         f3.addChild(family3Child2);
-        f3.setPet(myCat1);
-        //f3.addPet(myCat1);
+        f3.addPet(myCat1);
         System.out.println(f3.getPet().toString());
         f3.countFamily();
         f3.deleteChild(1);
@@ -112,7 +109,7 @@ public class Main {
 
         Family f4 = new Family(family3Mother, family3Father);
         f4.addChild(family1Child7);
-        f4.setPet(myCat1);
+        f4.addPet(myCat1);
 
         System.out.println("hashCode(f1, f2): " + (f1.hashCode() == f2.hashCode()));
         System.out.println("equals(f1, f2): " + f1.equals(f2));

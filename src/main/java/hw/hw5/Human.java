@@ -11,15 +11,15 @@ public class Human {
     private String[][] schedule;   // 2d array: [day of the week] x [type of the activity]
 
     public Human() {     // constructor
-        this("name", "surname", 0, 0 , new String[][]{});
+        this("name", "surname", 0, 0, new String[][]{});
     }
 
     public Human(String name, String surname, int year) {   // constructor
-        this(name, surname, year, 0 , new String[][]{});
+        this(name, surname, year, 0, new String[][]{});
     }
 
     public Human(String name, String surname, int year, int iq) {    // constructor
-        this(name, surname, year, iq , new String[][]{});
+        this(name, surname, year, iq, new String[][]{});
     }
 
     public Human(String name, String surname, int year, int iq, String[][] schedule) {    // constructor
@@ -32,12 +32,12 @@ public class Human {
 
     @Override
     public String toString() {
-        String s = "Human{" + "name='" + name + '\'' + ", surname='" + surname + '\'' +
-                ", year=" + year + ", iq=" + iq + ", schedule=[";
+        String s = "Human{" + "name='" + getName() + '\'' + ", surname='" + getSurname() + '\'' +
+                ", year=" + getYear() + ", iq=" + getIq() + ", schedule=[";
 
-        if (schedule != null) {
-            for (int i = 0; i < schedule.length; i++) {
-                s += Arrays.toString(schedule[i]);
+        if (getSchedule() != null) {
+            for (int i = 0; i < getSchedule().length; i++) {
+                s += Arrays.toString(getSchedule()[i]);
             }
         }
 
@@ -52,10 +52,11 @@ public class Human {
         else if (!(obj instanceof Human)) return false;
 
         Human that = (Human) obj;
-        if (this.year == that.year && this.iq == that.iq && this.name.equals(that.name) && this.surname.equals(that.surname)) {
-            if (this.schedule.length == that.schedule.length) {   // schedule is 2D array, so I must check row by row
-                for (int i = 0; i < this.schedule.length; i++) {
-                    if (!Arrays.toString(this.schedule[i]).equals(Arrays.toString(that.schedule[i]))) {
+        if (this.getYear() == that.getYear() && this.getIq() == that.getIq()
+                && this.getName().equals(that.getName()) && this.getSurname().equals(that.getSurname())) {
+            if (this.getSchedule().length == that.getSchedule().length) {   // schedule is 2D array, so I must check row by row
+                for (int i = 0; i < this.getSchedule().length; i++) {
+                    if (!Arrays.toString(this.getSchedule()[i]).equals(Arrays.toString(that.getSchedule()[i]))) {
                         return false;
                     }
                 }
@@ -67,8 +68,8 @@ public class Human {
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(name, surname, year, iq);
-        result = 31 * result + Arrays.hashCode(schedule);
+        int result = Objects.hash(getName(), getSurname(), getYear(), getIq());
+        result = 31 * result + Arrays.hashCode(getSchedule());
         return result;
     }
 
@@ -76,39 +77,19 @@ public class Human {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getSurname() {
         return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 
     public int getYear() {
         return year;
     }
 
-    public void setYear(int year) {
-        this.year = year;
-    }
-
     public int getIq() {
         return iq;
     }
 
-    public void setIq(int iq) {
-        this.iq = iq;
-    }
-
     public String[][] getSchedule() {
         return schedule;
-    }
-
-    public void setSchedule(String[][] schedule) {
-        this.schedule = schedule;
     }
 }
