@@ -13,7 +13,7 @@ public class Family {
     private int countPet;
 
     public Family(Human mother, Human father) {    // constructor
-        this(mother, father, new Human[]{}, new Pet());
+        this(mother, father, new Human[10], new Pet());
     }
 
     public Family(Human mother, Human father, Human[] children, Pet pet) {    // constructor
@@ -27,25 +27,29 @@ public class Family {
 
     @Override
     public String toString() {
-        String s = "Family{" + "mother=" + getMother() + ", father=" + getFather() + ", children=[";
+        String s = "Family{" + "mother=" + getMother() + ", father=" + getFather() + ", children=";
 
         if (getCountChildren() > 0) {
-            for (int i = 0; i < getCountChildren(); i++) {
-                s += "[" + getChildren()[i].toString() + "]";
+            for (int i = 0; i < getCountChildren() - 1; i++) {
+                s += getChildren()[i].toString() + ", ";
             }
+            s += getChildren()[getCountChildren() - 1].toString();
+        } else {
+            s += "{}";
         }
-        s += ", pet=[";
+        s += ", pet=";
 
         if (getCountPet() > 0) {
             s += getPet().toString();
+        } else {
+            s += "{}";
         }
-        s += "]]}";
+        s += "}";
         return s;
     }
 
-    public void deleteChild(int index) {
+    public boolean deleteChild(int index) {
         if (index < getCountChildren()) {
-            System.out.print(getChildren()[index].getName() + " " + getChildren()[index].getSurname() + " Deleted.");
             Human[] temp = new Human[10];
             int countTemp = 0;
 
@@ -59,27 +63,23 @@ public class Family {
 
             children = temp;
             countChildren--;
-        } else {
-            System.out.print("Not Deleted.");
+            return true;
         }
-        System.out.println(" Count Children: " + getCountChildren());
+        return false;
     }
 
     public void addChild(Human child) {
         getChildren()[getCountChildren()] = child;
-        countChildren++;
-        System.out.println("New Child Added! Count children: " + getCountChildren());
+        setCountChildren(getCountChildren() + 1);
     }
 
     public void addPet(Pet p) {
         this.pet = p;
-        countPet = 1;
-        System.out.println("New Pet Added!");
+        setCountPet(getCountPet() + 1);
     }
 
-    public void countFamily() {
-        int cnt = 2 + getCountChildren();
-        System.out.println("Count Family: " + cnt);
+    public int countFamily() {
+        return 2 + getCountChildren();
     }       // count number of members of a family
 
     public boolean feedPet() {
@@ -129,6 +129,14 @@ public class Family {
         int result = Objects.hash(getMother(), getFather(), getCountChildren(), getPet(), getCountPet());
         result = 31 * result + Arrays.hashCode(getChildren());
         return result;
+    }
+
+    public void setCountChildren(int countChildren) {
+        this.countChildren = countChildren;
+    }
+
+    public void setCountPet(int countPet) {
+        this.countPet = countPet;
     }
 
     public Human getMother() {

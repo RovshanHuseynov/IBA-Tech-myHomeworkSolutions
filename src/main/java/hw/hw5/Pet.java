@@ -44,11 +44,14 @@ public class Pet {
 
     @Override
     public String toString() {
-        String s = getSpecies() + "{" + "nickname='" + getNickname() + '\'' + ", age=" + getAge() + ", trickLevel=" + getTrickLevel() + ", habits=[";
-        if (getHabits() != null) {
+        String s = getSpecies() + "{" + "nickname='" + getNickname() + '\'' + ", age=" + getAge()
+                + ", trickLevel=" + getTrickLevel() + ", habits=";
+        if (getHabits().length > 0) {
             s += Arrays.toString(getHabits());
+        } else {
+            s += "[]";
         }
-        s += "]}";
+        s += "}";
         return s;
     }
 

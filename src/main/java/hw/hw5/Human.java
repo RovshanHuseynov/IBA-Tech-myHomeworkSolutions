@@ -33,15 +33,17 @@ public class Human {
     @Override
     public String toString() {
         String s = "Human{" + "name='" + getName() + '\'' + ", surname='" + getSurname() + '\'' +
-                ", year=" + getYear() + ", iq=" + getIq() + ", schedule=[";
+                ", year=" + getYear() + ", iq=" + getIq() + ", schedule=";
 
-        if (getSchedule() != null) {
+        if (getSchedule().length > 0) {
             for (int i = 0; i < getSchedule().length; i++) {
                 s += Arrays.toString(getSchedule()[i]);
             }
+        } else {
+            s += "[]";
         }
 
-        s += "]}";
+        s += "}";
         return s;
     }
 
