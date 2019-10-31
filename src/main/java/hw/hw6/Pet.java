@@ -43,13 +43,18 @@ public class Pet {
         } else {
             s += "[]";
         }
+
+        s += ", canFly=" + getSpecies().isCanFly();
+        s += ", numberOfLegs=" + getSpecies().getNumberOfLegs();
+        s += ", hasFur=" + getSpecies().isHasFur();
+
         s += "}";
         return s;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(this.hashCode() != obj.hashCode()){
+        if (this.hashCode() != obj.hashCode()) {
             return false;
         }
 

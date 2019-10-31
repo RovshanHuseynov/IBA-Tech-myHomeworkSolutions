@@ -54,7 +54,7 @@ public class Family {
 
     @Override
     public boolean equals(Object obj) {
-        if(this.hashCode() != obj.hashCode()){
+        if (this.hashCode() != obj.hashCode()) {
             return false;
         }
 
@@ -65,7 +65,7 @@ public class Family {
         Family that = (Family) obj;
         if (this.getCountChildren() == that.getCountChildren() && this.getFather().toString().equals(that.getFather().toString())
                 && this.getMother().toString().equals(that.getMother().toString()) && this.getPet().toString().equals(that.getPet().toString())
-                && Arrays.equals(this.getChildren() , that.getChildren())) {
+                && Arrays.equals(this.getChildren(), that.getChildren())) {
             return true;
         }
         return false;

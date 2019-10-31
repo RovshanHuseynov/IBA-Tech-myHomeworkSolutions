@@ -7,7 +7,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        for(int i=0; i<100; i++){
+        for (int i = 0; i < 100; i++) {
             Human h = new Human();
         }
 
@@ -15,6 +15,8 @@ public class Main {
         Pet myCat1 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
         Pet myDog2 = new Pet(Species.DOG, "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
         Pet myCat2 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+
+        System.out.println(myCat1.toString());
         System.out.println("hashCode(myCat1, myCat2): " + (myCat1.hashCode() == myCat2.hashCode()));
 
         Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new String[][]{{DayOfWeek.MONDAY.name(), "go shopping"}});
