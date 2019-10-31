@@ -11,11 +11,15 @@ public class Pet {
     private String[] habits;
 
     public Pet() {    // constructor
+        this("", "", 0, 0, new String[]{});
     }
 
     public Pet(String species, String nickname) {     // constructor
-        this.species = species;
-        this.nickname = nickname;
+        this(species, nickname, 0, 0, new String[]{});
+    }
+
+    public Pet(String species, String nickname, int age, int trickLevel) {     // constructor
+        this(species, nickname, age, trickLevel, new String[]{});
     }
 
     public Pet(String species, String nickname, int age, int trickLevel, String[] habits) {     // constructor
@@ -40,11 +44,14 @@ public class Pet {
 
     @Override
     public String toString() {
-        String s = "Pet{" + "nickname='" + nickname + '\'' + ", age=" + age + ", trickLevel=" + trickLevel + ", habits=[";
-        if (habits != null) {
-            s += Arrays.toString(habits);
+        String s = getSpecies() + "{" + "nickname='" + getNickname() + '\'' + ", age=" + getAge()
+                + ", trickLevel=" + getTrickLevel() + ", habits=";
+        if (getHabits().length > 0) {
+            s += Arrays.toString(getHabits());
+        } else {
+            s += "[]";
         }
-        s += "]}";
+        s += "}";
         return s;
     }
 
@@ -55,10 +62,10 @@ public class Pet {
         else if (!(obj instanceof Pet)) return false;
 
         Pet that = (Pet) obj;
-        if (that.age == this.age && that.trickLevel == this.trickLevel
-                && that.species.equals(this.species)
-                && that.nickname.equals(this.nickname)
-                && Arrays.toString(that.habits).equals(Arrays.toString(this.habits))) {
+        if (that.getAge() == this.getAge() && that.getTrickLevel() == this.getTrickLevel()
+                && that.getSpecies().equals(this.getSpecies())
+                && that.getNickname().equals(this.getNickname())
+                && Arrays.toString(that.getHabits()).equals(Arrays.toString(this.getHabits()))) {
             return true;
         }
 
@@ -67,49 +74,28 @@ public class Pet {
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(species, nickname, age, trickLevel);
-        result = 31 * result + Arrays.hashCode(habits);
+        int result = Objects.hash(getSpecies(), getNickname(), getAge(), getTrickLevel());
+        result = 31 * result + Arrays.hashCode(getHabits());
         return result;
     }
 
-
     public String getSpecies() {
         return species;
-    }
-
-    public void setSpecies(String species) {
-        this.species = species;
     }
 
     public String getNickname() {
         return nickname;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
     public int getAge() {
         return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public int getTrickLevel() {
         return trickLevel;
     }
 
-    public void setTrickLevel(int trickLevel) {
-        this.trickLevel = trickLevel;
-    }
-
     public String[] getHabits() {
         return habits;
-    }
-
-    public void setHabits(String[] habits) {
-        this.habits = habits;
     }
 }
