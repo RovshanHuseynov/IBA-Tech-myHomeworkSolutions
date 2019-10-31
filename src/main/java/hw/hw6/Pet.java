@@ -3,25 +3,25 @@ package hw.hw6;
 import java.util.Arrays;
 
 public class Pet {
-    private String species;
+    private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
     private String[] habits;
 
     public Pet() {    // constructor
-        this("", "", 0, 0, new String[]{});
+        this(Species.CAT, "", 0, 0, new String[]{});
     }
 
-    public Pet(String species, String nickname) {     // constructor
+    public Pet(Species species, String nickname) {     // constructor
         this(species, nickname, 0, 0, new String[]{});
     }
 
-    public Pet(String species, String nickname, int age, int trickLevel) {     // constructor
+    public Pet(Species species, String nickname, int age, int trickLevel) {     // constructor
         this(species, nickname, age, trickLevel, new String[]{});
     }
 
-    public Pet(String species, String nickname, int age, int trickLevel, String[] habits) {     // constructor
+    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {     // constructor
         this.species = species;
         this.nickname = nickname;
         this.age = age;
@@ -89,7 +89,7 @@ public class Pet {
         System.out.println("'I need to cover it up");
     }
 
-    public String getSpecies() {
+    public Species getSpecies() {
         return species;
     }
 

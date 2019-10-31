@@ -48,7 +48,7 @@ public class Human {
 
     @Override
     public boolean equals(Object obj) {
-        if(this.hashCode() != obj.hashCode()){
+        if (this.hashCode() != obj.hashCode()) {
             return false;
         }
 
@@ -61,7 +61,7 @@ public class Human {
                 && this.getName().equals(that.getName()) && this.getSurname().equals(that.getSurname())) {
             if (this.getSchedule().length == that.getSchedule().length) {   // schedule is 2D array, so I must check row by row
                 for (int i = 0; i < this.getSchedule().length; i++) {
-                    if (!Arrays.equals(this.getSchedule()[i] , that.getSchedule()[i])) {
+                    if (!Arrays.equals(this.getSchedule()[i], that.getSchedule()[i])) {
                         return false;
                     }
                 }

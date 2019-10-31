@@ -56,7 +56,7 @@ public class Pet {
 
     @Override
     public boolean equals(Object obj) {
-        if(this.hashCode() != obj.hashCode()){
+        if (this.hashCode() != obj.hashCode()) {
             return false;
         }
 
