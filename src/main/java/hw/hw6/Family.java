@@ -27,7 +27,7 @@ public class Family {
 
     @Override
     protected void finalize() throws Throwable {
-        super.finalize();
+        System.out.println("Finalize Method Worked");
     }
 
     @Override

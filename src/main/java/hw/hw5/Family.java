@@ -109,7 +109,7 @@ public class Family {
     public boolean equals(Object obj) {
         if (obj == null) return false;
         else if (this == obj) return true;
-        else if (!(obj instanceof Family)) return false;
+        else if (!(obj instanceof hw.hw6.Family)) return false;
 
         Family that = (Family) obj;
         if (this.getCountChildren() == that.getCountChildren() && this.getFather().toString().equals(that.getFather().toString())

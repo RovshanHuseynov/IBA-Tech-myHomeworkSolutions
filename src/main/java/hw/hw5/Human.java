@@ -51,7 +51,7 @@ public class Human {
     public boolean equals(Object obj) {
         if (obj == null) return false;
         else if (this == obj) return true;
-        else if (!(obj instanceof Human)) return false;
+        else if (!(obj instanceof hw.hw6.Human)) return false;
 
         Human that = (Human) obj;
         if (this.getYear() == that.getYear() && this.getIq() == that.getIq()
