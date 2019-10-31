@@ -57,6 +57,10 @@ public class Pet {
 
     @Override
     public boolean equals(Object obj) {
+        if(this.hashCode() != obj.hashCode()){
+            return false;
+        }
+
         if (obj == null) return false;
         else if (obj == this) return true;
         else if (!(obj instanceof Pet)) return false;
@@ -65,7 +69,7 @@ public class Pet {
         if (that.getAge() == this.getAge() && that.getTrickLevel() == this.getTrickLevel()
                 && that.getSpecies().equals(this.getSpecies())
                 && that.getNickname().equals(this.getNickname())
-                && Arrays.toString(that.getHabits()).equals(Arrays.toString(this.getHabits()))) {
+                && Arrays.equals(this.getHabits(), that.getHabits())) {
             return true;
         }
 
@@ -74,9 +78,11 @@ public class Pet {
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(getSpecies(), getNickname(), getAge(), getTrickLevel());
-        result = 31 * result + Arrays.hashCode(getHabits());
-        return result;
+        int r = getSpecies().hashCode();
+        r = r * 31 + getNickname().hashCode();
+        r = r * 31 + getAge();
+        r = r * 31 + getTrickLevel();
+        return r;
     }
 
     public String getSpecies() {

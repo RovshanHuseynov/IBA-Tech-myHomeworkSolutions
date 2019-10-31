@@ -48,6 +48,35 @@ public class Family {
         return s;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(this.hashCode() != obj.hashCode()){
+            return false;
+        }
+
+        if (obj == null) return false;
+        else if (this == obj) return true;
+        else if (!(obj instanceof Family)) return false;
+
+        Family that = (Family) obj;
+        if (this.getCountChildren() == that.getCountChildren() && this.getFather().toString().equals(that.getFather().toString())
+                && this.getMother().toString().equals(that.getMother().toString()) && this.getPet().toString().equals(that.getPet().toString())
+                && Arrays.equals(this.getChildren() , that.getChildren())) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int r = getCountChildren();
+        r = r * 31 + getCountPet();
+        r = r * 31 + getMother().hashCode();
+        r = r * 31 + getFather().hashCode();
+        r = r * 31 + getPet().hashCode();
+        return r;
+    }
+
     public boolean deleteChild(int index) {
         if (index < getCountChildren()) {
             Human[] temp = new Human[10];
@@ -103,32 +132,6 @@ public class Family {
     public void describePet() {
         String trickLevel = getPet().getTrickLevel() > 50 ? "very sly" : "almost not sly";
         System.out.println("I have a " + getPet().getSpecies() + ", he is " + getPet().getAge() + " years old, he is " + trickLevel);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) return false;
-        else if (this == obj) return true;
-        else if (!(obj instanceof hw.hw6.Family)) return false;
-
-        Family that = (Family) obj;
-        if (this.getCountChildren() == that.getCountChildren() && this.getFather().toString().equals(that.getFather().toString())
-                && this.getMother().toString().equals(that.getMother().toString()) && this.getPet().toString().equals(that.getPet().toString())) {
-            for (int i = 0; i < getCountChildren(); i++) {
-                if (!this.getChildren()[i].toString().equals(that.getChildren()[i].toString())) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(getMother(), getFather(), getCountChildren(), getPet(), getCountPet());
-        result = 31 * result + Arrays.hashCode(getChildren());
-        return result;
     }
 
     public void setCountChildren(int countChildren) {
