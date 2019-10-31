@@ -1,7 +1,6 @@
 package hw.hw6;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 public class Human {
     private String name;
@@ -31,11 +30,6 @@ public class Human {
     }
 
     @Override
-    protected void finalize() throws Throwable {
-        System.out.println("Finalize Method Worked");
-    }
-
-    @Override
     public String toString() {
         String s = "Human{" + "name='" + getName() + '\'' + ", surname='" + getSurname() + '\'' +
                 ", year=" + getYear() + ", iq=" + getIq() + ", schedule=";
@@ -54,6 +48,10 @@ public class Human {
 
     @Override
     public boolean equals(Object obj) {
+        if(this.hashCode() != obj.hashCode()){
+            return false;
+        }
+
         if (obj == null) return false;
         else if (this == obj) return true;
         else if (!(obj instanceof Human)) return false;
@@ -63,7 +61,7 @@ public class Human {
                 && this.getName().equals(that.getName()) && this.getSurname().equals(that.getSurname())) {
             if (this.getSchedule().length == that.getSchedule().length) {   // schedule is 2D array, so I must check row by row
                 for (int i = 0; i < this.getSchedule().length; i++) {
-                    if (!Arrays.toString(this.getSchedule()[i]).equals(Arrays.toString(that.getSchedule()[i]))) {
+                    if (!Arrays.equals(this.getSchedule()[i] , that.getSchedule()[i])) {
                         return false;
                     }
                 }
@@ -75,9 +73,11 @@ public class Human {
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(getName(), getSurname(), getYear(), getIq());
-        result = 31 * result + Arrays.hashCode(getSchedule());
-        return result;
+        int r = getName().hashCode();
+        r = r * 31 + getSurname().hashCode();
+        r = r * 31 + getYear();
+        r = r * 31 + getIq();
+        return r;
     }
 
     public String getName() {

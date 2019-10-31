@@ -1,13 +1,12 @@
 package hw.hw5;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 public class Pet {
     private String species;
     private String nickname;
     private int age;
-    private int trickLevel;    // a whole number from 1 to 100
+    private int trickLevel;
     private String[] habits;
 
     public Pet() {    // constructor

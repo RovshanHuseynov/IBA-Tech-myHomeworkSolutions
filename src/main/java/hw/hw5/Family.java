@@ -1,7 +1,6 @@
 package hw.hw5;
 
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Random;
 
 public class Family {
@@ -109,7 +108,7 @@ public class Family {
 
     public int countFamily() {
         return 2 + getCountChildren();
-    }       // count number of members of a family
+    }
 
     public boolean feedPet() {
         System.out.println("isn't it time for feeding?");

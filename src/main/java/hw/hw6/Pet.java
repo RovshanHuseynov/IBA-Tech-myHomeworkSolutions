@@ -1,38 +1,32 @@
 package hw.hw6;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 public class Pet {
-    private Species species;
+    private String species;
     private String nickname;
     private int age;
     private int trickLevel;    // a whole number from 1 to 100
     private String[] habits;
 
     public Pet() {    // constructor
-        this(Species.CAT, "", 0, 0, new String[]{});
+        this("", "", 0, 0, new String[]{});
     }
 
-    public Pet(Species species, String nickname) {     // constructor
+    public Pet(String species, String nickname) {     // constructor
         this(species, nickname, 0, 0, new String[]{});
     }
 
-    public Pet(Species species, String nickname, int age, int trickLevel) {     // constructor
+    public Pet(String species, String nickname, int age, int trickLevel) {     // constructor
         this(species, nickname, age, trickLevel, new String[]{});
     }
 
-    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {     // constructor
+    public Pet(String species, String nickname, int age, int trickLevel, String[] habits) {     // constructor
         this.species = species;
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
         this.habits = habits;
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        System.out.println("Finalize Method Worked");
     }
 
     public void eat() {
@@ -62,6 +56,10 @@ public class Pet {
 
     @Override
     public boolean equals(Object obj) {
+        if(this.hashCode() != obj.hashCode()){
+            return false;
+        }
+
         if (obj == null) return false;
         else if (obj == this) return true;
         else if (!(obj instanceof Pet)) return false;
@@ -70,7 +68,7 @@ public class Pet {
         if (that.getAge() == this.getAge() && that.getTrickLevel() == this.getTrickLevel()
                 && that.getSpecies().equals(this.getSpecies())
                 && that.getNickname().equals(this.getNickname())
-                && Arrays.toString(that.getHabits()).equals(Arrays.toString(this.getHabits()))) {
+                && Arrays.equals(this.getHabits(), that.getHabits())) {
             return true;
         }
 
@@ -79,12 +77,14 @@ public class Pet {
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(getSpecies(), getNickname(), getAge(), getTrickLevel());
-        result = 31 * result + Arrays.hashCode(getHabits());
-        return result;
+        int r = getSpecies().hashCode();
+        r = r * 31 + getNickname().hashCode();
+        r = r * 31 + getAge();
+        r = r * 31 + getTrickLevel();
+        return r;
     }
 
-    public Species getSpecies() {
+    public String getSpecies() {
         return species;
     }
 

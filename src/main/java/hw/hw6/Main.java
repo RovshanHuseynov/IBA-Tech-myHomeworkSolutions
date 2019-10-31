@@ -2,14 +2,10 @@ package hw.hw6;
 
 public class Main {
     public static void main(String[] args) {
-        for(int i=0; i<1000000; i++){
-            Human h = new Human();
-        }
-
-        Pet myDog1 = new Pet(Species.DOG, "Ares");
-        Pet myCat1 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
-        Pet myDog2 = new Pet(Species.DOG, "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
-        Pet myCat2 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+        Pet myDog1 = new Pet("dog", "Ares");
+        Pet myCat1 = new Pet("cat", "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+        Pet myDog2 = new Pet("dog", "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
+        Pet myCat2 = new Pet("cat", "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
         System.out.println("hashCode(myCat1, myCat2): " + (myCat1.hashCode() == myCat2.hashCode()));
 
         Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new String[][]{{"Monday", "go shopping"}});
@@ -128,6 +124,7 @@ public class Main {
 
         System.out.println("hashCode(f1, f2): " + (f1.hashCode() == f2.hashCode()));
         System.out.println("equals(f1, f2): " + f1.equals(f2));
+        System.out.println("hashCode(f3, f4): " + (f3.hashCode() == f4.hashCode()));
         System.out.println("equals(f3, f4): " + f3.equals(f4));
     }
 
