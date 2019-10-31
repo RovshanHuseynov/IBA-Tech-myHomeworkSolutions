@@ -1,7 +1,16 @@
 package hw.hw6;
 
 public class Main {
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Removal of Unnecessary Objects");
+    }
+
     public static void main(String[] args) {
+        for(int i=0; i<1000000; i++){
+            Human h = new Human();
+        }
+
         Pet myDog1 = new Pet("dog", "Ares");
         Pet myCat1 = new Pet("cat", "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
         Pet myDog2 = new Pet("dog", "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});

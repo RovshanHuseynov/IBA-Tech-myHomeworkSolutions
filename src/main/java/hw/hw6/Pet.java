@@ -6,7 +6,7 @@ public class Pet {
     private String species;
     private String nickname;
     private int age;
-    private int trickLevel;    // a whole number from 1 to 100
+    private int trickLevel;
     private String[] habits;
 
     public Pet() {    // constructor
@@ -29,16 +29,9 @@ public class Pet {
         this.habits = habits;
     }
 
-    public void eat() {
-        System.out.println("I am eating");
-    }
-
-    public void respond() {
-        System.out.println("Hello, owner. I am - " + getNickname() + ". I miss you!");
-    }
-
-    public void foul() {
-        System.out.println("'I need to cover it up");
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Removal of Unnecessary Objects");
     }
 
     @Override
@@ -82,6 +75,18 @@ public class Pet {
         r = r * 31 + getAge();
         r = r * 31 + getTrickLevel();
         return r;
+    }
+
+    public void eat() {
+        System.out.println("I am eating");
+    }
+
+    public void respond() {
+        System.out.println("Hello, owner. I am - " + getNickname() + ". I miss you!");
+    }
+
+    public void foul() {
+        System.out.println("'I need to cover it up");
     }
 
     public String getSpecies() {

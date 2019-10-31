@@ -6,8 +6,8 @@ public class Human {
     private String name;
     private String surname;
     private int year;
-    private int iq;   //  a whole number from 1 to 100
-    private String[][] schedule;   // 2d array: [day of the week] x [type of the activity]
+    private int iq;
+    private String[][] schedule;
 
     public Human() {     // constructor
         this("name", "surname", 0, 0, new String[][]{});
@@ -21,7 +21,7 @@ public class Human {
         this(name, surname, year, iq, new String[][]{});
     }
 
-    public Human(String name, String surname, int year, int iq, String[][] schedule) {    // constructor
+    public Human(String name, String surname, int year, int iq, String[][] schedule) {
         this.name = name;
         this.surname = surname;
         this.year = year;

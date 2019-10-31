@@ -6,8 +6,8 @@ public class Human {
     private String name;
     private String surname;
     private int year;
-    private int iq;   //  a whole number from 1 to 100
-    private String[][] schedule;   // 2d array: [day of the week] x [type of the activity]
+    private int iq;
+    private String[][] schedule;
 
     public Human() {     // constructor
         this("name", "surname", 0, 0, new String[][]{});
@@ -27,6 +27,11 @@ public class Human {
         this.year = year;
         this.iq = iq;
         this.schedule = schedule;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Removal of Unnecessary Objects");
     }
 
     @Override

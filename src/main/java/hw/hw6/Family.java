@@ -15,13 +15,18 @@ public class Family {
         this(mother, father, new Human[10], new Pet());
     }
 
-    public Family(Human mother, Human father, Human[] children, Pet pet) {    // constructor
+    public Family(Human mother, Human father, Human[] children, Pet pet) {
         this.mother = mother;
         this.father = father;
         this.children = children;
         this.countChildren = 0;
         this.pet = pet;
         this.countPet = 0;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Removal of Unnecessary Objects");
     }
 
     @Override
@@ -108,7 +113,7 @@ public class Family {
 
     public int countFamily() {
         return 2 + getCountChildren();
-    }       // count number of members of a family
+    }
 
     public boolean feedPet() {
         System.out.println("isn't it time for feeding?");
