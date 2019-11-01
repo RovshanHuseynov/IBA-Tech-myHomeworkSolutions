@@ -82,11 +82,11 @@ abstract class Pet {
         return r;
     }
 
-    abstract public void eat();
-
-    public void respond() {
-        System.out.println("Hello, owner. I am - " + getNickname() + ". I miss you!");
+    public void eat(){
+        System.out.println("I am eating");
     }
+
+    abstract public void respond();
 
     public void foul() {
         System.out.println("'I need to cover it up");

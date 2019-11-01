@@ -5,7 +5,8 @@ enum Species {
     DOG(false, 4, false),
     BIRD(true, 2, false),
     GOAT(false, 4, true),
-    SHEEP(false, 4, true);
+    SHEEP(false, 4, true),
+    UNKNOWN(false, 0 ,false);
 
     private boolean canFly;
     private int numberOfLegs;
