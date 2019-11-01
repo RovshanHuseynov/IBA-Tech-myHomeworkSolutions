@@ -25,6 +25,11 @@ public class Family {
     }
 
     @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Removal of Unnecessary Objects");
+    }
+
+    @Override
     public String toString() {
         String s = "Family{" + "mother=" + getMother() + ", father=" + getFather() + ", children=";
 
@@ -49,7 +54,7 @@ public class Family {
 
     @Override
     public boolean equals(Object obj) {
-        if(this.hashCode() != obj.hashCode()){
+        if (this.hashCode() != obj.hashCode()) {
             return false;
         }
 
@@ -60,7 +65,7 @@ public class Family {
         Family that = (Family) obj;
         if (this.getCountChildren() == that.getCountChildren() && this.getFather().toString().equals(that.getFather().toString())
                 && this.getMother().toString().equals(that.getMother().toString()) && this.getPet().toString().equals(that.getPet().toString())
-                && Arrays.equals(this.getChildren() , that.getChildren())) {
+                && Arrays.equals(this.getChildren(), that.getChildren())) {
             return true;
         }
         return false;
@@ -76,24 +81,42 @@ public class Family {
         return r;
     }
 
-    public boolean deleteChild(int index) {
-        if (index < getCountChildren()) {
-            Human[] temp = new Human[10];
-            int countTemp = 0;
+    public void deleteChildOperation(int index) {
+        Human[] temp = new Human[10];
+        int countTemp = 0;
 
+        for (int i = 0; i < getCountChildren(); i++) {
+            if (i == index) {
+                continue;
+            } else {
+                temp[countTemp++] = getChildren()[i];
+            }
+        }
+
+        children = temp;
+        countChildren--;
+    }
+
+    public int deleteChild(Object unknownObject) {
+        String className = unknownObject.getClass().getSimpleName();
+        if (className.equals("Integer")) {
+            if (Integer.parseInt(unknownObject.toString()) < getCountChildren()) {
+                deleteChildOperation(Integer.parseInt(unknownObject.toString()));
+                return 1;    // child was found and deleted
+            } else {
+                return 0;    // this child does not belong to this family
+            }
+        } else if (className.equals("Human")) {
             for (int i = 0; i < getCountChildren(); i++) {
-                if (i == index) {
-                    continue;
-                } else {
-                    temp[countTemp++] = getChildren()[i];
+                if (getChildren()[i].equals(unknownObject)) {
+                    deleteChildOperation(i);
+                    return 1;    // child was found and deleted
                 }
             }
-
-            children = temp;
-            countChildren--;
-            return true;
+            return 0;   // this child does not belong to this family
         }
-        return false;
+
+        return -1;   // Object is not equivalent to any array element. Object is not Human
     }
 
     public void addChild(Human child) {

@@ -2,31 +2,36 @@ package hw.hw7;
 
 import java.util.Arrays;
 
-public class Pet {
-    private String species;
+abstract class Pet {
+    private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
     private String[] habits;
 
     public Pet() {    // constructor
-        this("", "", 0, 0, new String[]{});
+        this(Species.CAT, "", 0, 0, new String[]{});
     }
 
-    public Pet(String species, String nickname) {     // constructor
+    public Pet(Species species, String nickname) {     // constructor
         this(species, nickname, 0, 0, new String[]{});
     }
 
-    public Pet(String species, String nickname, int age, int trickLevel) {
+    public Pet(Species species, String nickname, int age, int trickLevel) {     // constructor
         this(species, nickname, age, trickLevel, new String[]{});
     }
 
-    public Pet(String species, String nickname, int age, int trickLevel, String[] habits) {
+    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {     // constructor
         this.species = species;
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
         this.habits = habits;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Removal of Unnecessary Objects");
     }
 
     @Override
@@ -38,13 +43,18 @@ public class Pet {
         } else {
             s += "[]";
         }
+
+        s += ", canFly=" + getSpecies().isCanFly();
+        s += ", numberOfLegs=" + getSpecies().getNumberOfLegs();
+        s += ", hasFur=" + getSpecies().isHasFur();
+
         s += "}";
         return s;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(this.hashCode() != obj.hashCode()){
+        if (this.hashCode() != obj.hashCode()) {
             return false;
         }
 
@@ -72,9 +82,7 @@ public class Pet {
         return r;
     }
 
-    public void eat() {
-        System.out.println("I am eating");
-    }
+    abstract public void eat();
 
     public void respond() {
         System.out.println("Hello, owner. I am - " + getNickname() + ". I miss you!");
@@ -84,7 +92,7 @@ public class Pet {
         System.out.println("'I need to cover it up");
     }
 
-    public String getSpecies() {
+    public Species getSpecies() {
         return species;
     }
 

@@ -1,23 +1,34 @@
 package hw.hw7;
 
 public class Main {
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Removal of Unnecessary Objects");
+    }
+
     public static void main(String[] args) {
-        Pet myDog1 = new Pet("dog", "Ares");
-        Pet myCat1 = new Pet("cat", "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
-        Pet myDog2 = new Pet("dog", "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
-        Pet myCat2 = new Pet("cat", "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+        for (int i = 0; i < 100; i++) {
+            Human h = new Human();
+        }
+
+        Pet myDog1 = new Pet(Species.DOG, "Ares");
+        Pet myCat1 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+        Pet myDog2 = new Pet(Species.DOG, "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
+        Pet myCat2 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+
+        System.out.println(myCat1.toString());
         System.out.println("hashCode(myCat1, myCat2): " + (myCat1.hashCode() == myCat2.hashCode()));
 
-        Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new String[][]{{"Monday", "go shopping"}});
+        Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new String[][]{{DayOfWeek.MONDAY.name(), "go shopping"}});
         Human family1Father = new Human("Mirze", "Huseynov", 1965, 90);
         Human family1Child1 = new Human("Rovshan", "Huseynov", 1994);
         Human family1Child2 = new Human("Sabina", "Huseynova", 1993);
         Human family1Child3 = new Human("Kamil", "Huseynov", 1997);
-        Human family1Child4 = new Human("Elekber", "Huseynov", 1990, 90, new String[][]{{"Monday", "do homework"}, {"Sunday", "have a rest"}});
-        Human family1Child5 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{"Monday", "do homework"}, {"Sunday", "have a rest"}});
-        Human family1Child6 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{"Monday", "do homework"}, {"Sunday", "have a rest"}});
-        Human family1Child7 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{"Monday", "do homework"}, {"Tuesday", "read books"}, {"Sunday", "have a rest"}});
-        Human family1Child8 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{"Monday", "sleep"}, {"Tuesday", "read books"}, {"Sunday", "have a rest"}});
+        Human family1Child4 = new Human("Elekber", "Huseynov", 1990, 90, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
+        Human family1Child5 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
+        Human family1Child6 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
+        Human family1Child7 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.TUESDAY.name(), "read books"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
+        Human family1Child8 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "sleep"}, {DayOfWeek.TUESDAY.name(), "read books"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
 
         System.out.println("hashCode(family1Child1, family1Child2): " + (family1Child1.hashCode() == family1Child2.hashCode()));
         System.out.println("equals(family1Mother, family1Father): " + family1Mother.equals(family1Father));
@@ -43,6 +54,9 @@ public class Main {
         f1.addChild(family1Child2);
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
         f1.addChild(family1Child3);
+        System.out.println("----------------------------" + deleteChildMessage(f1.deleteChild(myCat1)) + " Family Count is: " + f1.countFamily());
+        System.out.println("----------------------------" + deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
+        System.out.println("----------------------------" + deleteChildMessage(f1.deleteChild(family1Child1)) + " Family Count is: " + f1.countFamily());
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
         f1.addChild(family1Child4);
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
@@ -50,7 +64,7 @@ public class Main {
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
 
         System.out.println(f1.toString());
-        System.out.println(f1.getChildren()[4].toString());
+        System.out.println(f1.getChildren()[3].toString());
 
         System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
         System.out.println(deleteChildMessage(f1.deleteChild(6)) + " Family Count is: " + f1.countFamily());
@@ -128,7 +142,7 @@ public class Main {
         System.out.println("equals(f3, f4): " + f3.equals(f4));
     }
 
-    public static String deleteChildMessage(boolean f) {
-        return f ? "Child Deleted!" : "Child NOT Deleted!";
+    public static String deleteChildMessage(int x) {
+        return x == 1 ? "Child was found and deleted." : x == 0 ? "This child does not belong to this family." : "Object is not equivalent to any array element. Object is not Human.";
     }
 }
