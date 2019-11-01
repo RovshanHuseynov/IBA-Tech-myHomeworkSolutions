@@ -45,7 +45,6 @@ public class Main {
         System.out.println(family1Father.toString());
         System.out.println(family1Child6.toString());
 
-        /*
         Family f1 = new Family(family1Mother, family1Father);
         System.out.println(f1.toString());
         System.out.println("Count Family: " + f1.countFamily());
@@ -55,6 +54,9 @@ public class Main {
         f1.addChild(family1Child2);
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
         f1.addChild(family1Child3);
+        System.out.println("----------------------------" + deleteChildMessage(f1.deleteChild(myCat1)) + " Family Count is: " + f1.countFamily());
+        System.out.println("----------------------------" + deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
+        System.out.println("----------------------------" + deleteChildMessage(f1.deleteChild(family1Child1)) + " Family Count is: " + f1.countFamily());
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
         f1.addChild(family1Child4);
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
@@ -62,7 +64,7 @@ public class Main {
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
 
         System.out.println(f1.toString());
-        System.out.println(f1.getChildren()[4].toString());
+        System.out.println(f1.getChildren()[3].toString());
 
         System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
         System.out.println(deleteChildMessage(f1.deleteChild(6)) + " Family Count is: " + f1.countFamily());
@@ -138,10 +140,9 @@ public class Main {
         System.out.println("equals(f1, f2): " + f1.equals(f2));
         System.out.println("hashCode(f3, f4): " + (f3.hashCode() == f4.hashCode()));
         System.out.println("equals(f3, f4): " + f3.equals(f4));
-         */
     }
 
-    public static String deleteChildMessage(boolean f) {
-        return f ? "Child Deleted!" : "Child NOT Deleted!";
+    public static String deleteChildMessage(int x) {
+        return x == 1 ? "Child was found and deleted." : x == 0 ? "This child does not belong to this family." : "Object is not equivalent to any array element. Object is not Human.";
     }
 }
