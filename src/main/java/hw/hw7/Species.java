@@ -6,11 +6,15 @@ enum Species {
     BIRD(true, 2, false),
     GOAT(false, 4, true),
     SHEEP(false, 4, true),
-    UNKNOWN(false, 0 ,false);
+    UNKNOWN();
 
     private boolean canFly;
     private int numberOfLegs;
     private boolean hasFur;
+
+    Species(){   // type UNKNOWN
+        this(false, 0, false);
+    }
 
     Species(boolean canFly, int numberOfLegs, boolean hasFur) {
         this.canFly = canFly;

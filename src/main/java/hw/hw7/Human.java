@@ -8,6 +8,7 @@ public class Human {
     private int year;
     private int iq;
     private String[][] schedule;
+    private Family family;
 
     public Human() {     // constructor
         this("name", "surname", 0, 0, new String[][]{});

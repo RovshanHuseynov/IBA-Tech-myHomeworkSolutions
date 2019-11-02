@@ -9,20 +9,19 @@ abstract class Pet {
     private int trickLevel;
     private String[] habits;
 
-    public Pet() {    // constructor
-        this(Species.CAT, "", 0, 0, new String[]{});
+    public Pet() {
+        this("", 0, 0, new String[]{});
     }
 
-    public Pet(Species species, String nickname) {     // constructor
-        this(species, nickname, 0, 0, new String[]{});
+    public Pet(String nickname) {
+        this( nickname, 0, 0, new String[]{});
     }
 
-    public Pet(Species species, String nickname, int age, int trickLevel) {     // constructor
-        this(species, nickname, age, trickLevel, new String[]{});
+    public Pet(String nickname, int age, int trickLevel) {
+        this(nickname, age, trickLevel, new String[]{});
     }
 
-    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {     // constructor
-        this.species = species;
+    public Pet(String nickname, int age, int trickLevel, String[] habits) {
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -87,10 +86,6 @@ abstract class Pet {
     }
 
     abstract public void respond();
-
-    public void foul() {
-        System.out.println("'I need to cover it up");
-    }
 
     public Species getSpecies() {
         return species;
