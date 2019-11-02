@@ -11,6 +11,7 @@ public class Main {
             Human h = new Human();
         }
 
+        /*
         Pet myDog1 = new Pet(Species.DOG, "Ares");
         Pet myCat1 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
         Pet myDog2 = new Pet(Species.DOG, "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
@@ -140,6 +141,8 @@ public class Main {
         System.out.println("equals(f1, f2): " + f1.equals(f2));
         System.out.println("hashCode(f3, f4): " + (f3.hashCode() == f4.hashCode()));
         System.out.println("equals(f3, f4): " + f3.equals(f4));
+
+         */
     }
 
     public static String deleteChildMessage(int x) {

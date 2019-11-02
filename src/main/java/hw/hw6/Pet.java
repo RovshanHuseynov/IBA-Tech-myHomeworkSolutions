@@ -38,8 +38,8 @@ public class Pet {
     public String toString() {
         String s = getSpecies() + "{" + "nickname='" + getNickname() + '\'' + ", age=" + getAge()
                 + ", trickLevel=" + getTrickLevel() + ", habits=";
-        if (getHabits().length > 0) {
-            s += Arrays.toString(getHabits());
+        if (habits.length > 0) {
+            s += Arrays.toString(habits);
         } else {
             s += "[]";
         }
@@ -66,7 +66,7 @@ public class Pet {
         if (that.getAge() == this.getAge() && that.getTrickLevel() == this.getTrickLevel()
                 && that.getSpecies().equals(this.getSpecies())
                 && that.getNickname().equals(this.getNickname())
-                && Arrays.equals(this.getHabits(), that.getHabits())) {
+                && Arrays.equals(this.habits, that.habits)) {
             return true;
         }
 

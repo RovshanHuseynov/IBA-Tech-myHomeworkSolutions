@@ -54,9 +54,9 @@ public class Main {
         f1.addChild(family1Child2);
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
         f1.addChild(family1Child3);
-        System.out.println("----------------------------" + deleteChildMessage(f1.deleteChild(myCat1)) + " Family Count is: " + f1.countFamily());
-        System.out.println("----------------------------" + deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
-        System.out.println("----------------------------" + deleteChildMessage(f1.deleteChild(family1Child1)) + " Family Count is: " + f1.countFamily());
+        System.out.println(deleteChildMessage(f1.deleteChild(myCat1)) + " Family Count is: " + f1.countFamily());
+        System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
+        System.out.println(deleteChildMessage(f1.deleteChild(family1Child1)) + " Family Count is: " + f1.countFamily());
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
         f1.addChild(family1Child4);
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());

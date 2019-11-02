@@ -8,6 +8,7 @@ public class Human {
     private int year;
     private int iq;
     private String[][] schedule;
+    private Family family;
 
     public Human() {     // constructor
         this("name", "surname", 0, 0, new String[][]{});
@@ -34,9 +35,9 @@ public class Human {
         String s = "Human{" + "name='" + getName() + '\'' + ", surname='" + getSurname() + '\'' +
                 ", year=" + getYear() + ", iq=" + getIq() + ", schedule=";
 
-        if (getSchedule().length > 0) {
-            for (int i = 0; i < getSchedule().length; i++) {
-                s += Arrays.toString(getSchedule()[i]);
+        if (schedule.length > 0) {
+            for (int i = 0; i < schedule.length; i++) {
+                s += Arrays.toString(schedule[i]);
             }
         } else {
             s += "[]";
@@ -59,9 +60,9 @@ public class Human {
         Human that = (Human) obj;
         if (this.getYear() == that.getYear() && this.getIq() == that.getIq()
                 && this.getName().equals(that.getName()) && this.getSurname().equals(that.getSurname())) {
-            if (this.getSchedule().length == that.getSchedule().length) {   // schedule is 2D array, so I must check row by row
-                for (int i = 0; i < this.getSchedule().length; i++) {
-                    if (!Arrays.equals(this.getSchedule()[i], that.getSchedule()[i])) {
+            if (this.schedule.length == that.schedule.length) {   // schedule is 2D array, so I must check row by row
+                for (int i = 0; i < this.schedule.length; i++) {
+                    if (!Arrays.equals(this.schedule[i], that.schedule[i])) {
                         return false;
                     }
                 }

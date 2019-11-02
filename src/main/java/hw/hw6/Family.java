@@ -35,9 +35,9 @@ public class Family {
 
         if (getCountChildren() > 0) {
             for (int i = 0; i < getCountChildren() - 1; i++) {
-                s += getChildren()[i].toString() + ", ";
+                s += children[i].toString() + ", ";
             }
-            s += getChildren()[getCountChildren() - 1].toString();
+            s += children[getCountChildren() - 1].toString();
         } else {
             s += "{}";
         }
@@ -65,7 +65,7 @@ public class Family {
         Family that = (Family) obj;
         if (this.getCountChildren() == that.getCountChildren() && this.getFather().toString().equals(that.getFather().toString())
                 && this.getMother().toString().equals(that.getMother().toString()) && this.getPet().toString().equals(that.getPet().toString())
-                && Arrays.equals(this.getChildren(), that.getChildren())) {
+                && Arrays.equals(this.children, that.children)) {
             return true;
         }
         return false;
@@ -89,7 +89,7 @@ public class Family {
             if (i == index) {
                 continue;
             } else {
-                temp[countTemp++] = getChildren()[i];
+                temp[countTemp++] = children[i];
             }
         }
 
@@ -108,7 +108,7 @@ public class Family {
             }
         } else if (className.equals("Human")) {
             for (int i = 0; i < getCountChildren(); i++) {
-                if (getChildren()[i].equals(unknownObject)) {
+                if (children[i].equals(unknownObject)) {
                     deleteChildOperation(i);
                     return 1;    // child was found and deleted
                 }
@@ -120,7 +120,7 @@ public class Family {
     }
 
     public void addChild(Human child) {
-        getChildren()[getCountChildren()] = child;
+        children[getCountChildren()] = child;
         setCountChildren(getCountChildren() + 1);
     }
 
