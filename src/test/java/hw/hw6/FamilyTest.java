@@ -44,7 +44,7 @@ public class FamilyTest {
         f1.addChild(family1Child2);
         int previous = f1.getCountChildren();
         f1.addChild(family1Child3);
-        assertSame(previous + 1 , f1.getCountChildren());
+        assertSame(previous + 1, f1.getCountChildren());
     }
 
     @Test
