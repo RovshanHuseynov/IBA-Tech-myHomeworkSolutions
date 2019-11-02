@@ -35,6 +35,13 @@ public class Human {
         this.mother = mother;
     }
 
+    @Override
+    public String toString() {
+        return "Human{name='" + name + '\'' + ", surname='" + surname + '\'' + ", year=" + year
+                + ", iq=" + iq + ", mother=" + mother.name + " " + mother.surname + ", father=" + father.name
+                + " " + father.surname + ", pet=" + pet + "]}";
+    }
+
     public void greetPet() {
         System.out.println("Hello, " + pet.nickname);
     }
@@ -42,13 +49,6 @@ public class Human {
     public void describePet() {
         String trickLevel = pet.trickLevel > 50 ? "very sly" : "almost not sly";
         System.out.println("I have a " + pet.species + ", he is " + pet.age + " years old, he is " + trickLevel);
-    }
-
-    @Override
-    public String toString() {
-        return "Human{name='" + name + '\'' + ", surname='" + surname + '\'' + ", year=" + year
-                + ", iq=" + iq + ", mother=" + mother.name + " " + mother.surname + ", father=" + father.name
-                + " " + father.surname + ", pet=" + pet + "]}";
     }
 
     public boolean feedPet() {

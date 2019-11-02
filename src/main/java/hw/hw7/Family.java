@@ -81,20 +81,15 @@ public class Family {
         return r;
     }
 
-    public void deleteChildOperation(int index) {
-        Human[] temp = new Human[10];
-        int countTemp = 0;
+    public void addChild(Human child) {
+        children[getCountChildren()] = child;
+        setCountChildren(getCountChildren() + 1);
+        child.setFamily(this);     // add a link from this child to this family
+    }
 
-        for (int i = 0; i < getCountChildren(); i++) {
-            if (i == index) {
-                continue;
-            } else {
-                temp[countTemp++] = children[i];
-            }
-        }
-
-        children = temp;
-        countChildren--;
+    public void addPet(Pet p) {
+        this.pet = p;
+        setCountPet(getCountPet() + 1);
     }
 
     public int deleteChild(Object unknownObject) {
@@ -119,41 +114,25 @@ public class Family {
         return -1;   // Object is not equivalent to any array element. Object is not Human
     }
 
-    public void addChild(Human child) {
-        children[getCountChildren()] = child;
-        setCountChildren(getCountChildren() + 1);
-    }
+    public void deleteChildOperation(int index) {
+        children[index].setFamily(null);      // delete the link of this child to his/her family. This child will not belong to his/her family anymore
+        Human[] temp = new Human[10];
+        int countTemp = 0;
 
-    public void addPet(Pet p) {
-        this.pet = p;
-        setCountPet(getCountPet() + 1);
+        for (int i = 0; i < getCountChildren(); i++) {
+            if (i == index) {
+                continue;
+            } else {
+                temp[countTemp++] = children[i];
+            }
+        }
+
+        children = temp;
+        countChildren--;
     }
 
     public int countFamily() {
         return 2 + getCountChildren();
-    }
-
-    public boolean feedPet() {
-        System.out.println("isn't it time for feeding?");
-        Random random = new Random();
-        int x = random.nextInt(100);
-
-        if (x < getPet().getTrickLevel()) {
-            System.out.println("I think " + getPet().getNickname() + " is not hungry.");
-            return false;
-        } else {
-            System.out.println("Hm... I will feed " + getPet().getNickname() + "'s");
-            return true;
-        }
-    }
-
-    public void greetPet() {
-        System.out.println("Hello, " + getPet().getNickname());
-    }
-
-    public void describePet() {
-        String trickLevel = getPet().getTrickLevel() > 50 ? "very sly" : "almost not sly";
-        System.out.println("I have a " + getPet().getSpecies() + ", he is " + getPet().getAge() + " years old, he is " + trickLevel);
     }
 
     public void setCountChildren(int countChildren) {

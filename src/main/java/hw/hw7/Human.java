@@ -1,6 +1,7 @@
 package hw.hw7;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Human {
     private String name;
@@ -10,10 +11,6 @@ public class Human {
     private String[][] schedule;
     private Family family;
 
-    public Human() {     // constructor
-        this("name", "surname", 0, 0, new String[][]{});
-    }
-
     public Human(String name, String surname, int year) {   // constructor
         this(name, surname, year, 0, new String[][]{});
     }
@@ -22,12 +19,13 @@ public class Human {
         this(name, surname, year, iq, new String[][]{});
     }
 
-    public Human(String name, String surname, int year, int iq, String[][] schedule) {    // constructor
+    public Human(String name, String surname, int year, int iq, String[][] schedule) {
         this.name = name;
         this.surname = surname;
         this.year = year;
         this.iq = iq;
         this.schedule = schedule;
+        this.family = null;
     }
 
     @Override
@@ -86,6 +84,33 @@ public class Human {
         return r;
     }
 
+    public void greetPet() {
+        System.out.println("Hello, " + getPet().getNickname());
+    }
+
+    public boolean feedPet() {
+        System.out.println("isn't it time for feeding?");
+        Random random = new Random();
+        int x = random.nextInt(100);
+
+        if (x < getPet().getTrickLevel()) {
+            System.out.println("I think " + getPet().getNickname() + " is not hungry.");
+            return false;
+        } else {
+            System.out.println("Hm... I will feed " + getPet().getNickname() + "'s");
+            return true;
+        }
+    }
+
+    public void describePet() {
+        String trickLevel = getPet().getTrickLevel() > 50 ? "very sly" : "almost not sly";
+        System.out.println("I have a " + getPet().getSpecies() + ", he is " + getPet().getAge() + " years old, he is " + trickLevel);
+    }
+
+    public void setFamily(Family family) {
+        this.family = family;
+    }
+
     public String getName() {
         return name;
     }
@@ -104,5 +129,9 @@ public class Human {
 
     public String[][] getSchedule() {
         return schedule;
+    }
+
+    public Family getFamily() {
+        return family;
     }
 }
