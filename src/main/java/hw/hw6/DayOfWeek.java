@@ -9,6 +9,7 @@ enum DayOfWeek {
     SATURDAY(6),
     SUNDAY(7);
 
+
     private int numberofDay;
 
     DayOfWeek(int numberofDay) {
