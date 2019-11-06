@@ -11,11 +11,11 @@ public class Family {
     private Pet pet;
     private int countPet;
 
-    public Family(Human mother, Human father) {    // constructor
+    public Family(Human mother, Human father) {
         this(mother, father, new Human[10], new Pet());
     }
 
-    public Family(Human mother, Human father, Human[] children, Pet pet) {    // constructor
+    public Family(Human mother, Human father, Human[] children, Pet pet) {
         this.mother = mother;
         this.father = father;
         this.children = children;
@@ -108,29 +108,6 @@ public class Family {
 
     public int countFamily() {
         return 2 + getCountChildren();
-    }
-
-    public boolean feedPet() {
-        System.out.println("isn't it time for feeding?");
-        Random random = new Random();
-        int x = random.nextInt(100);
-
-        if (x < getPet().getTrickLevel()) {
-            System.out.println("I think " + getPet().getNickname() + " is not hungry.");
-            return false;
-        } else {
-            System.out.println("Hm... I will feed " + getPet().getNickname() + "'s");
-            return true;
-        }
-    }
-
-    public void greetPet() {
-        System.out.println("Hello, " + getPet().getNickname());
-    }
-
-    public void describePet() {
-        String trickLevel = getPet().getTrickLevel() > 50 ? "very sly" : "almost not sly";
-        System.out.println("I have a " + getPet().getSpecies() + ", he is " + getPet().getAge() + " years old, he is " + trickLevel);
     }
 
     public void setCountChildren(int countChildren) {

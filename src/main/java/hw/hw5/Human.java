@@ -1,6 +1,7 @@
 package hw.hw5;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Human {
     private String name;
@@ -10,24 +11,21 @@ public class Human {
     private String[][] schedule;
     private Family family;
 
-    public Human() {     // constructor
-        this("name", "surname", 0, 0, new String[][]{});
+    public Human(String name, String surname, int year) {
+        this(name, surname, year, 0, null);
     }
 
-    public Human(String name, String surname, int year) {   // constructor
-        this(name, surname, year, 0, new String[][]{});
+    public Human(String name, String surname, int year, int iq) {
+        this(name, surname, year, iq, null);
     }
 
-    public Human(String name, String surname, int year, int iq) {    // constructor
-        this(name, surname, year, iq, new String[][]{});
-    }
-
-    public Human(String name, String surname, int year, int iq, String[][] schedule) {    // constructor
+    public Human(String name, String surname, int year, int iq, String[][] schedule) {
         this.name = name;
         this.surname = surname;
         this.year = year;
         this.iq = iq;
         this.schedule = schedule;
+        this.family = null;
     }
 
     @Override
@@ -35,7 +33,7 @@ public class Human {
         String s = "Human{" + "name='" + getName() + '\'' + ", surname='" + getSurname() + '\'' +
                 ", year=" + getYear() + ", iq=" + getIq() + ", schedule=";
 
-        if (schedule.length > 0) {
+        if (schedule != null && schedule.length > 0) {
             for (int i = 0; i < schedule.length; i++) {
                 s += Arrays.toString(schedule[i]);
             }
@@ -79,6 +77,33 @@ public class Human {
         r = r * 31 + getYear();
         r = r * 31 + getIq();
         return r;
+    }
+
+    public boolean feedPet(Pet pet) {
+        System.out.println("isn't it time for feeding?");
+        Random random = new Random();
+        int x = random.nextInt(100);
+
+        if (x < pet.getTrickLevel()) {
+            System.out.println("I think " + pet.getNickname() + " is not hungry.");
+            return false;
+        } else {
+            System.out.println("Hm... I will feed " + pet.getNickname() + "'s");
+            return true;
+        }
+    }
+
+    public void greetPet(Pet pet) {
+        System.out.println("Hello, " + pet.getNickname());
+    }
+
+    public void describePet(Pet pet) {
+        String trickLevel = pet.getTrickLevel() > 50 ? "very sly" : "almost not sly";
+        System.out.println("I have a " + pet.getSpecies() + ", he is " + pet.getAge() + " years old, he is " + trickLevel);
+    }
+
+    public void setFamily(Family family) {
+        this.family = family;
     }
 
     public String getName() {

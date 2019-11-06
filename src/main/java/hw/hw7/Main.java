@@ -141,7 +141,6 @@ public class Main {
         System.out.println("equals(f1, f2): " + f1.equals(f2));
         System.out.println("hashCode(f3, f4): " + (f3.hashCode() == f4.hashCode()));
         System.out.println("equals(f3, f4): " + f3.equals(f4));
-
          */
     }
 

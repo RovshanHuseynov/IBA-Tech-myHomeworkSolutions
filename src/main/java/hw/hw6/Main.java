@@ -21,14 +21,18 @@ public class Main {
 
         Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new String[][]{{DayOfWeek.MONDAY.name(), "go shopping"}});
         Human family1Father = new Human("Mirze", "Huseynov", 1965, 90);
-        Human family1Child1 = new Human("Rovshan", "Huseynov", 1994);
-        Human family1Child2 = new Human("Sabina", "Huseynova", 1993);
-        Human family1Child3 = new Human("Kamil", "Huseynov", 1997);
-        Human family1Child4 = new Human("Elekber", "Huseynov", 1990, 90, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
-        Human family1Child5 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
-        Human family1Child6 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
-        Human family1Child7 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.TUESDAY.name(), "read books"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
-        Human family1Child8 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "sleep"}, {DayOfWeek.TUESDAY.name(), "read books"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
+        Family f1 = new Family(family1Mother, family1Father);
+        family1Mother.setFamily(f1);
+        family1Father.setFamily(f1);
+
+        Human family1Child1 = new Human("Rovshan", "Huseynov", 1994, f1);
+        Human family1Child2 = new Human("Sabina", "Huseynova", 1993, f1);
+        Human family1Child3 = new Human("Kamil", "Huseynov", 1997, f1);
+        Human family1Child4 = new Human("Elekber", "Huseynov", 1990, 90, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.SUNDAY.name(), "have a rest"}}, f1);
+        Human family1Child5 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.SUNDAY.name(), "have a rest"}}, f1);
+        Human family1Child6 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.SUNDAY.name(), "have a rest"}}, f1);
+        Human family1Child7 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.TUESDAY.name(), "read books"}, {DayOfWeek.SUNDAY.name(), "have a rest"}}, f1);
+        Human family1Child8 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "sleep"}, {DayOfWeek.TUESDAY.name(), "read books"}, {DayOfWeek.SUNDAY.name(), "have a rest"}}, f1);
 
         System.out.println("hashCode(family1Child1, family1Child2): " + (family1Child1.hashCode() == family1Child2.hashCode()));
         System.out.println("equals(family1Mother, family1Father): " + family1Mother.equals(family1Father));
@@ -42,10 +46,10 @@ public class Main {
         System.out.println(myDog1.toString());
         System.out.println(myCat1.toString());
         System.out.println(family1Mother.toString());
+
         System.out.println(family1Father.toString());
         System.out.println(family1Child6.toString());
 
-        Family f1 = new Family(family1Mother, family1Father);
         System.out.println(f1.toString());
         System.out.println("Count Family: " + f1.countFamily());
 
@@ -86,10 +90,11 @@ public class Main {
 
         Human family2Mother = new Human("Ayise", "Agayeva", 1950);
         Human family2Father = new Human("Samir", "Agayev", 1945);
-        Human family2Child1 = new Human("Amil", "Agayev", 1964);
-        Human family2Child2 = new Human("Selim", "Agayev", 1970);
-
         Family f2 = new Family(family2Mother, family2Father);
+        family2Mother.setFamily(f2);
+        family2Father.setFamily(f2);
+        Human family2Child1 = new Human("Amil", "Agayev", 1964, f2);
+        Human family2Child2 = new Human("Selim", "Agayev", 1970, f2);
 
         f2.addChild(family2Child1);
         System.out.println("New Child Added! Family Count is: " + f2.countFamily());
@@ -103,12 +108,13 @@ public class Main {
 
         Human family3Mother = new Human("Lale", "Melikova", 1950);
         Human family3Father = new Human("Zamiq", "Melikov", 1945);
-        Human family3Child1 = new Human("Suqra", "Melikova", 1964);
-        Human family3Child2 = new Human("Nergiz", "Melikova", 1970);
-
         Family f3 = new Family(family3Mother, family3Father);
+        family3Mother.setFamily(f3);
+        family3Father.setFamily(f3);
+        Human family3Child1 = new Human("Suqra", "Melikova", 1964, f3);
+        Human family3Child2 = new Human("Nergiz", "Melikova", 1970, f3);
 
-        f3.addChild(family1Child7);
+        f3.addChild(family3Child1);
         System.out.println("New Child Added! Family Count is: " + f3.countFamily());
         f3.addChild(family3Child2);
         System.out.println("New Child Added! Family Count is: " + f3.countFamily());
@@ -124,9 +130,10 @@ public class Main {
         f3.getPet().respond();
         f3.getPet().foul();
         System.out.println(f3.getPet().toString());
-        f3.greetPet();
-        f3.describePet();
-        boolean isFeed = f3.feedPet();
+
+        family3Mother.greetPet(myCat1);
+        family3Mother.describePet(myCat1);
+        boolean isFeed = family3Mother.feedPet(myCat1);
         System.out.println("Did the family feed their pet? --> " + isFeed);
         System.out.println("---------------------------------");
 

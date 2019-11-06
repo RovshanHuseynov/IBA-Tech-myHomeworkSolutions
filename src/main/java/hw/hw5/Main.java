@@ -7,6 +7,8 @@ public class Main {
         Pet myDog2 = new Pet("dog", "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
         Pet myCat2 = new Pet("cat", "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
         System.out.println("hashCode(myCat1, myCat2): " + (myCat1.hashCode() == myCat2.hashCode()));
+        System.out.println("equals(myCat1, myCat2): " + myCat1.equals(myCat2));
+        System.out.println("equals(myDog1, myCat1): " + myDog1.equals(myCat1));
 
         Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new String[][]{{"Monday", "go shopping"}});
         Human family1Father = new Human("Mirze", "Huseynov", 1965, 90);
@@ -25,8 +27,6 @@ public class Main {
         System.out.println("equals(family1Child5, family1Child6): " + family1Child5.equals(family1Child6));
         System.out.println("equals(family1Child6, family1Child7): " + family1Child6.equals(family1Child7));
         System.out.println("equals(family1Child7, family1Child8): " + family1Child7.equals(family1Child8));
-        System.out.println("equals(myDog1, myCat1): " + myDog1.equals(myCat1));
-        System.out.println("equals(myCat1, myCat2): " + myCat1.equals(myCat2));
 
         System.out.println(myDog1.toString());
         System.out.println(myCat1.toString());
@@ -110,9 +110,9 @@ public class Main {
         f3.getPet().respond();
         f3.getPet().foul();
         System.out.println(f3.getPet().toString());
-        f3.greetPet();
-        f3.describePet();
-        boolean isFeed = f3.feedPet();
+        family3Mother.greetPet(myCat1);
+        family3Mother.describePet(myCat1);
+        boolean isFeed = family3Mother.feedPet(myCat1);
         System.out.println("Did the family feed their pet? --> " + isFeed);
         System.out.println("---------------------------------");
 

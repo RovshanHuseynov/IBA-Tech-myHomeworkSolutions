@@ -10,7 +10,7 @@ public class Pet {
     private String[] habits;
 
     public Pet() {    // constructor
-        this(Species.CAT, "", 0, 0, new String[]{});
+        this(null, "", 0, 0, new String[]{});
     }
 
     public Pet(Species species, String nickname) {     // constructor

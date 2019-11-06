@@ -11,8 +11,16 @@ public class Human {
     private String[][] schedule;
     private Family family;
 
-    public Human(String name, String surname, int year) {   // constructor
+    public Human() {   // constructor
+        this("", "", 0);
+    }
+
+    public Human(String name, String surname, int year) {
         this(name, surname, year, 0, new String[][]{});
+    }
+
+    public Human(String name, String surname, int year, Family family) {
+        this(name, surname, year, 0, new String[][]{}, family);
     }
 
     public Human(String name, String surname, int year, int iq) {    // constructor
@@ -20,6 +28,10 @@ public class Human {
     }
 
     public Human(String name, String surname, int year, int iq, String[][] schedule) {
+        this(name, surname, year, iq, new String[][]{}, null);
+    }
+
+    public Human(String name, String surname, int year, int iq, String[][] schedule, Family family) {
         this.name = name;
         this.surname = surname;
         this.year = year;
@@ -48,6 +60,19 @@ public class Human {
 
         s += "}";
         return s;
+
+        /*
+        System.out.println("aaaaaa-" + this.getFamily());
+        System.out.println("aaaaaaa-" + this.getFamily().getPet());
+        if (family != null) {
+            s += ", mother=" + family.getMother().getName() + " " + family.getMother().getSurname();
+            s += ", father=" + family.getFather().getName() + " " + family.getFather().getSurname();
+
+            if (family.getPet() != null) {
+                s += ", pet=" + family.getPet().toString();
+            }
+        }
+         */
     }
 
     @Override
@@ -84,27 +109,27 @@ public class Human {
         return r;
     }
 
-    public void greetPet() {
-        System.out.println("Hello, " + getPet().getNickname());
+    public void greetPet(Pet pet) {
+        System.out.println("Hello, " + pet.getNickname());
     }
 
-    public boolean feedPet() {
+    public boolean feedPet(Pet pet) {
         System.out.println("isn't it time for feeding?");
         Random random = new Random();
         int x = random.nextInt(100);
 
-        if (x < getPet().getTrickLevel()) {
-            System.out.println("I think " + getPet().getNickname() + " is not hungry.");
+        if (x < pet.getTrickLevel()) {
+            System.out.println("I think " + pet.getNickname() + " is not hungry.");
             return false;
         } else {
-            System.out.println("Hm... I will feed " + getPet().getNickname() + "'s");
+            System.out.println("Hm... I will feed " + pet.getNickname() + "'s");
             return true;
         }
     }
 
-    public void describePet() {
-        String trickLevel = getPet().getTrickLevel() > 50 ? "very sly" : "almost not sly";
-        System.out.println("I have a " + getPet().getSpecies() + ", he is " + getPet().getAge() + " years old, he is " + trickLevel);
+    public void describePet(Pet pet) {
+        String trickLevel = pet.getTrickLevel() > 50 ? "very sly" : "almost not sly";
+        System.out.println("I have a " + pet.getSpecies() + ", he is " + pet.getAge() + " years old, he is " + trickLevel);
     }
 
     public void setFamily(Family family) {

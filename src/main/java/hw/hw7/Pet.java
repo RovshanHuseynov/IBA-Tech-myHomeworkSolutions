@@ -10,18 +10,22 @@ abstract class Pet {
     private String[] habits;
 
     public Pet() {
-        this("", 0, 0, new String[]{});
+        this(Species.UNKNOWN, "", 0, 0, new String[]{});
     }
 
-    public Pet(String nickname) {
-        this( nickname, 0, 0, new String[]{});
+    public Pet(Species species) {
+        this(species, "", 0, 0, new String[]{});
     }
 
-    public Pet(String nickname, int age, int trickLevel) {
-        this(nickname, age, trickLevel, new String[]{});
+    public Pet(Species species, String nickname) {
+        this(species, nickname, 0, 0, new String[]{});
     }
 
-    public Pet(String nickname, int age, int trickLevel, String[] habits) {
+    public Pet(Species species, String nickname, int age, int trickLevel) {
+        this(species, nickname, age, trickLevel, new String[]{});
+    }
+
+    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;

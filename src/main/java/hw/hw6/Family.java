@@ -92,7 +92,7 @@ public class Family {
         setCountPet(getCountPet() + 1);
     }
 
-    public int deleteChild(Object unknownObject){
+    public int deleteChild(Object unknownObject) {
         String className = unknownObject.getClass().getSimpleName();
         if (className.equals("Integer")) {
             if (Integer.parseInt(unknownObject.toString()) < getCountChildren()) {
@@ -103,9 +103,10 @@ public class Family {
             }
         } else if (className.equals("Human")) {
             for (int i = 0; i < getCountChildren(); i++) {
-                if (children[i].equals(unknownObject)) {
+                if (children[i].hashCode() == unknownObject.hashCode() && children[i].equals(unknownObject)) {
                     deleteChildOperation(i);
                     return 1;    // child was found and deleted
+
                 }
             }
             return 0;   // this child does not belong to this family
