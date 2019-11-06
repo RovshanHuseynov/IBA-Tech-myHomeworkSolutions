@@ -34,11 +34,15 @@ public class Main {
         System.out.println(family1Father.toString());
         System.out.println(family1Child6.toString());
 
+
         Family f1 = new Family(family1Mother, family1Father);
         System.out.println(f1.toString());
         System.out.println("Count Family: " + f1.countFamily());
+        family1Mother.setFamily(f1);
+        family1Father.setFamily(f1);
 
         f1.addChild(family1Child1);
+        family1Child1.setFamily(f1);
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
         f1.addChild(family1Child2);
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
@@ -52,7 +56,7 @@ public class Main {
         System.out.println(f1.toString());
         System.out.println(f1.getChildren()[4].toString());
 
-        System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
+        System.out.println(deleteChildMessage(f1.deleteChild(family1Child1)) + " Family Count is: " + f1.countFamily());
         System.out.println(deleteChildMessage(f1.deleteChild(6)) + " Family Count is: " + f1.countFamily());
         System.out.println(f1.getChildren()[0].toString());
         System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());

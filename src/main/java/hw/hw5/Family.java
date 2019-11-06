@@ -77,6 +77,8 @@ public class Family {
 
     public boolean deleteChild(int index) {
         if (index < getCountChildren()) {
+            children[index].setFamily(null); // delete the link of this child to his/her family.
+            // This child will not belong to his/her family anymore.
             Human[] temp = new Human[10];
             int countTemp = 0;
 
@@ -91,6 +93,17 @@ public class Family {
             children = temp;
             countChildren--;
             return true;
+        }
+        return false;
+    }
+
+    public boolean deleteChild(Human child) {
+        for (int i = 0; i < getCountChildren(); i++) {
+            if (children[i].hashCode() == child.hashCode() && children[i].equals(child)) {
+                children[i].setFamily(null); // delete the link of this child to his/her family.
+                // This child will not belong to his/her family anymore.
+                return deleteChild(i);
+            }
         }
         return false;
     }

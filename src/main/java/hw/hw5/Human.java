@@ -12,20 +12,24 @@ public class Human {
     private Family family;
 
     public Human(String name, String surname, int year) {
-        this(name, surname, year, 0, null);
+        this(name, surname, year, 0, new String[][]{}, null);
     }
 
     public Human(String name, String surname, int year, int iq) {
-        this(name, surname, year, iq, null);
+        this(name, surname, year, iq, new String[][]{}, null);
     }
 
     public Human(String name, String surname, int year, int iq, String[][] schedule) {
+        this(name, surname, year, iq, schedule, null);
+    }
+
+    public Human(String name, String surname, int year, int iq, String[][] schedule, Family family) {
         this.name = name;
         this.surname = surname;
         this.year = year;
         this.iq = iq;
         this.schedule = schedule;
-        this.family = null;
+        this.family = family;
     }
 
     @Override
@@ -33,7 +37,7 @@ public class Human {
         String s = "Human{" + "name='" + getName() + '\'' + ", surname='" + getSurname() + '\'' +
                 ", year=" + getYear() + ", iq=" + getIq() + ", schedule=";
 
-        if (schedule != null && schedule.length > 0) {
+        if (schedule.length > 0) {
             for (int i = 0; i < schedule.length; i++) {
                 s += Arrays.toString(schedule[i]);
             }

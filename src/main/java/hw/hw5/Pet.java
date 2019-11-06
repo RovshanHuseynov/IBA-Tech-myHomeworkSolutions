@@ -14,11 +14,11 @@ public class Pet {
     }
 
     public Pet(String species, String nickname) {
-        this(species, nickname, 0, 0, null);
+        this(species, nickname, 0, 0, new String[]{});
     }
 
     public Pet(String species, String nickname, int age, int trickLevel) {
-        this(species, nickname, age, trickLevel, null);
+        this(species, nickname, age, trickLevel, new String[]{});
     }
 
     public Pet(String species, String nickname, int age, int trickLevel, String[] habits) {
@@ -45,7 +45,7 @@ public class Pet {
     public String toString() {
         String s = getSpecies() + "{" + "nickname='" + getNickname() + '\'' + ", age=" + getAge()
                 + ", trickLevel=" + getTrickLevel() + ", habits=";
-        if (habits != null && habits.length > 0) {
+        if (habits.length > 0) {
             s += Arrays.toString(habits);
         } else {
             s += "[]";

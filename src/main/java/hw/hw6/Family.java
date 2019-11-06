@@ -116,7 +116,8 @@ public class Family {
     }
 
     public void deleteChildOperation(int index) {
-        children[index].setFamily(null);      // delete the link of this child to his/her family. This child will not belong to his/her family anymore
+        children[index].setFamily(null);      // delete the link of this child to his/her family.
+        // This child will not belong to his/her family anymore
         Human[] temp = new Human[10];
         int countTemp = 0;
 
