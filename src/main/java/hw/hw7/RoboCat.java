@@ -1,6 +1,6 @@
 package hw.hw7;
 
-public class RoboCat extends Pet implements PetInterface{
+public class RoboCat extends Pet implements PetInterface {
     @Override
     public void respond() {
         System.out.println("Hello, owner. I am - " + getNickname() + ". I miss you!");

@@ -11,7 +11,7 @@ public class Family {
     private Pet pet;
     private int countPet;
 
-    public Family(Human mother, Human father) {    // constructor
+    public Family(Human mother, Human father) {
         this(mother, father, new Human[10], new Pet());
     }
 

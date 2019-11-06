@@ -9,19 +9,19 @@ public class Pet {
     private int trickLevel;
     private String[] habits;
 
-    public Pet() {    // constructor
+    public Pet() {
         this(null, "", 0, 0, new String[]{});
     }
 
-    public Pet(Species species, String nickname) {     // constructor
+    public Pet(Species species, String nickname) {
         this(species, nickname, 0, 0, new String[]{});
     }
 
-    public Pet(Species species, String nickname, int age, int trickLevel) {     // constructor
+    public Pet(Species species, String nickname, int age, int trickLevel) {
         this(species, nickname, age, trickLevel, new String[]{});
     }
 
-    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {     // constructor
+    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {
         this.species = species;
         this.nickname = nickname;
         this.age = age;

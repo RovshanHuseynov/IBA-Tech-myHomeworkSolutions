@@ -7,18 +7,18 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10000; i++) {
             Human h = new Human();
         }
 
-        /*
-        Pet myDog1 = new Pet(Species.DOG, "Ares");
-        Pet myCat1 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
-        Pet myDog2 = new Pet(Species.DOG, "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
-        Pet myCat2 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
-
-        System.out.println(myCat1.toString());
-        System.out.println("hashCode(myCat1, myCat2): " + (myCat1.hashCode() == myCat2.hashCode()));
+        Dog myDog1 = new Dog("Ares");
+        myDog1.setSpecies(Species.DOG);
+        DomesticCat myCat1 = new DomesticCat("Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+        myCat1.setSpecies(Species.CAT);
+        Dog myDog2 = new Dog("Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
+        myDog2.setSpecies(Species.DOG);
+        DomesticCat myCat2 = new DomesticCat("Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+        myCat2.setSpecies(Species.CAT);
 
         Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new String[][]{{DayOfWeek.MONDAY.name(), "go shopping"}});
         Human family1Father = new Human("Mirze", "Huseynov", 1965, 90);
@@ -39,7 +39,7 @@ public class Main {
         System.out.println("equals(family1Child7, family1Child8): " + family1Child7.equals(family1Child8));
         System.out.println("equals(myDog1, myCat1): " + myDog1.equals(myCat1));
         System.out.println("equals(myCat1, myCat2): " + myCat1.equals(myCat2));
-
+        System.out.println("hashCode(myCat1, myCat2): " + (myCat1.hashCode() == myCat2.hashCode()));
         System.out.println(myDog1.toString());
         System.out.println(myCat1.toString());
         System.out.println(family1Mother.toString());
@@ -47,6 +47,8 @@ public class Main {
         System.out.println(family1Child6.toString());
 
         Family f1 = new Family(family1Mother, family1Father);
+        family1Mother.setFamily(f1);
+        family1Father.setFamily(f1);
         System.out.println(f1.toString());
         System.out.println("Count Family: " + f1.countFamily());
 
@@ -55,9 +57,8 @@ public class Main {
         f1.addChild(family1Child2);
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
         f1.addChild(family1Child3);
-        System.out.println("----------------------------" + deleteChildMessage(f1.deleteChild(myCat1)) + " Family Count is: " + f1.countFamily());
-        System.out.println("----------------------------" + deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
-        System.out.println("----------------------------" + deleteChildMessage(f1.deleteChild(family1Child1)) + " Family Count is: " + f1.countFamily());
+        System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
+        System.out.println(deleteChildMessage(f1.deleteChild(family1Child1)) + " Family Count is: " + f1.countFamily());
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
         f1.addChild(family1Child4);
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
@@ -87,10 +88,11 @@ public class Main {
 
         Human family2Mother = new Human("Ayise", "Agayeva", 1950);
         Human family2Father = new Human("Samir", "Agayev", 1945);
+        Family f2 = new Family(family2Mother, family2Father);
+        family2Mother.setFamily(f2);
+        family2Father.setFamily(f2);
         Human family2Child1 = new Human("Amil", "Agayev", 1964);
         Human family2Child2 = new Human("Selim", "Agayev", 1970);
-
-        Family f2 = new Family(family2Mother, family2Father);
 
         f2.addChild(family2Child1);
         System.out.println("New Child Added! Family Count is: " + f2.countFamily());
@@ -104,12 +106,13 @@ public class Main {
 
         Human family3Mother = new Human("Lale", "Melikova", 1950);
         Human family3Father = new Human("Zamiq", "Melikov", 1945);
+        Family f3 = new Family(family3Mother, family3Father);
+        family3Mother.setFamily(f3);
+        family3Father.setFamily(f3);
         Human family3Child1 = new Human("Suqra", "Melikova", 1964);
         Human family3Child2 = new Human("Nergiz", "Melikova", 1970);
 
-        Family f3 = new Family(family3Mother, family3Father);
-
-        f3.addChild(family1Child7);
+        f3.addChild(family3Child1);
         System.out.println("New Child Added! Family Count is: " + f3.countFamily());
         f3.addChild(family3Child2);
         System.out.println("New Child Added! Family Count is: " + f3.countFamily());
@@ -123,11 +126,12 @@ public class Main {
 
         f3.getPet().eat();
         f3.getPet().respond();
-        f3.getPet().foul();
+        //f3.getPet().foul();
         System.out.println(f3.getPet().toString());
-        f3.greetPet();
-        f3.describePet();
-        boolean isFeed = f3.feedPet();
+
+        family3Mother.greetPet(myCat1);
+        family3Mother.describePet(myCat1);
+        boolean isFeed = family3Mother.feedPet(myCat1);
         System.out.println("Did the family feed their pet? --> " + isFeed);
         System.out.println("---------------------------------");
 
@@ -141,10 +145,12 @@ public class Main {
         System.out.println("equals(f1, f2): " + f1.equals(f2));
         System.out.println("hashCode(f3, f4): " + (f3.hashCode() == f4.hashCode()));
         System.out.println("equals(f3, f4): " + f3.equals(f4));
-         */
+
+        Human randomSex = f1.getFather().bornChild();
+        System.out.println(randomSex.getClass());
     }
 
-    public static String deleteChildMessage(int x) {
-        return x == 1 ? "Child was found and deleted." : x == 0 ? "This child does not belong to this family." : "Object is not equivalent to any array element. Object is not Human.";
+    public static String deleteChildMessage(boolean f) {
+        return f ? "Child was found and deleted!" : "This child does not belong to this family!";
     }
 }

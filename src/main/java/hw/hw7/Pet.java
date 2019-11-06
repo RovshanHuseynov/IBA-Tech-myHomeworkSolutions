@@ -2,7 +2,7 @@ package hw.hw7;
 
 import java.util.Arrays;
 
-abstract class Pet {
+public abstract class Pet {
     private Species species;
     private String nickname;
     private int age;
@@ -10,22 +10,18 @@ abstract class Pet {
     private String[] habits;
 
     public Pet() {
-        this(Species.UNKNOWN, "", 0, 0, new String[]{});
+        this("", 0, 0, new String[]{});
     }
 
-    public Pet(Species species) {
-        this(species, "", 0, 0, new String[]{});
+    public Pet(String nickname) {
+        this(nickname, 0, 0, new String[]{});
     }
 
-    public Pet(Species species, String nickname) {
-        this(species, nickname, 0, 0, new String[]{});
+    public Pet(String nickname, int age, int trickLevel) {
+        this(nickname, age, trickLevel, new String[]{});
     }
 
-    public Pet(Species species, String nickname, int age, int trickLevel) {
-        this(species, nickname, age, trickLevel, new String[]{});
-    }
-
-    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {
+    public Pet(String nickname, int age, int trickLevel, String[] habits) {
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -57,13 +53,13 @@ abstract class Pet {
 
     @Override
     public boolean equals(Object obj) {
-        if (this.hashCode() != obj.hashCode()) {
-            return false;
-        }
-
         if (obj == null) return false;
         else if (obj == this) return true;
         else if (!(obj instanceof Pet)) return false;
+
+        if (this.hashCode() != obj.hashCode()) {
+            return false;
+        }
 
         Pet that = (Pet) obj;
         if (that.getAge() == this.getAge() && that.getTrickLevel() == this.getTrickLevel()
@@ -85,11 +81,15 @@ abstract class Pet {
         return r;
     }
 
-    public void eat(){
+    public void eat() {
         System.out.println("I am eating");
     }
 
-    abstract public void respond();
+    public abstract void respond();
+
+    public void setSpecies(Species species) {
+        this.species = species;
+    }
 
     public Species getSpecies() {
         return species;

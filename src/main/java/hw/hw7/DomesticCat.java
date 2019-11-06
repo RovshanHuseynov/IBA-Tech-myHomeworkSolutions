@@ -1,6 +1,21 @@
 package hw.hw7;
 
-public class DomesticCat extends Pet implements PetInterface{
+public class DomesticCat extends Pet implements PetInterface {
+    public DomesticCat() {
+    }
+
+    public DomesticCat(String nickname) {
+        super(nickname);
+    }
+
+    public DomesticCat(String nickname, int age, int trickLevel) {
+        super(nickname, age, trickLevel);
+    }
+
+    public DomesticCat(String nickname, int age, int trickLevel, String[] habits) {
+        super(nickname, age, trickLevel, habits);
+    }
+
     @Override
     public void respond() {
         System.out.println("Hello, owner. I am - " + getNickname() + ". I miss you!");

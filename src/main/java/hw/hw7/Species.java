@@ -12,8 +12,7 @@ enum Species {
     private int numberOfLegs;
     private boolean hasFur;
 
-    Species(){   // type UNKNOWN
-        this(false, 0, false);
+    Species() {
     }
 
     Species(boolean canFly, int numberOfLegs, boolean hasFur) {
