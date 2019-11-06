@@ -16,15 +16,8 @@ public class Main {
         Pet myDog2 = new Pet(Species.DOG, "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
         Pet myCat2 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
 
-        System.out.println(myCat1.toString());
-        System.out.println("hashCode(myCat1, myCat2): " + (myCat1.hashCode() == myCat2.hashCode()));
-
         Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new String[][]{{DayOfWeek.MONDAY.name(), "go shopping"}});
         Human family1Father = new Human("Mirze", "Huseynov", 1965, 90);
-        Family f1 = new Family(family1Mother, family1Father);
-        family1Mother.setFamily(f1);
-        family1Father.setFamily(f1);
-
         Human family1Child1 = new Human("Rovshan", "Huseynov", 1994);
         Human family1Child2 = new Human("Sabina", "Huseynova", 1993);
         Human family1Child3 = new Human("Kamil", "Huseynov", 1997);
@@ -42,14 +35,16 @@ public class Main {
         System.out.println("equals(family1Child7, family1Child8): " + family1Child7.equals(family1Child8));
         System.out.println("equals(myDog1, myCat1): " + myDog1.equals(myCat1));
         System.out.println("equals(myCat1, myCat2): " + myCat1.equals(myCat2));
-
+        System.out.println("hashCode(myCat1, myCat2): " + (myCat1.hashCode() == myCat2.hashCode()));
         System.out.println(myDog1.toString());
         System.out.println(myCat1.toString());
         System.out.println(family1Mother.toString());
-
         System.out.println(family1Father.toString());
         System.out.println(family1Child6.toString());
 
+        Family f1 = new Family(family1Mother, family1Father);
+        family1Mother.setFamily(f1);
+        family1Father.setFamily(f1);
         System.out.println(f1.toString());
         System.out.println("Count Family: " + f1.countFamily());
 

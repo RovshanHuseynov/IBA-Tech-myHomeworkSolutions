@@ -8,40 +8,39 @@ import static org.junit.Assert.*;
 
 public class PetTest {
 
+    Pet p1;
+    Pet p2;
+    Pet p3;
+
     @Before
-    public void before999() {
+    public void Before() {
+        p1 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+        p2 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+        p3 = new Pet(Species.DOG, "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
     }
 
     @After
-    public void after888() {
-
+    public void After() {
+        System.out.println("Testing Finished");
     }
 
     @Test
     public void testEquals1() {
-        Pet p1 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
-        Pet p2 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
         assertEquals(true, p1.equals(p2));
     }
 
     @Test
     public void testEqual2() {
-        Pet p1 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
-        Pet p2 = new Pet(Species.DOG, "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
-        assertEquals(false, p1.equals(p2));
+        assertEquals(false, p1.equals(p3));
     }
 
     @Test
     public void testHashCode1() {
-        Pet p1 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
-        Pet p2 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
         assertEquals(p1.hashCode(), p2.hashCode());
     }
 
     @Test
     public void testHashCode2() {
-        Pet p1 = new Pet(Species.CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
-        Pet p2 = new Pet(Species.DOG, "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
-        assertNotEquals(p1.hashCode(), p2.hashCode());
+        assertNotEquals(p1.hashCode(), p3.hashCode());
     }
 }

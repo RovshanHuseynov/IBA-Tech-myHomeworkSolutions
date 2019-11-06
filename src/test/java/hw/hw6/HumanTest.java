@@ -8,40 +8,39 @@ import static org.junit.Assert.*;
 
 public class HumanTest {
 
+    Human h1;
+    Human h2;
+    Human h3;
+
     @Before
-    public void before999() {
+    public void Before() {
+        h1 = new Human("Rovshan", "Huseynov", 1994);
+        h2 = new Human("Rovshan", "Huseynov", 1994);
+        h3 = new Human("Sabina", "Huseynova", 1993);
     }
 
     @After
-    public void after888() {
-
+    public void After() {
+        System.out.println("Testing Finished");
     }
 
     @Test
     public void testEquals1() {
-        Human h1 = new Human("Rovshan", "Huseynov", 1994);
-        Human h2 = new Human("Rovshan", "Huseynov", 1994);
         assertEquals(true, h1.equals(h2));
     }
 
     @Test
     public void testEqual2() {
-        Human h1 = new Human("Rovshan", "Huseynov", 1994);
-        Human h2 = new Human("Sabina", "Huseynova", 1993);
-        assertEquals(false, h1.equals(h2));
+        assertEquals(false, h1.equals(h3));
     }
 
     @Test
     public void testHashCode1() {
-        Human h1 = new Human("Rovshan", "Huseynov", 1994);
-        Human h2 = new Human("Rovshan", "Huseynov", 1994);
         assertEquals(h1.hashCode(), h2.hashCode());
     }
 
     @Test
     public void testHashCode2() {
-        Human h1 = new Human("Rovshan", "Huseynov", 1994);
-        Human h2 = new Human("Sabina", "Huseynova", 1993);
-        assertNotEquals(h1.hashCode(), h2.hashCode());
+        assertNotEquals(h1.hashCode(), h3.hashCode());
     }
 }

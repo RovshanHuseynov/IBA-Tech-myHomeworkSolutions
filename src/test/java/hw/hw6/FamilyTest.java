@@ -16,6 +16,7 @@ public class FamilyTest {
     Human family1Child3;
     Human family1Child4;
     Family f1;
+    Main main;
 
     @Before
     public void Before() {
@@ -26,6 +27,9 @@ public class FamilyTest {
         family1Child3 = new Human("Kamil", "Huseynov", 1997);
         family1Child4 = new Human("Elekber", "Huseynov", 1990, 90, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
         f1 = new Family(family1Mother, family1Father);
+        f1.addChild(family1Child1);
+        f1.addChild(family1Child2);
+        main = new Main();
     }
 
     @After
@@ -35,16 +39,11 @@ public class FamilyTest {
 
     @Test
     public void countFamily() {   // countFamily() works or not
-        f1.addChild(family1Child1);
-        f1.addChild(family1Child2);
-        f1.addChild(family1Child3);
-        assertEquals(5, f1.countFamily());
+        assertEquals(4, f1.countFamily());
     }
 
     @Test
     public void addChild() {   // after addChild method getCountChildren() is increased by 1 or not
-        f1.addChild(family1Child1);
-        f1.addChild(family1Child2);
         int previous = f1.getCountChildren();
         f1.addChild(family1Child3);
         assertSame(previous + 1, f1.getCountChildren());
@@ -52,35 +51,21 @@ public class FamilyTest {
 
     @Test
     public void deleteChild1() {    // delete Human child who exists in children array
-        f1.addChild(family1Child1);
-        f1.addChild(family1Child2);
-        f1.addChild(family1Child3);
-        Main main = new Main();
-        assertEquals("Child was found and deleted!", main.deleteChildMessage(f1.deleteChild(family1Child3)));
+        assertEquals("Child was found and deleted!", main.deleteChildMessage(f1.deleteChild(family1Child1)));
     }
 
     @Test
     public void deleteChild2() {   // delete Human child who does not exist in children array
-        f1.addChild(family1Child1);
-        f1.addChild(family1Child2);
-        f1.addChild(family1Child3);
-        Main main = new Main();
         assertEquals("This child does not belong to this family!", main.deleteChildMessage(f1.deleteChild(family1Child4)));
     }
 
     @Test
     public void deleteChild3() {   // delete children[index] which this index is less than children length
-        f1.addChild(family1Child1);
-        f1.addChild(family1Child2);
-        Main main = new Main();
         assertEquals("Child was found and deleted!", main.deleteChildMessage(f1.deleteChild(0)));
     }
 
     @Test
     public void deleteChild4() {   // delete children[index] which this index is bigger than children length
-        f1.addChild(family1Child1);
-        f1.addChild(family1Child2);
-        Main main = new Main();
         assertEquals("This child does not belong to this family!", main.deleteChildMessage(f1.deleteChild(5)));
     }
 }
