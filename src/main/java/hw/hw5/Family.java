@@ -1,7 +1,6 @@
 package hw.hw5;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class Family {
     private Human mother;
