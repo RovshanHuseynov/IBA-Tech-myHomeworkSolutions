@@ -29,18 +29,6 @@ public class Pet {
         this.habits = habits;
     }
 
-    public void eat() {
-        System.out.println("I am eating");
-    }
-
-    public void respond() {
-        System.out.println("Hello, owner. I am - " + getNickname() + ". I miss you!");
-    }
-
-    public void foul() {
-        System.out.println("'I need to cover it up");
-    }
-
     @Override
     public String toString() {
         String s = getSpecies() + "{" + "nickname='" + getNickname() + '\'' + ", age=" + getAge()
@@ -82,6 +70,18 @@ public class Pet {
         r = r * 31 + getAge();
         r = r * 31 + getTrickLevel();
         return r;
+    }
+
+    public void eat() {
+        System.out.println("I am eating");
+    }
+
+    public void respond() {
+        System.out.println("Hello, owner. I am - " + getNickname() + ". I miss you!");
+    }
+
+    public void foul() {
+        System.out.println("'I need to cover it up");
     }
 
     public String getSpecies() {

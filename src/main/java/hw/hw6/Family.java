@@ -87,50 +87,40 @@ public class Family {
         child.setFamily(this);      // add a link from this child to this family
     }
 
-    public void addPet(Pet p) {
-        this.pet = p;
+    public void addPet(Pet pet) {
+        this.pet = pet;
         setCountPet(getCountPet() + 1);
     }
 
-    public int deleteChild(Object unknownObject) {
-        String className = unknownObject.getClass().getSimpleName();
-        if (className.equals("Integer")) {
-            if (Integer.parseInt(unknownObject.toString()) < getCountChildren()) {
-                deleteChildOperation(Integer.parseInt(unknownObject.toString()));
-                return 1;    // child was found and deleted
-            } else {
-                return 0;    // this child does not belong to this family
-            }
-        } else if (className.equals("Human")) {
-            for (int i = 0; i < getCountChildren(); i++) {
-                if (children[i].hashCode() == unknownObject.hashCode() && children[i].equals(unknownObject)) {
-                    deleteChildOperation(i);
-                    return 1;    // child was found and deleted
+    public boolean deleteChild(int index) {
+        if (index < getCountChildren()) {
+            children[index].setFamily(null); // delete the link of this child to his/her family.
+            // This child will not belong to his/her family anymore.
+            Human[] temp = new Human[10];
+            int countTemp = 0;
 
+            for (int i = 0; i < getCountChildren(); i++) {
+                if (i == index) {
+                    continue;
+                } else {
+                    temp[countTemp++] = children[i];
                 }
             }
-            return 0;   // this child does not belong to this family
-        }
 
-        return -1;   // Object is not equivalent to any array element. Object is not Human
+            children = temp;
+            countChildren--;
+            return true;
+        }
+        return false;
     }
 
-    public void deleteChildOperation(int index) {
-        children[index].setFamily(null);      // delete the link of this child to his/her family.
-        // This child will not belong to his/her family anymore
-        Human[] temp = new Human[10];
-        int countTemp = 0;
-
+    public boolean deleteChild(Human child) {
         for (int i = 0; i < getCountChildren(); i++) {
-            if (i == index) {
-                continue;
-            } else {
-                temp[countTemp++] = children[i];
+            if (children[i].hashCode() == child.hashCode() && children[i].equals(child)) {
+                return deleteChild(i);
             }
         }
-
-        children = temp;
-        countChildren--;
+        return false;
     }
 
     public int countFamily() {

@@ -100,8 +100,6 @@ public class Family {
     public boolean deleteChild(Human child) {
         for (int i = 0; i < getCountChildren(); i++) {
             if (children[i].hashCode() == child.hashCode() && children[i].equals(child)) {
-                children[i].setFamily(null); // delete the link of this child to his/her family.
-                // This child will not belong to his/her family anymore.
                 return deleteChild(i);
             }
         }
@@ -111,6 +109,7 @@ public class Family {
     public void addChild(Human child) {
         children[getCountChildren()] = child;
         setCountChildren(getCountChildren() + 1);
+        child.setFamily(this);    // add a link from this child to this family
     }
 
     public void addPet(Pet p) {

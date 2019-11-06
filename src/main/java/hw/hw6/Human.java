@@ -11,24 +11,20 @@ public class Human {
     private String[][] schedule;
     private Family family;
 
-    public Human() {   // constructor
-        this("", "", 0);
+    public Human() {
+        this("", "", 0,0,new String[][]{},null);
     }
 
     public Human(String name, String surname, int year) {
-        this(name, surname, year, 0, new String[][]{});
+        this(name, surname, year, 0, new String[][]{},null);
     }
 
-    public Human(String name, String surname, int year, Family family) {
-        this(name, surname, year, 0, new String[][]{}, family);
-    }
-
-    public Human(String name, String surname, int year, int iq) {    // constructor
-        this(name, surname, year, iq, new String[][]{});
+    public Human(String name, String surname, int year, int iq) {
+        this(name, surname, year, iq, new String[][]{}, null);
     }
 
     public Human(String name, String surname, int year, int iq, String[][] schedule) {
-        this(name, surname, year, iq, new String[][]{}, null);
+        this(name, surname, year, iq, schedule, null);
     }
 
     public Human(String name, String surname, int year, int iq, String[][] schedule, Family family) {
@@ -37,7 +33,7 @@ public class Human {
         this.year = year;
         this.iq = iq;
         this.schedule = schedule;
-        this.family = null;
+        this.family = family;
     }
 
     @Override
@@ -154,9 +150,5 @@ public class Human {
 
     public String[][] getSchedule() {
         return schedule;
-    }
-
-    public Family getFamily() {
-        return family;
     }
 }

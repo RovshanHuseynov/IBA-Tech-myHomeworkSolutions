@@ -42,7 +42,6 @@ public class Main {
         family1Father.setFamily(f1);
 
         f1.addChild(family1Child1);
-        family1Child1.setFamily(f1);
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
         f1.addChild(family1Child2);
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());

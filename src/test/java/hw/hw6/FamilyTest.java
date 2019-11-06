@@ -55,9 +55,8 @@ public class FamilyTest {
         f1.addChild(family1Child1);
         f1.addChild(family1Child2);
         f1.addChild(family1Child3);
-        int x = f1.deleteChild(family1Child3);
         Main main = new Main();
-        assertEquals("Child was found and deleted.", main.deleteChildMessage(x));
+        assertEquals("Child was found and deleted!", main.deleteChildMessage(f1.deleteChild(family1Child3)));
     }
 
     @Test
@@ -65,37 +64,23 @@ public class FamilyTest {
         f1.addChild(family1Child1);
         f1.addChild(family1Child2);
         f1.addChild(family1Child3);
-        int x = f1.deleteChild(family1Child4);
         Main main = new Main();
-        assertEquals("This child does not belong to this family.", main.deleteChildMessage(x));
+        assertEquals("This child does not belong to this family!", main.deleteChildMessage(f1.deleteChild(family1Child4)));
     }
 
     @Test
     public void deleteChild3() {   // delete children[index] which this index is less than children length
         f1.addChild(family1Child1);
         f1.addChild(family1Child2);
-        int x = f1.deleteChild(0);
         Main main = new Main();
-        assertEquals("Child was found and deleted.", main.deleteChildMessage(x));
+        assertEquals("Child was found and deleted!", main.deleteChildMessage(f1.deleteChild(0)));
     }
 
     @Test
     public void deleteChild4() {   // delete children[index] which this index is bigger than children length
         f1.addChild(family1Child1);
         f1.addChild(family1Child2);
-        int x = f1.deleteChild(5);
         Main main = new Main();
-        assertEquals("This child does not belong to this family.", main.deleteChildMessage(x));
-    }
-
-    @Test
-    public void deleteChild5() {   // trying to delete a pet from children array
-        f1.addChild(family1Child1);
-        f1.addChild(family1Child2);
-        f1.addChild(family1Child3);
-        Pet myDog1 = new Pet(Species.DOG, "Ares");
-        int x = f1.deleteChild(myDog1);
-        Main main = new Main();
-        assertEquals("Object is not equivalent to any array element. Object is not Human.", main.deleteChildMessage(x));
+        assertEquals("This child does not belong to this family!", main.deleteChildMessage(f1.deleteChild(5)));
     }
 }
