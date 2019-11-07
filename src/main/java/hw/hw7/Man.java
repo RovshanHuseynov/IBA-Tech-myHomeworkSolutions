@@ -5,6 +5,10 @@ public final class Man extends Human {
         System.out.println("MakeUp");
     }
 
+    public Man(String name, String surname, int year, int iq) {
+        super(name, surname, year, iq);
+    }
+
     public void greetPet(Pet pet) {
         System.out.println("Hey, " + pet.getNickname());
     }

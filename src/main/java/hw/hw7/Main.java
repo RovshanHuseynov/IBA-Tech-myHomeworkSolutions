@@ -46,6 +46,7 @@ public class Main {
         System.out.println(family1Father.toString());
         System.out.println(family1Child6.toString());
 
+        System.out.println("\n---------------- Family1 ------------------------");
         Family f1 = new Family(family1Mother, family1Father);
         family1Mother.setFamily(f1);
         family1Father.setFamily(f1);
@@ -84,8 +85,8 @@ public class Main {
         f1.addPet(myDog1);
         System.out.println("Pet Added! Welcome " + myDog1.getNickname());
         System.out.println(f1.toString());
-        System.out.println("---------------------------------");
 
+        System.out.println("\n---------------- Family2 ------------------------");
         Human family2Mother = new Human("Ayise", "Agayeva", 1950);
         Human family2Father = new Human("Samir", "Agayev", 1945);
         Family f2 = new Family(family2Mother, family2Father);
@@ -102,8 +103,8 @@ public class Main {
         System.out.println("Pet Added! Welcome " + myDog2.getNickname());
         System.out.println("Family Count is: " + f2.countFamily());
         System.out.println(f2.toString());
-        System.out.println("---------------------------------");
 
+        System.out.println("\n---------------- Family3 ------------------------");
         Human family3Mother = new Human("Lale", "Melikova", 1950);
         Human family3Father = new Human("Zamiq", "Melikov", 1945);
         Family f3 = new Family(family3Mother, family3Father);
@@ -133,8 +134,8 @@ public class Main {
         family3Mother.describePet(myCat1);
         boolean isFeed = family3Mother.feedPet(myCat1);
         System.out.println("Did the family feed their pet? --> " + isFeed);
-        System.out.println("---------------------------------");
 
+        System.out.println("\n---------------- Family4 ------------------------");
         Family f4 = new Family(family3Mother, family3Father);
         f4.addChild(family1Child7);
         System.out.println("New Child Added! Family Count is: " + f4.countFamily());
@@ -146,8 +147,10 @@ public class Main {
         System.out.println("hashCode(f3, f4): " + (f3.hashCode() == f4.hashCode()));
         System.out.println("equals(f3, f4): " + f3.equals(f4));
 
-        Human randomSex = f1.getFather().bornChild();
-        System.out.println(randomSex.getClass());
+        System.out.println("\n------------- Advanced Part ---------------------");
+        Human randomSexChild = family1Father.bornChild(family1Father.getFamily());
+        System.out.println("RandomSexChild: " + randomSexChild.toString());
+        System.out.println(family1Father.getFamily().toString());
     }
 
     public static String deleteChildMessage(boolean f) {
