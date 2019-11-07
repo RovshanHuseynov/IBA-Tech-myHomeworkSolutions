@@ -43,29 +43,29 @@ public class FamilyTest {
     }
 
     @Test
-    public void addChild() {   // after addChild method getCountChildren() is increased by 1 or not
+    public void addChild() {
         int previous = f1.getCountChildren();
         f1.addChild(family1Child3);
         assertSame(previous + 1, f1.getCountChildren());
     }
 
     @Test
-    public void deleteChild1() {    // delete Human child who exists in children array
+    public void deleteChild1() {
         assertEquals("Child was found and deleted!", main.deleteChildMessage(f1.deleteChild(family1Child1)));
     }
 
     @Test
-    public void deleteChild2() {   // delete Human child who does not exist in children array
+    public void deleteChild2() {
         assertEquals("This child does not belong to this family!", main.deleteChildMessage(f1.deleteChild(family1Child4)));
     }
 
     @Test
-    public void deleteChild3() {   // delete children[index] which this index is less than children length
+    public void deleteChild3() {
         assertEquals("Child was found and deleted!", main.deleteChildMessage(f1.deleteChild(0)));
     }
 
     @Test
-    public void deleteChild4() {   // delete children[index] which this index is bigger than children length
+    public void deleteChild4() {
         assertEquals("This child does not belong to this family!", main.deleteChildMessage(f1.deleteChild(5)));
     }
 }
