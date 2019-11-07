@@ -1,5 +1,5 @@
 package hw.hw7;
 
-interface Foul {
+interface Foulable {
     public void foul();
 }

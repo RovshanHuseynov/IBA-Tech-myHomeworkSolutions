@@ -9,7 +9,7 @@ public final class Man extends Human {
         super(name, surname, year, iq);
     }
 
-    public void greetPet(Pet pet) {
+    public void greetPet(AbstractPet pet) {
         System.out.println("Hey, " + pet.getNickname());
     }
 }

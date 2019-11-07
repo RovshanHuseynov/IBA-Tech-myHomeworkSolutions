@@ -1,6 +1,6 @@
 package hw.hw7;
 
-public class DomesticCat extends Pet implements Foul {
+public class DomesticCat extends AbstractPet implements Foulable {
     public DomesticCat() {
     }
 

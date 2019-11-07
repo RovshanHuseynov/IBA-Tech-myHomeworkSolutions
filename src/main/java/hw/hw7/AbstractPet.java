@@ -2,26 +2,26 @@ package hw.hw7;
 
 import java.util.Arrays;
 
-public abstract class Pet{
+public abstract class AbstractPet {
     private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
     private String[] habits;
 
-    public Pet() {
+    public AbstractPet() {
         this("", 0, 0, new String[]{});
     }
 
-    public Pet(String nickname) {
+    public AbstractPet(String nickname) {
         this(nickname, 0, 0, new String[]{});
     }
 
-    public Pet(String nickname, int age, int trickLevel) {
+    public AbstractPet(String nickname, int age, int trickLevel) {
         this(nickname, age, trickLevel, new String[]{});
     }
 
-    public Pet(String nickname, int age, int trickLevel, String[] habits) {
+    public AbstractPet(String nickname, int age, int trickLevel, String[] habits) {
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -55,13 +55,13 @@ public abstract class Pet{
     public boolean equals(Object obj) {
         if (obj == null) return false;
         else if (obj == this) return true;
-        else if (!(obj instanceof Pet)) return false;
+        else if (!(obj instanceof AbstractPet)) return false;
 
         if (this.hashCode() != obj.hashCode()) {
             return false;
         }
 
-        Pet that = (Pet) obj;
+        AbstractPet that = (AbstractPet) obj;
         if (that.getAge() == this.getAge() && that.getTrickLevel() == this.getTrickLevel()
                 && that.getSpecies().equals(this.getSpecies())
                 && that.getNickname().equals(this.getNickname())

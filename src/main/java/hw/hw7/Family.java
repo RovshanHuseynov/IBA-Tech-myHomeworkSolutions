@@ -7,7 +7,7 @@ public class Family {
     private Human father;
     private Human[] children;
     private int countChildren;
-    private Pet pet;
+    private AbstractPet pet;
     private int countPet;
 
     public Family(Human mother, Human father) {
@@ -82,7 +82,7 @@ public class Family {
         child.setFamily(this);
     }
 
-    public void addPet(Pet pet) {
+    public void addPet(AbstractPet pet) {
         this.pet = pet;
         setCountPet(getCountPet() + 1);
     }
@@ -141,7 +141,7 @@ public class Family {
         return children;
     }
 
-    public Pet getPet() {
+    public AbstractPet getPet() {
         return pet;
     }
 

@@ -1,6 +1,6 @@
 package hw.hw7;
 
-public class RoboCat extends Pet implements Foul {
+public class RoboCat extends AbstractPet implements Foulable {
     @Override
     public void respond() {
         System.out.println("Hello, owner. I am - " + getNickname() + ". I miss you!");

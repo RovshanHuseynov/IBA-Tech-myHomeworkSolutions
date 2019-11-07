@@ -9,7 +9,7 @@ public final class Woman extends Human {
         super(name, surname, year, iq);
     }
 
-    public void greetPet(Pet pet) {
+    public void greetPet(AbstractPet pet) {
         System.out.println("Hello my beauty, " + pet.getNickname());
     }
 }

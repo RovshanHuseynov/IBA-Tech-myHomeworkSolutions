@@ -3,7 +3,7 @@ package hw.hw7;
 import java.util.Arrays;
 import java.util.Random;
 
-public class Human implements HumanCreator {
+public class Human implements HumanCreatorable {
     private String name;
     private String surname;
     private int year;
@@ -128,11 +128,11 @@ public class Human implements HumanCreator {
         return r;
     }
 
-    public void greetPet(Pet pet) {
+    public void greetPet(AbstractPet pet) {
         System.out.println("Hello, " + pet.getNickname());
     }
 
-    public boolean feedPet(Pet pet) {
+    public boolean feedPet(AbstractPet pet) {
         System.out.println("isn't it time for feeding?");
         Random random = new Random();
         int x = random.nextInt(100);
@@ -146,7 +146,7 @@ public class Human implements HumanCreator {
         }
     }
 
-    public void describePet(Pet pet) {
+    public void describePet(AbstractPet pet) {
         String trickLevel = pet.getTrickLevel() > 50 ? "very sly" : "almost not sly";
         System.out.println("I have a " + pet.getSpecies() + ", he is " + pet.getAge() + " years old, he is " + trickLevel);
     }
