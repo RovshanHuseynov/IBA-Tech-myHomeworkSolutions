@@ -53,7 +53,8 @@ public class Pet {
         else if (!(obj instanceof Pet)) return false;
 
         Pet that = (Pet) obj;
-        if (that.getAge() == this.getAge() && that.getTrickLevel() == this.getTrickLevel()
+        if (that.getAge() == this.getAge()
+                && that.getTrickLevel() == this.getTrickLevel()
                 && that.getSpecies().equals(this.getSpecies())
                 && that.getNickname().equals(this.getNickname())
                 && Arrays.equals(this.habits, that.habits)) {

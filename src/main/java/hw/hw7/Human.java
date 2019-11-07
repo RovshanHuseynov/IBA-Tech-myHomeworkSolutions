@@ -41,20 +41,20 @@ public class Human implements HumanCreator {
         String[] womanNames = {"Lale", "Kemale", "Fidan", "Nergiz", "Sunbul", "Lamiye", "Aydan"};
         String[] manNames = {"Samir", "Amil", "Kamil", "Letif", "Eli", "Arif", "Ehed"};
         Random random = new Random();
-        String childName = "";
         int childSex = random.nextInt(2);
+        String childName = "";
         String childSurname = family.getFather().getSurname();
         int childIq = (family.getFather().getIq() + family.getMother().getIq()) / 2;
         if (childSex == 0) {
             childName = womanNames[random.nextInt(7)];
-            Woman newChild = new Woman(childName, childSurname, 1990, childIq);
-            family.addChild(newChild);
-            return newChild;
+            Woman bornChild = new Woman(childName, childSurname, 1990, childIq);
+            family.addChild(bornChild);
+            return bornChild;
         } else if (childSex == 1) {
             childName = manNames[random.nextInt(7)];
-            Man newChild = new Man(childName, childSurname, 1990, childIq);
-            family.addChild(newChild);
-            return newChild;
+            Man bornChild = new Man(childName, childSurname, 1990, childIq);
+            family.addChild(bornChild);
+            return bornChild;
         }
         return new Human();
     }
@@ -107,7 +107,7 @@ public class Human implements HumanCreator {
         Human that = (Human) obj;
         if (this.getYear() == that.getYear() && this.getIq() == that.getIq()
                 && this.getName().equals(that.getName()) && this.getSurname().equals(that.getSurname())) {
-            if (this.schedule.length == that.schedule.length) {   // schedule is 2D array, so I must check row by row
+            if (this.schedule.length == that.schedule.length) {
                 for (int i = 0; i < this.schedule.length; i++) {
                     if (!Arrays.equals(this.schedule[i], that.schedule[i])) {
                         return false;

@@ -62,7 +62,7 @@ public class Human {
         Human that = (Human) obj;
         if (this.getYear() == that.getYear() && this.getIq() == that.getIq()
                 && this.getName().equals(that.getName()) && this.getSurname().equals(that.getSurname())) {
-            if (this.schedule.length == that.schedule.length) {   // schedule is 2D array, so I must check row by row
+            if (this.schedule.length == that.schedule.length) {
                 for (int i = 0; i < this.schedule.length; i++) {
                     if (!Arrays.equals(this.schedule[i], that.schedule[i])) {
                         return false;

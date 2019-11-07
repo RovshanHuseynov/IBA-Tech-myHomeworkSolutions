@@ -70,13 +70,13 @@ public class Main {
         System.out.println(f1.getChildren()[3].toString());
 
         System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
-        System.out.println(deleteChildMessage(f1.deleteChild(6)) + " Family Count is: " + f1.countFamily());
         System.out.println(f1.getChildren()[0].toString());
+        System.out.println(deleteChildMessage(f1.deleteChild(6)) + " Family Count is: " + f1.countFamily());
         System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
         System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
         System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
         System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
-        System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());   // will not delete because there is no child in the family right now
+        System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
 
         f1.addChild(family1Child1);
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
@@ -149,11 +149,11 @@ public class Main {
 
         System.out.println("\n------------- Advanced Part ---------------------");
         Human randomSexChild = family1Father.bornChild(family1Father.getFamily());
-        System.out.println("RandomSexChild: " + randomSexChild.toString());
+        System.out.println("randomSexChild: " + randomSexChild.toString());
         System.out.println(family1Father.getFamily().toString());
     }
 
-    public static String deleteChildMessage(boolean f) {
-        return f ? "Child was found and deleted!" : "This child does not belong to this family!";
+    public static String deleteChildMessage(boolean isDeleteChild) {
+        return isDeleteChild ? "Child was found and deleted!" : "This child does not belong to this family!";
     }
 }

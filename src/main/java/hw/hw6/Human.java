@@ -12,11 +12,11 @@ public class Human {
     private Family family;
 
     public Human() {
-        this("", "", 0,0,new String[][]{},null);
+        this("", "", 0, 0, new String[][]{}, null);
     }
 
     public Human(String name, String surname, int year) {
-        this(name, surname, year, 0, new String[][]{},null);
+        this(name, surname, year, 0, new String[][]{}, null);
     }
 
     public Human(String name, String surname, int year, int iq) {
@@ -56,19 +56,6 @@ public class Human {
 
         s += "}";
         return s;
-
-        /*
-        System.out.println("aaaaaa-" + this.getFamily());
-        System.out.println("aaaaaaa-" + this.getFamily().getPet());
-        if (family != null) {
-            s += ", mother=" + family.getMother().getName() + " " + family.getMother().getSurname();
-            s += ", father=" + family.getFather().getName() + " " + family.getFather().getSurname();
-
-            if (family.getPet() != null) {
-                s += ", pet=" + family.getPet().toString();
-            }
-        }
-         */
     }
 
     @Override
@@ -84,7 +71,7 @@ public class Human {
         Human that = (Human) obj;
         if (this.getYear() == that.getYear() && this.getIq() == that.getIq()
                 && this.getName().equals(that.getName()) && this.getSurname().equals(that.getSurname())) {
-            if (this.schedule.length == that.schedule.length) {   // schedule is 2D array, so I must check row by row
+            if (this.schedule.length == that.schedule.length) {
                 for (int i = 0; i < this.schedule.length; i++) {
                     if (!Arrays.equals(this.schedule[i], that.schedule[i])) {
                         return false;

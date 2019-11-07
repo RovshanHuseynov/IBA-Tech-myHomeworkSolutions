@@ -63,8 +63,10 @@ public class Family {
         else if (!(obj instanceof Family)) return false;
 
         Family that = (Family) obj;
-        if (this.getCountChildren() == that.getCountChildren() && this.getFather().toString().equals(that.getFather().toString())
-                && this.getMother().toString().equals(that.getMother().toString()) && this.getPet().toString().equals(that.getPet().toString())
+        if (this.getCountChildren() == that.getCountChildren()
+                && this.getFather().toString().equals(that.getFather().toString())
+                && this.getMother().toString().equals(that.getMother().toString())
+                && this.getPet().toString().equals(that.getPet().toString())
                 && Arrays.equals(this.children, that.children)) {
             return true;
         }
@@ -84,7 +86,7 @@ public class Family {
     public void addChild(Human child) {
         children[getCountChildren()] = child;
         setCountChildren(getCountChildren() + 1);
-        child.setFamily(this);      // add a link from this child to this family
+        child.setFamily(this);
     }
 
     public void addPet(Pet pet) {
@@ -94,8 +96,7 @@ public class Family {
 
     public boolean deleteChild(int index) {
         if (index < getCountChildren()) {
-            children[index].setFamily(null); // delete the link of this child to his/her family.
-            // This child will not belong to his/her family anymore.
+            children[index].setFamily(null);
             Human[] temp = new Human[10];
             int countTemp = 0;
 

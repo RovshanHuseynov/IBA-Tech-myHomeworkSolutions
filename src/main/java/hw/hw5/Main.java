@@ -62,7 +62,7 @@ public class Main {
         System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
         System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
         System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
-        System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());   // will not delete because there is no child in the family right now
+        System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
 
         f1.addChild(family1Child1);
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
@@ -131,7 +131,7 @@ public class Main {
         System.out.println("equals(f3, f4): " + f3.equals(f4));
     }
 
-    public static String deleteChildMessage(boolean f) {
-        return f ? "Child Deleted!" : "Child NOT Deleted!";
+    public static String deleteChildMessage(boolean isChildDeleted) {
+        return isChildDeleted ? "Child Deleted!" : "Child NOT Deleted!";
     }
 }
