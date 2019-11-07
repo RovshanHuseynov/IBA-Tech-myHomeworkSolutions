@@ -1,6 +1,6 @@
 package hw.hw7;
 
-public class DomesticCat extends Pet implements PetInterface {
+public class DomesticCat extends Pet implements Foul {
     public DomesticCat() {
     }
 
@@ -23,6 +23,6 @@ public class DomesticCat extends Pet implements PetInterface {
 
     @Override
     public void foul() {
-        System.out.println("'I need to cover it up");
+        System.out.println("I need to cover it up");
     }
 }

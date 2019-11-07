@@ -2,7 +2,7 @@ package hw.hw7;
 
 import java.util.Arrays;
 
-public abstract class Pet {
+public abstract class Pet{
     private Species species;
     private String nickname;
     private int age;

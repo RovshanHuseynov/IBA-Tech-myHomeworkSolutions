@@ -1,5 +1,5 @@
 package hw.hw7;
 
-interface PetInterface {
+interface Foul {
     public void foul();
 }

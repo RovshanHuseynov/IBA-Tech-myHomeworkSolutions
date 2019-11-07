@@ -127,7 +127,7 @@ public class Main {
 
         f3.getPet().eat();
         f3.getPet().respond();
-        //f3.getPet().foul();
+        myCat1.foul();
         System.out.println(f3.getPet().toString());
 
         family3Mother.greetPet(myCat1);

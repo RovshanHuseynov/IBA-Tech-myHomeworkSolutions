@@ -1,6 +1,6 @@
 package hw.hw7;
 
-public class Dog extends Pet implements PetInterface {
+public class Dog extends Pet implements Foul {
     public Dog() {
     }
 
