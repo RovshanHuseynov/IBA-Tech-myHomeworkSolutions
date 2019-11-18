@@ -1,8 +1,10 @@
 package hw.hw7;
 
 enum Species {
-    CAT(false, 4, false),
+    DOMESTICCAT(false, 4, false),
+    ROBOCAT(false,4,false),
     DOG(false, 4, false),
+    FISH(false, 0,false),
     BIRD(true, 2, false),
     GOAT(false, 4, true),
     SHEEP(false, 4, true),

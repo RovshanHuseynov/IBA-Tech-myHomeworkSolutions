@@ -11,14 +11,10 @@ public class Main {
             Human h = new Human();
         }
 
-        Dog myDog1 = new Dog("Ares");
-        myDog1.setSpecies(Species.DOG);
-        DomesticCat myCat1 = new DomesticCat("Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
-        myCat1.setSpecies(Species.CAT);
-        Dog myDog2 = new Dog("Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
-        myDog2.setSpecies(Species.DOG);
-        DomesticCat myCat2 = new DomesticCat("Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
-        myCat2.setSpecies(Species.CAT);
+        Dog myDog1 = new Dog(Species.DOG, "Ares");
+        DomesticCat myCat1 = new DomesticCat(Species.DOMESTICCAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+        Dog myDog2 = new Dog(Species.DOG, "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
+        DomesticCat myCat2 = new DomesticCat(Species.DOMESTICCAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
 
         Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new String[][]{{DayOfWeek.MONDAY.name(), "go shopping"}});
         Human family1Father = new Human("Mirze", "Huseynov", 1965, 90);
@@ -58,6 +54,7 @@ public class Main {
         f1.addChild(family1Child2);
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
         f1.addChild(family1Child3);
+        System.out.println("New Child Added! Family Count is: " + f1.countFamily());
         System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
         System.out.println(deleteChildMessage(f1.deleteChild(family1Child1)) + " Family Count is: " + f1.countFamily());
         System.out.println("New Child Added! Family Count is: " + f1.countFamily());
@@ -137,7 +134,7 @@ public class Main {
 
         System.out.println("\n---------------- Family4 ------------------------");
         Family f4 = new Family(family3Mother, family3Father);
-        f4.addChild(family1Child7);
+        f4.addChild(family3Child1);
         System.out.println("New Child Added! Family Count is: " + f4.countFamily());
         f4.addPet(myCat1);
         System.out.println("Pet Added! Welcome " + myCat1.getNickname());

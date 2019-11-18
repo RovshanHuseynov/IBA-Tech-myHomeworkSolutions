@@ -10,18 +10,23 @@ public abstract class AbstractPet {
     private String[] habits;
 
     public AbstractPet() {
-        this("", 0, 0, new String[]{});
+        this(Species.UNKNOWN, "", 0, 0, new String[]{});
     }
 
-    public AbstractPet(String nickname) {
-        this(nickname, 0, 0, new String[]{});
+    public AbstractPet(Species species) {
+        this(species, "", 0, 0, new String[]{});
     }
 
-    public AbstractPet(String nickname, int age, int trickLevel) {
-        this(nickname, age, trickLevel, new String[]{});
+    public AbstractPet(Species species, String nickname) {
+        this(species, nickname, 0, 0, new String[]{});
     }
 
-    public AbstractPet(String nickname, int age, int trickLevel, String[] habits) {
+    public AbstractPet(Species species, String nickname, int age, int trickLevel) {
+        this(species, nickname, age, trickLevel, new String[]{});
+    }
+
+    public AbstractPet(Species species, String nickname, int age, int trickLevel, String[] habits) {
+        this.species = species;
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -86,10 +91,6 @@ public abstract class AbstractPet {
     }
 
     public abstract void respond();
-
-    public void setSpecies(Species species) {
-        this.species = species;
-    }
 
     public Species getSpecies() {
         return species;
