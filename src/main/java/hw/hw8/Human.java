@@ -1,6 +1,7 @@
-package hw.hw7;
+package hw.hw8;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Human implements HumanCreatorable {
@@ -8,26 +9,26 @@ public class Human implements HumanCreatorable {
     private String surname;
     private int year;
     private int iq;
-    private String[][] schedule;
+    private List<List<String>> schedule;
     private Family family;
 
     public Human() {
-        this("", "", 0, 0, new String[][]{}, null);
+        this("", "", 0, 0, new ArrayList<>(), null);
     }
 
     public Human(String name, String surname, int year) {
-        this(name, surname, year, 0, new String[][]{}, null);
+        this(name, surname, year, 0, new ArrayList<>(), null);
     }
 
     public Human(String name, String surname, int year, int iq) {
-        this(name, surname, year, iq, new String[][]{}, null);
+        this(name, surname, year, iq, new ArrayList<>(), null);
     }
 
-    public Human(String name, String surname, int year, int iq, String[][] schedule) {
+    public Human(String name, String surname, int year, int iq, List<List<String>> schedule) {
         this(name, surname, year, iq, schedule, null);
     }
 
-    public Human(String name, String surname, int year, int iq, String[][] schedule, Family family) {
+    public Human(String name, String surname, int year, int iq, List<List<String>> schedule, Family family) {
         this.name = name;
         this.surname = surname;
         this.year = year;
@@ -60,7 +61,7 @@ public class Human implements HumanCreatorable {
     }
 
     @Override
-    protected void finalize() throws Throwable {
+    protected void finalize() {
         System.out.println("Removal of Unnecessary Objects");
     }
 
@@ -69,10 +70,18 @@ public class Human implements HumanCreatorable {
         String s = "Human{" + "name='" + getName() + '\'' + ", surname='" + getSurname() + '\'' +
                 ", year=" + getYear() + ", iq=" + getIq() + ", schedule=";
 
-        if (schedule.length > 0) {
-            for (int i = 0; i < schedule.length; i++) {
-                s += Arrays.toString(schedule[i]);
+        if (schedule.size() > 0) {
+            s += "[";
+            for (int i = 0; i < schedule.size() - 1; i++) {
+                s += "[";
+                for (int j = 0; j < i - 1; j++) {
+                    s += schedule.get(i).get(j) + ", ";
+                }
+                s += schedule.get(i).get(schedule.get(i).size() - 1) + "]";
+                s += ", ";
             }
+            s += schedule.get(schedule.size() - 1).get(schedule.get(schedule.size() - 1).size() - 1) + "]";
+
         } else {
             s += "[]";
         }
@@ -94,9 +103,9 @@ public class Human implements HumanCreatorable {
         Human that = (Human) obj;
         if (this.getYear() == that.getYear() && this.getIq() == that.getIq()
                 && this.getName().equals(that.getName()) && this.getSurname().equals(that.getSurname())) {
-            if (this.schedule.length == that.schedule.length) {
-                for (int i = 0; i < this.schedule.length; i++) {
-                    if (!Arrays.equals(this.schedule[i], that.schedule[i])) {
+            if (this.schedule.size() == that.schedule.size()) {
+                for (int i = 0; i < this.schedule.size(); i++) {
+                    if (!this.schedule.toString().equals(that.schedule.toString())) {
                         return false;
                     }
                 }
@@ -162,7 +171,7 @@ public class Human implements HumanCreatorable {
         return iq;
     }
 
-    public String[][] getSchedule() {
+    public List<List<String>> getSchedule() {
         return schedule;
     }
 }

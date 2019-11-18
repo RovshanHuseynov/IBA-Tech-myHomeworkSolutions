@@ -1,24 +1,27 @@
-package hw.hw7;
+package hw.hw8;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class Woman extends Human {
 
     public Woman() {
-        super("", "", 0, 0, new String[][]{}, null);
+        super("", "", 0, 0, new ArrayList<>(), null);
     }
 
     public Woman(String name, String surname, int year) {
-        super(name, surname, year, 0, new String[][]{}, null);
+        super(name, surname, year, 0, new ArrayList<>(), null);
     }
 
     public Woman(String name, String surname, int year, int iq) {
-        super(name, surname, year, iq, new String[][]{}, null);
+        super(name, surname, year, iq, new ArrayList<>(), null);
     }
 
-    public Woman(String name, String surname, int year, int iq, String[][] schedule) {
+    public Woman(String name, String surname, int year, int iq, List<List<String>> schedule) {
         super(name, surname, year, iq, schedule, null);
     }
 
-    public Woman(String name, String surname, int year, int iq, String[][] schedule, Family family) {
+    public Woman(String name, String surname, int year, int iq, List<List<String>> schedule, Family family) {
         super(name, surname, year, iq, schedule, family);
     }
 
