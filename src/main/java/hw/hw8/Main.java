@@ -14,8 +14,8 @@ public class Main {
         }
         Dog myDog1 = new Dog(Species.DOG, "Ares");
         DomesticCat myCat1 = new DomesticCat(Species.DOMESTICCAT, "Luna", 2, 30, new HashSet<>(Arrays.asList("jump", "lick", "sleep")));
-        Dog myDog2 = new Dog(Species.DOG, "Zeus", 3, 20,  new HashSet<>(Arrays.asList("bark", "run fast", "smell well")));
-        DomesticCat myCat2 = new DomesticCat(Species.DOMESTICCAT, "Luna", 2, 30,  new HashSet<>(Arrays.asList("jump", "lick", "sleep")));
+        Dog myDog2 = new Dog(Species.DOG, "Zeus", 3, 20, new HashSet<>(Arrays.asList("bark", "run fast", "smell well")));
+        DomesticCat myCat2 = new DomesticCat(Species.DOMESTICCAT, "Luna", 2, 30, new HashSet<>(Arrays.asList("jump", "lick", "sleep")));
         Dog myDog3 = new Dog(Species.DOG, "Boro", 1, 35,  new HashSet<>(Arrays.asList("run fast", "chase people", "find drugs")));
 
         Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new HashMap<DayOfWeek, List<String>>(){{put(DayOfWeek.MONDAY, Arrays.asList("go shopping","take care of children"));}});
