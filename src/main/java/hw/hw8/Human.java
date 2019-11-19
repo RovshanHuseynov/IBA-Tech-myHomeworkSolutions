@@ -96,10 +96,6 @@ public class Human implements HumanCreatorable {
         else if (this == obj) return true;
         else if (!(obj instanceof Human)) return false;
 
-        if (this.hashCode() != obj.hashCode()) {
-            return false;
-        }
-
         Human that = (Human) obj;
         if (this.getYear() == that.getYear() && this.getIq() == that.getIq()
                 && this.getName().equals(that.getName()) && this.getSurname().equals(that.getSurname())) {

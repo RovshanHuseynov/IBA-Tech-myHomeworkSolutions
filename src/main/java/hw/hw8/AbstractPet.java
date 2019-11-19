@@ -67,10 +67,6 @@ public abstract class AbstractPet {
         else if (obj == this) return true;
         else if (!(obj instanceof AbstractPet)) return false;
 
-        if (this.hashCode() != obj.hashCode()) {
-            return false;
-        }
-
         AbstractPet that = (AbstractPet) obj;
         if (that.getAge() == this.getAge() && that.getTrickLevel() == this.getTrickLevel()
                 && that.getSpecies().equals(this.getSpecies())

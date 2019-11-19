@@ -1,26 +1,23 @@
 package hw.hw8;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Family {
     private Human mother;
     private Human father;
-    private Human[] children;
-    private int countChildren;
-    private AbstractPet pet;
-    private int countPet;
+    private List<Human> children;
+    private List<AbstractPet> pet;
 
     public Family(Human mother, Human father) {
         this.mother = mother;
         this.father = father;
-        this.children = new Human[10];
-        this.countChildren = 0;
-        this.pet = null;
-        this.countPet = 0;
+        this.children = new ArrayList<>();
+        this.pet = new ArrayList<>();
     }
 
     @Override
-    protected void finalize() throws Throwable {
+    protected void finalize() {
         System.out.println("Removal of Unnecessary Objects");
     }
 
@@ -28,17 +25,17 @@ public class Family {
     public String toString() {
         String s = "Family{" + "mother=" + getMother() + ", father=" + getFather() + ", children=";
 
-        if (getCountChildren() > 0) {
-            for (int i = 0; i < getCountChildren() - 1; i++) {
-                s += children[i].toString() + ", ";
+        if (children.size() > 0) {
+            for (int i = 0; i < children.size() - 1; i++) {
+                s += children.get(i).toString() + ", ";
             }
-            s += children[getCountChildren() - 1].toString();
+            s += children.get(children.size() - 1).toString();
         } else {
             s += "{}";
         }
         s += ", pet=";
 
-        if (getCountPet() > 0) {
+        if (pet.size() > 0) {
             s += getPet().toString();
         } else {
             s += "{}";
@@ -53,14 +50,12 @@ public class Family {
         else if (this == obj) return true;
         else if (!(obj instanceof Family)) return false;
 
-        if (this.hashCode() != obj.hashCode()) {
-            return false;
-        }
-
         Family that = (Family) obj;
-        if (this.getCountChildren() == that.getCountChildren() && this.getFather().toString().equals(that.getFather().toString())
-                && this.getMother().toString().equals(that.getMother().toString()) && this.getPet().toString().equals(that.getPet().toString())
-                && Arrays.equals(this.children, that.children)) {
+        if (this.children.size() == that.children.size()
+                && this.getFather().toString().equals(that.getFather().toString())
+                && this.getMother().toString().equals(that.getMother().toString())
+                && this.getPet().toString().equals(that.getPet().toString())
+                && this.children.toString().equals(that.children.toString())) {
             return true;
         }
         return false;
@@ -68,8 +63,8 @@ public class Family {
 
     @Override
     public int hashCode() {
-        int r = getCountChildren();
-        r = r * 31 + getCountPet();
+        int r = children.size();
+        r = r * 31 + pet.size();
         r = r * 31 + getMother().hashCode();
         r = r * 31 + getFather().hashCode();
         r = r * 31 + getPet().hashCode();
@@ -77,40 +72,26 @@ public class Family {
     }
 
     public void addChild(Human child) {
-        children[getCountChildren()] = child;
-        setCountChildren(getCountChildren() + 1);
+        children.add(child);
         child.setFamily(this);
     }
 
     public void addPet(AbstractPet pet) {
-        this.pet = pet;
-        setCountPet(getCountPet() + 1);
+        this.pet.add(pet);
     }
 
     public boolean deleteChild(int index) {
-        if (index < getCountChildren()) {
-            children[index].setFamily(null);
-            Human[] temp = new Human[10];
-            int countTemp = 0;
-
-            for (int i = 0; i < getCountChildren(); i++) {
-                if (i == index) {
-                    continue;
-                } else {
-                    temp[countTemp++] = children[i];
-                }
-            }
-
-            children = temp;
-            countChildren--;
+        if (index < children.size()) {
+            children.get(index).setFamily(null);
+            children.remove(children.get(index));
             return true;
         }
         return false;
     }
 
     public boolean deleteChild(Human child) {
-        for (int i = 0; i < getCountChildren(); i++) {
-            if (children[i].hashCode() == child.hashCode() && children[i].equals(child)) {
+        for (int i = 0; i < children.size(); i++) {
+            if (children.get(i).hashCode() == child.hashCode() && children.get(i).equals(child)) {
                 return deleteChild(i);
             }
         }
@@ -118,15 +99,7 @@ public class Family {
     }
 
     public int countFamily() {
-        return 2 + getCountChildren();
-    }
-
-    public void setCountChildren(int countChildren) {
-        this.countChildren = countChildren;
-    }
-
-    public void setCountPet(int countPet) {
-        this.countPet = countPet;
+        return 2 + children.size();
     }
 
     public Human getMother() {
@@ -137,19 +110,11 @@ public class Family {
         return father;
     }
 
-    public Human[] getChildren() {
+    public List<Human> getChildren() {
         return children;
     }
 
-    public AbstractPet getPet() {
+    public List<AbstractPet> getPet() {
         return pet;
-    }
-
-    public int getCountChildren() {
-        return countChildren;
-    }
-
-    public int getCountPet() {
-        return countPet;
     }
 }
