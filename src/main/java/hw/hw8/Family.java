@@ -1,19 +1,21 @@
 package hw.hw8;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Family {
     private Human mother;
     private Human father;
     private List<Human> children;
-    private List<AbstractPet> pet;
+    private Set<AbstractPet> pet;
 
     public Family(Human mother, Human father) {
         this.mother = mother;
         this.father = father;
         this.children = new ArrayList<>();
-        this.pet = new ArrayList<>();
+        this.pet = new HashSet<>();
     }
 
     @Override
@@ -36,7 +38,9 @@ public class Family {
         s += ", pet=";
 
         if (pet.size() > 0) {
-            s += pet.get(0).toString();
+            for(AbstractPet item : pet){
+                s += "[" + item.toString() + "]";
+            }
         } else {
             s += "{}";
         }
@@ -77,7 +81,6 @@ public class Family {
     }
 
     public void addPet(AbstractPet pet) {
-        if (this.pet.size() == 1) this.pet.remove(0);
         this.pet.add(pet);
     }
 
@@ -115,7 +118,7 @@ public class Family {
         return children;
     }
 
-    public List<AbstractPet> getPet() {
+    public Set<AbstractPet> getPet() {
         return pet;
     }
 }

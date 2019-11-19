@@ -118,7 +118,6 @@ public class Main {
         System.out.println("New Child Added! Family Count is: " + f3.countFamily());
         f3.addPet(myCat1);
         System.out.println("Pet Added! Welcome " + myCat1.getNickname());
-        System.out.println(f3.getPet().get(0).toString());
         System.out.println("Family Count is: " + f3.countFamily());
         System.out.println(deleteChildMessage(f3.deleteChild(1)) + " Family Count is: " + f3.countFamily());
         System.out.println("Family Count is: " + f3.countFamily());
@@ -127,7 +126,6 @@ public class Main {
         myCat1.eat();
         myCat1.respond();
         myCat1.foul();
-        System.out.println(f3.getPet().get(0).toString());
 
         family3Mother.greetPet(myCat1);
         family3Mother.describePet(myCat1);
