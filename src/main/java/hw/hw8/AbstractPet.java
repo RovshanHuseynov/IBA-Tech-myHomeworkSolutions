@@ -43,9 +43,10 @@ public abstract class AbstractPet {
     public String toString() {
         String s = getSpecies() + "{" + "nickname='" + getNickname() + '\'' + ", age=" + getAge()
                 + ", trickLevel=" + getTrickLevel() + ", habits=";
+
         if (habits.size() > 0) {
             s += "[";
-            for (int i = 0; i > habits.size() - 1; i++) {
+            for (int i = 0; i < habits.size() - 1; i++) {
                 s += habits.get(i) + ", ";
             }
             s += habits.get(habits.size() - 1) + "]";

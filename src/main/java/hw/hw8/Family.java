@@ -36,7 +36,7 @@ public class Family {
         s += ", pet=";
 
         if (pet.size() > 0) {
-            s += getPet().toString();
+            s += pet.get(0).toString();
         } else {
             s += "{}";
         }
@@ -77,6 +77,7 @@ public class Family {
     }
 
     public void addPet(AbstractPet pet) {
+        if (this.pet.size() == 1) this.pet.remove(0);
         this.pet.add(pet);
     }
 

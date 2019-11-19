@@ -71,17 +71,14 @@ public class Human implements HumanCreatorable {
                 ", year=" + getYear() + ", iq=" + getIq() + ", schedule=";
 
         if (schedule.size() > 0) {
-            s += "[";
-            for (int i = 0; i < schedule.size() - 1; i++) {
+            for (int i = 0; i < schedule.size(); i++) {
                 s += "[";
-                for (int j = 0; j < i - 1; j++) {
+                for (int j = 0; j < schedule.get(i).size() - 1; j++) {
                     s += schedule.get(i).get(j) + ", ";
                 }
-                s += schedule.get(i).get(schedule.get(i).size() - 1) + "]";
-                s += ", ";
+                s += schedule.get(i).get(schedule.get(i).size() - 1);
+                s += "]";
             }
-            s += schedule.get(schedule.size() - 1).get(schedule.get(schedule.size() - 1).size() - 1) + "]";
-
         } else {
             s += "[]";
         }
