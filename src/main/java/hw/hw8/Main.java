@@ -1,6 +1,6 @@
 package hw.hw8;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Main {
     @Override
@@ -12,23 +12,22 @@ public class Main {
         for (int i = 0; i < 10000; i++) {
             Human h = new Human();
         }
-        System.out.println("go");
         Dog myDog1 = new Dog(Species.DOG, "Ares");
-        DomesticCat myCat1 = new DomesticCat(Species.DOMESTICCAT, "Luna", 2, 30, Arrays.asList("jump", "lick", "sleep"));
-        Dog myDog2 = new Dog(Species.DOG, "Zeus", 3, 20, Arrays.asList("bark", "run fast", "smell well"));
-        DomesticCat myCat2 = new DomesticCat(Species.DOMESTICCAT, "Luna", 2, 30, Arrays.asList("jump", "lick", "sleep"));
-        Dog myDog3 = new Dog(Species.DOG, "Boro", 1, 35, Arrays.asList("run fast", "chase people", "find drugs"));
+        DomesticCat myCat1 = new DomesticCat(Species.DOMESTICCAT, "Luna", 2, 30, new HashSet<>(Arrays.asList("jump", "lick", "sleep")));
+        Dog myDog2 = new Dog(Species.DOG, "Zeus", 3, 20,  new HashSet<>(Arrays.asList("bark", "run fast", "smell well")));
+        DomesticCat myCat2 = new DomesticCat(Species.DOMESTICCAT, "Luna", 2, 30,  new HashSet<>(Arrays.asList("jump", "lick", "sleep")));
+        Dog myDog3 = new Dog(Species.DOG, "Boro", 1, 35,  new HashSet<>(Arrays.asList("run fast", "chase people", "find drugs")));
 
-        Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, Arrays.asList(Arrays.asList(DayOfWeek.MONDAY.name(), "go shopping")));
+        Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new HashMap<DayOfWeek, List<String>>(){{put(DayOfWeek.MONDAY, Arrays.asList("go shopping","take care of children"));}});
         Human family1Father = new Human("Mirze", "Huseynov", 1965, 90);
         Human family1Child1 = new Human("Rovshan", "Huseynov", 1994);
         Human family1Child2 = new Human("Sabina", "Huseynova", 1993);
         Human family1Child3 = new Human("Kamil", "Huseynov", 1997);
-        Human family1Child4 = new Human("Elekber", "Huseynov", 1990, 90, Arrays.asList(Arrays.asList(DayOfWeek.MONDAY.name(), "do homework"), Arrays.asList(DayOfWeek.SUNDAY.name(), "have a rest")));
-        Human family1Child5 = new Human("Ramin", "Huseynov", 1980, 80, Arrays.asList(Arrays.asList(DayOfWeek.MONDAY.name(), "do homework"), Arrays.asList(DayOfWeek.SUNDAY.name(), "have a rest")));
-        Human family1Child6 = new Human("Ramin", "Huseynov", 1980, 80, Arrays.asList(Arrays.asList(DayOfWeek.MONDAY.name(), "do homework"), Arrays.asList(DayOfWeek.SUNDAY.name(), "have a rest")));
-        Human family1Child7 = new Human("Ramin", "Huseynov", 1980, 80, Arrays.asList(Arrays.asList(DayOfWeek.MONDAY.name(), "do homework"), Arrays.asList(DayOfWeek.TUESDAY.name(), "read books"), Arrays.asList(DayOfWeek.SUNDAY.name(), "have a rest")));
-        Human family1Child8 = new Human("Ramin", "Huseynov", 1980, 80, Arrays.asList(Arrays.asList(DayOfWeek.MONDAY.name(), "sleep"), Arrays.asList(DayOfWeek.TUESDAY.name(), "read books"), Arrays.asList(DayOfWeek.SUNDAY.name(), "have a rest")));
+        Human family1Child4 = new Human("Elekber", "Huseynov", 1990, 90, new HashMap<DayOfWeek, List<String>>(){{put(DayOfWeek.MONDAY, Arrays.asList("do homework")); put(DayOfWeek.SUNDAY, Arrays.asList("have a rest"));}});
+        Human family1Child5 = new Human("Ramin", "Huseynov", 1980, 80, new HashMap<DayOfWeek, List<String>>(){{put(DayOfWeek.MONDAY, Arrays.asList("do homework")); put(DayOfWeek.SUNDAY, Arrays.asList("have a rest"));}});
+        Human family1Child6 = new Human("Ramin", "Huseynov", 1980, 80, new HashMap<DayOfWeek, List<String>>(){{put(DayOfWeek.MONDAY, Arrays.asList("do homework")); put(DayOfWeek.SUNDAY, Arrays.asList("have a rest"));}});
+        Human family1Child7 = new Human("Ramin", "Huseynov", 1980, 80, new HashMap<DayOfWeek, List<String>>(){{put(DayOfWeek.MONDAY, Arrays.asList("do homework")); put(DayOfWeek.TUESDAY, Arrays.asList("read books")); put(DayOfWeek.SUNDAY, Arrays.asList("have a rest"));}});
+        Human family1Child8 = new Human("Ramin", "Huseynov", 1980, 80, new HashMap<DayOfWeek, List<String>>(){{put(DayOfWeek.MONDAY, Arrays.asList("sleep")); put(DayOfWeek.TUESDAY, Arrays.asList("read books")); put(DayOfWeek.SUNDAY, Arrays.asList("have a rest"));}});
 
         System.out.println("hashCode(family1Child1, family1Child2): " + (family1Child1.hashCode() == family1Child2.hashCode()));
         System.out.println("equals(family1Mother, family1Father): " + family1Mother.equals(family1Father));

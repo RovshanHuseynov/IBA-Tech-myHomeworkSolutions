@@ -1,34 +1,32 @@
 package hw.hw8;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Human implements HumanCreatorable {
     private String name;
     private String surname;
     private int year;
     private int iq;
-    private List<List<String>> schedule;
+    private Map<DayOfWeek, List<String>> schedule;
     private Family family;
 
     public Human() {
-        this("", "", 0, 0, new ArrayList<>(), null);
+        this("", "", 0, 0, new HashMap<>(), null);
     }
 
     public Human(String name, String surname, int year) {
-        this(name, surname, year, 0, new ArrayList<>(), null);
+        this(name, surname, year, 0, new HashMap<>(), null);
     }
 
     public Human(String name, String surname, int year, int iq) {
-        this(name, surname, year, iq, new ArrayList<>(), null);
+        this(name, surname, year, iq, new HashMap<>(), null);
     }
 
-    public Human(String name, String surname, int year, int iq, List<List<String>> schedule) {
+    public Human(String name, String surname, int year, int iq, Map<DayOfWeek, List<String>> schedule) {
         this(name, surname, year, iq, schedule, null);
     }
 
-    public Human(String name, String surname, int year, int iq, List<List<String>> schedule, Family family) {
+    public Human(String name, String surname, int year, int iq, Map<DayOfWeek, List<String>> schedule, Family family) {
         this.name = name;
         this.surname = surname;
         this.year = year;
@@ -71,14 +69,19 @@ public class Human implements HumanCreatorable {
                 ", year=" + getYear() + ", iq=" + getIq() + ", schedule=";
 
         if (schedule.size() > 0) {
+            StringBuilder sb = new StringBuilder();
             for (int i = 0; i < schedule.size(); i++) {
-                s += "[";
-                for (int j = 0; j < schedule.get(i).size() - 1; j++) {
-                    s += schedule.get(i).get(j) + ", ";
-                }
-                s += schedule.get(i).get(schedule.get(i).size() - 1);
-                s += "]";
+                schedule.keySet().forEach(dayOfWeek -> {
+                    sb.append("[" + dayOfWeek + " -> ");
+                    schedule.get(dayOfWeek).forEach(s1 -> {
+                        sb.append(s1);
+                        if (!s1.equals(schedule.get(dayOfWeek).get(schedule.get(dayOfWeek).size() - 1)))
+                            sb.append(", ");
+                    });
+                    sb.append("]");
+                });
             }
+            s += sb.toString();
         } else {
             s += "[]";
         }
@@ -94,17 +97,14 @@ public class Human implements HumanCreatorable {
         else if (!(obj instanceof Human)) return false;
 
         Human that = (Human) obj;
-        if (this.getYear() == that.getYear() && this.getIq() == that.getIq()
-                && this.getName().equals(that.getName()) && this.getSurname().equals(that.getSurname())) {
-            if (this.schedule.size() == that.schedule.size()) {
-                for (int i = 0; i < this.schedule.size(); i++) {
-                    if (!this.schedule.toString().equals(that.schedule.toString())) {
-                        return false;
-                    }
-                }
-                return true;
-            }
-        }
+        if (this.getYear() == that.getYear()
+                && this.getIq() == that.getIq()
+                && this.getName().equals(that.getName())
+                && this.getSurname().equals(that.getSurname())
+                && this.schedule.size() == that.schedule.size()
+                && this.schedule.equals(that.schedule))
+            return true;
+
         return false;
     }
 
@@ -164,7 +164,7 @@ public class Human implements HumanCreatorable {
         return iq;
     }
 
-    public List<List<String>> getSchedule() {
+    public Map<DayOfWeek, List<String>> getSchedule() {
         return schedule;
     }
 }

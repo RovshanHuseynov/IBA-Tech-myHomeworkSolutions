@@ -1,27 +1,27 @@
 package hw.hw8;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Dog extends AbstractPet implements Foulable {
 
     public Dog() {
-        super(Species.DOG, "", 0, 0, new ArrayList<>());
+        super(Species.DOG, "", 0, 0, new HashSet<>());
     }
 
     public Dog(Species species) {
-        super(species, "", 0, 0, new ArrayList<>());
+        super(species, "", 0, 0, new HashSet<>());
     }
 
     public Dog(Species species, String nickname) {
-        super(species, nickname, 0, 0, new ArrayList<>());
+        super(species, nickname, 0, 0, new HashSet<>());
     }
 
     public Dog(Species species, String nickname, int age, int trickLevel) {
-        super(species, nickname, age, trickLevel, new ArrayList<>());
+        super(species, nickname, age, trickLevel, new HashSet<>());
     }
 
-    public Dog(Species species, String nickname, int age, int trickLevel, List<String> habits) {
+    public Dog(Species species, String nickname, int age, int trickLevel, Set<String> habits) {
         super(species, nickname, age, trickLevel, habits);
     }
 

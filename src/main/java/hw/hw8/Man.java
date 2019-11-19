@@ -1,27 +1,28 @@
 package hw.hw8;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class Man extends Human {
 
     public Man() {
-        super("", "", 0, 0, new ArrayList<>(), null);
+        super("", "", 0, 0, new HashMap<>(), null);
     }
 
     public Man(String name, String surname, int year) {
-        super(name, surname, year, 0, new ArrayList<>(), null);
+        super(name, surname, year, 0, new HashMap<>(), null);
     }
 
     public Man(String name, String surname, int year, int iq) {
-        super(name, surname, year, iq, new ArrayList<>(), null);
+        super(name, surname, year, iq, new HashMap<>(), null);
     }
 
-    public Man(String name, String surname, int year, int iq, List<List<String>> schedule) {
+    public Man(String name, String surname, int year, int iq, Map<DayOfWeek, List<String>> schedule) {
         super(name, surname, year, iq, schedule, null);
     }
 
-    public Man(String name, String surname, int year, int iq, List<List<String>> schedule, Family family) {
+    public Man(String name, String surname, int year, int iq, Map<DayOfWeek, List<String>> schedule, Family family) {
         super(name, surname, year, iq, schedule, family);
     }
 

@@ -1,27 +1,27 @@
 package hw.hw8;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DomesticCat extends AbstractPet implements Foulable {
 
     public DomesticCat() {
-        super(Species.DOMESTICCAT, "", 0, 0, new ArrayList<>());
+        super(Species.DOMESTICCAT, "", 0, 0, new HashSet<>());
     }
 
     public DomesticCat(Species species) {
-        super(species, "", 0, 0, new ArrayList<>());
+        super(species, "", 0, 0, new HashSet<>());
     }
 
     public DomesticCat(Species species, String nickname) {
-        super(species, nickname, 0, 0, new ArrayList<>());
+        super(species, nickname, 0, 0, new HashSet<>());
     }
 
     public DomesticCat(Species species, String nickname, int age, int trickLevel) {
-        super(species, nickname, age, trickLevel, new ArrayList<>());
+        super(species, nickname, age, trickLevel, new HashSet<>());
     }
 
-    public DomesticCat(Species species, String nickname, int age, int trickLevel, List<String> habits) {
+    public DomesticCat(Species species, String nickname, int age, int trickLevel, Set<String> habits) {
         super(species, nickname, age, trickLevel, habits);
     }
 

@@ -1,32 +1,32 @@
 package hw.hw8;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public abstract class AbstractPet {
     private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
-    private List<String> habits;
+    private Set<String> habits;
 
     public AbstractPet() {
-        this(Species.UNKNOWN, "", 0, 0, new ArrayList<>());
+        this(Species.UNKNOWN, "", 0, 0, new HashSet<>());
     }
 
     public AbstractPet(Species species) {
-        this(species, "", 0, 0, new ArrayList<>());
+        this(species, "", 0, 0, new HashSet<>());
     }
 
     public AbstractPet(Species species, String nickname) {
-        this(species, nickname, 0, 0, new ArrayList<>());
+        this(species, nickname, 0, 0, new HashSet<>());
     }
 
     public AbstractPet(Species species, String nickname, int age, int trickLevel) {
-        this(species, nickname, age, trickLevel, new ArrayList<>());
+        this(species, nickname, age, trickLevel, new HashSet<>());
     }
 
-    public AbstractPet(Species species, String nickname, int age, int trickLevel, List<String> habits) {
+    public AbstractPet(Species species, String nickname, int age, int trickLevel, Set<String> habits) {
         this.species = species;
         this.nickname = nickname;
         this.age = age;
@@ -45,11 +45,15 @@ public abstract class AbstractPet {
                 + ", trickLevel=" + getTrickLevel() + ", habits=";
 
         if (habits.size() > 0) {
+            int cnt = 0;
+
             s += "[";
-            for (int i = 0; i < habits.size() - 1; i++) {
-                s += habits.get(i) + ", ";
+            for (String item : habits) {
+                cnt++;
+                s += item;
+                if (cnt < habits.size()) s += ", ";
             }
-            s += habits.get(habits.size() - 1) + "]";
+            s += "]";
         } else {
             s += "[]";
         }
@@ -110,7 +114,7 @@ public abstract class AbstractPet {
         return trickLevel;
     }
 
-    public List<String> getHabits() {
+    public Set<String> getHabits() {
         return habits;
     }
 }

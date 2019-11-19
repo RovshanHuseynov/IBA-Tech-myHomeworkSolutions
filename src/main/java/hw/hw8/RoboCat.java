@@ -1,27 +1,27 @@
 package hw.hw8;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class RoboCat extends AbstractPet implements Foulable {
 
     public RoboCat() {
-        super(Species.ROBOCAT, "", 0, 0, new ArrayList<>());
+        super(Species.ROBOCAT, "", 0, 0, new HashSet<>());
     }
 
     public RoboCat(Species species) {
-        super(species, "", 0, 0, new ArrayList<>());
+        super(species, "", 0, 0, new HashSet<>());
     }
 
     public RoboCat(Species species, String nickname) {
-        super(species, nickname, 0, 0, new ArrayList<>());
+        super(species, nickname, 0, 0, new HashSet<>());
     }
 
     public RoboCat(Species species, String nickname, int age, int trickLevel) {
-        super(species, nickname, age, trickLevel, new ArrayList<>());
+        super(species, nickname, age, trickLevel, new HashSet<>());
     }
 
-    public RoboCat(Species species, String nickname, int age, int trickLevel, List<String> habits) {
+    public RoboCat(Species species, String nickname, int age, int trickLevel, Set<String> habits) {
         super(species, nickname, age, trickLevel, habits);
     }
 
