@@ -1,9 +1,9 @@
 package hw.hw7;
 
-public class DomesticCat extends AbstractPet implements Foulable {
+public class DomesticCat extends Pet implements Foulable {
 
     public DomesticCat() {
-        super(Species.DOMESTICCAT, "", 0, 0, new String[]{});
+        super(Species.DOMESTIC_CAT, "", 0, 0, new String[]{});
     }
 
     public DomesticCat(Species species) {

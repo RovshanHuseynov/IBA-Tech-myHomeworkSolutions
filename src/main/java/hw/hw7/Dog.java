@@ -1,6 +1,6 @@
 package hw.hw7;
 
-public class Dog extends AbstractPet implements Foulable {
+public class Dog extends Pet implements Foulable {
 
     public Dog() {
         super(Species.DOG, "", 0, 0, new String[]{});

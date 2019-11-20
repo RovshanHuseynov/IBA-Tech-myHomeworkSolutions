@@ -12,9 +12,9 @@ public class Main {
         }
 
         Dog myDog1 = new Dog(Species.DOG, "Ares");
-        DomesticCat myCat1 = new DomesticCat(Species.DOMESTICCAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+        DomesticCat myCat1 = new DomesticCat(Species.DOMESTIC_CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
         Dog myDog2 = new Dog(Species.DOG, "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
-        DomesticCat myCat2 = new DomesticCat(Species.DOMESTICCAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+        DomesticCat myCat2 = new DomesticCat(Species.DOMESTIC_CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
 
         Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new String[][]{{DayOfWeek.MONDAY.name(), "go shopping"}});
         Human family1Father = new Human("Mirze", "Huseynov", 1965, 90);

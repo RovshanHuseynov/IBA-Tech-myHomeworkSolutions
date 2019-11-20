@@ -2,30 +2,30 @@ package hw.hw7;
 
 import java.util.Arrays;
 
-public abstract class AbstractPet {
+public abstract class Pet {
     private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
     private String[] habits;
 
-    public AbstractPet() {
+    public Pet() {
         this(Species.UNKNOWN, "", 0, 0, new String[]{});
     }
 
-    public AbstractPet(Species species) {
+    public Pet(Species species) {
         this(species, "", 0, 0, new String[]{});
     }
 
-    public AbstractPet(Species species, String nickname) {
+    public Pet(Species species, String nickname) {
         this(species, nickname, 0, 0, new String[]{});
     }
 
-    public AbstractPet(Species species, String nickname, int age, int trickLevel) {
+    public Pet(Species species, String nickname, int age, int trickLevel) {
         this(species, nickname, age, trickLevel, new String[]{});
     }
 
-    public AbstractPet(Species species, String nickname, int age, int trickLevel, String[] habits) {
+    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {
         this.species = species;
         this.nickname = nickname;
         this.age = age;
@@ -60,13 +60,9 @@ public abstract class AbstractPet {
     public boolean equals(Object obj) {
         if (obj == null) return false;
         else if (obj == this) return true;
-        else if (!(obj instanceof AbstractPet)) return false;
+        else if (!(obj instanceof Pet)) return false;
 
-        if (this.hashCode() != obj.hashCode()) {
-            return false;
-        }
-
-        AbstractPet that = (AbstractPet) obj;
+        Pet that = (Pet) obj;
         if (that.getAge() == this.getAge() && that.getTrickLevel() == this.getTrickLevel()
                 && that.getSpecies().equals(this.getSpecies())
                 && that.getNickname().equals(this.getNickname())

@@ -7,7 +7,7 @@ public class Family {
     private Human father;
     private Human[] children;
     private int countChildren;
-    private AbstractPet pet;
+    private Pet pet;
     private int countPet;
 
     public Family(Human mother, Human father) {
@@ -53,10 +53,6 @@ public class Family {
         else if (this == obj) return true;
         else if (!(obj instanceof Family)) return false;
 
-        if (this.hashCode() != obj.hashCode()) {
-            return false;
-        }
-
         Family that = (Family) obj;
         if (this.getCountChildren() == that.getCountChildren() && this.getFather().toString().equals(that.getFather().toString())
                 && this.getMother().toString().equals(that.getMother().toString()) && this.getPet().toString().equals(that.getPet().toString())
@@ -82,7 +78,7 @@ public class Family {
         child.setFamily(this);
     }
 
-    public void addPet(AbstractPet pet) {
+    public void addPet(Pet pet) {
         this.pet = pet;
         setCountPet(getCountPet() + 1);
     }
@@ -90,18 +86,18 @@ public class Family {
     public boolean deleteChild(int index) {
         if (index < getCountChildren()) {
             children[index].setFamily(null);
-            Human[] temp = new Human[10];
+            Human[] tempChildren = new Human[10];
             int countTemp = 0;
 
             for (int i = 0; i < getCountChildren(); i++) {
                 if (i == index) {
                     continue;
                 } else {
-                    temp[countTemp++] = children[i];
+                    tempChildren[countTemp++] = children[i];
                 }
             }
 
-            children = temp;
+            children = tempChildren;
             countChildren--;
             return true;
         }
@@ -141,7 +137,7 @@ public class Family {
         return children;
     }
 
-    public AbstractPet getPet() {
+    public Pet getPet() {
         return pet;
     }
 

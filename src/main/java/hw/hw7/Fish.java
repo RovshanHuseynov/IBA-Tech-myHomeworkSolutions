@@ -1,6 +1,6 @@
 package hw.hw7;
 
-public class Fish extends AbstractPet {
+public class Fish extends Pet {
 
     public Fish() {
         super(Species.FISH, "", 0, 0, new String[]{});

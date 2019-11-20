@@ -37,29 +37,6 @@ public class Human implements HumanCreatorable {
     }
 
     @Override
-    public Human bornChild(Family family) {
-        String[] womanNames = {"Lale", "Kemale", "Fidan", "Nergiz", "Sunbul", "Lamiye", "Aydan"};
-        String[] manNames = {"Samir", "Amil", "Kamil", "Letif", "Eli", "Arif", "Ehed"};
-        Random random = new Random();
-        int childSex = random.nextInt(2);
-        String childName = "";
-        String childSurname = family.getFather().getSurname();
-        int childIq = (family.getFather().getIq() + family.getMother().getIq()) / 2;
-        if (childSex == 0) {
-            childName = womanNames[random.nextInt(7)];
-            Woman bornChild = new Woman(childName, childSurname, 1990, childIq);
-            family.addChild(bornChild);
-            return bornChild;
-        } else if (childSex == 1) {
-            childName = manNames[random.nextInt(7)];
-            Man bornChild = new Man(childName, childSurname, 1990, childIq);
-            family.addChild(bornChild);
-            return bornChild;
-        }
-        return new Human();
-    }
-
-    @Override
     protected void finalize() throws Throwable {
         System.out.println("Removal of Unnecessary Objects");
     }
@@ -87,10 +64,6 @@ public class Human implements HumanCreatorable {
         else if (this == obj) return true;
         else if (!(obj instanceof Human)) return false;
 
-        if (this.hashCode() != obj.hashCode()) {
-            return false;
-        }
-
         Human that = (Human) obj;
         if (this.getYear() == that.getYear() && this.getIq() == that.getIq()
                 && this.getName().equals(that.getName()) && this.getSurname().equals(that.getSurname())) {
@@ -115,11 +88,34 @@ public class Human implements HumanCreatorable {
         return r;
     }
 
-    public void greetPet(AbstractPet pet) {
+    @Override
+    public Human bornChild(Family family) {
+        String[] womanNames = {"Lale", "Kemale", "Fidan", "Nergiz", "Sunbul", "Lamiye", "Aydan"};
+        String[] manNames = {"Samir", "Amil", "Kamil", "Letif", "Eli", "Arif", "Ehed"};
+        Random random = new Random();
+        int childSex = random.nextInt(2);
+        String childName = "";
+        String childSurname = family.getFather().getSurname();
+        int childIq = (family.getFather().getIq() + family.getMother().getIq()) / 2;
+        if (childSex == 0) {
+            childName = womanNames[random.nextInt(7)];
+            Woman bornChild = new Woman(childName, childSurname, 1990, childIq);
+            family.addChild(bornChild);
+            return bornChild;
+        } else if (childSex == 1) {
+            childName = manNames[random.nextInt(7)];
+            Man bornChild = new Man(childName, childSurname, 1990, childIq);
+            family.addChild(bornChild);
+            return bornChild;
+        }
+        return new Human();
+    }
+
+    public void greetPet(Pet pet) {
         System.out.println("Hello, " + pet.getNickname());
     }
 
-    public boolean feedPet(AbstractPet pet) {
+    public boolean feedPet(Pet pet) {
         System.out.println("isn't it time for feeding?");
         Random random = new Random();
         int x = random.nextInt(100);
@@ -133,7 +129,7 @@ public class Human implements HumanCreatorable {
         }
     }
 
-    public void describePet(AbstractPet pet) {
+    public void describePet(Pet pet) {
         String trickLevel = pet.getTrickLevel() > 50 ? "very sly" : "almost not sly";
         System.out.println("I have a " + pet.getSpecies() + ", he is " + pet.getAge() + " years old, he is " + trickLevel);
     }

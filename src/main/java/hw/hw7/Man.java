@@ -26,7 +26,7 @@ public final class Man extends Human {
         System.out.println("MakeUp");
     }
 
-    public void greetPet(AbstractPet pet) {
+    public void greetPet(Pet pet) {
         System.out.println("Hey, " + pet.getNickname());
     }
 }

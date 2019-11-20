@@ -9,13 +9,13 @@ enum DayOfWeek {
     SATURDAY(6),
     SUNDAY(7);
 
-    private int numberofDay;
+    private int numberOfDay;
 
-    DayOfWeek(int numberofDay) {
-        this.numberofDay = numberofDay;
+    DayOfWeek(int numberOfDay) {
+        this.numberOfDay = numberOfDay;
     }
 
-    public int getNumberofDay() {
-        return numberofDay;
+    public int getNumberOfDay() {
+        return numberOfDay;
     }
 }

@@ -1,9 +1,9 @@
 package hw.hw7;
 
-public class RoboCat extends AbstractPet implements Foulable {
+public class RoboCat extends Pet implements Foulable {
 
     public RoboCat() {
-        super(Species.ROBOCAT, "", 0, 0, new String[]{});
+        super(Species.ROBO_CAT, "", 0, 0, new String[]{});
     }
 
     public RoboCat(Species species) {
