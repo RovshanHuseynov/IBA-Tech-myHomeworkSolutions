@@ -3,7 +3,7 @@ package hw.hw8;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Dog extends AbstractPet implements Foulable {
+public class Dog extends Pet implements Foulable {
 
     public Dog() {
         super(Species.DOG, "", 0, 0, new HashSet<>());

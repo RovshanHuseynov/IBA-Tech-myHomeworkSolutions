@@ -9,7 +9,7 @@ public class Family {
     private Human mother;
     private Human father;
     private List<Human> children;
-    private Set<AbstractPet> pet;
+    private Set<Pet> pet;
 
     public Family(Human mother, Human father) {
         this.mother = mother;
@@ -38,7 +38,7 @@ public class Family {
         s += ", pet=";
 
         if (pet.size() > 0) {
-            for(AbstractPet item : pet){
+            for (Pet item : pet) {
                 s += "[" + item.toString() + "]";
             }
         } else {
@@ -80,13 +80,12 @@ public class Family {
         child.setFamily(this);
     }
 
-    public void addPet(AbstractPet pet) {
+    public void addPet(Pet pet) {
         this.pet.add(pet);
     }
 
     public boolean deleteChild(int index) {
         if (index < children.size()) {
-            children.get(index).setFamily(null);
             children.remove(children.get(index));
             return true;
         }
@@ -118,7 +117,7 @@ public class Family {
         return children;
     }
 
-    public Set<AbstractPet> getPet() {
+    public Set<Pet> getPet() {
         return pet;
     }
 }

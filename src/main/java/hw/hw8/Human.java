@@ -70,17 +70,15 @@ public class Human implements HumanCreatorable {
 
         if (schedule.size() > 0) {
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < schedule.size(); i++) {
-                schedule.keySet().forEach(dayOfWeek -> {
-                    sb.append("[" + dayOfWeek + " -> ");
-                    schedule.get(dayOfWeek).forEach(s1 -> {
-                        sb.append(s1);
-                        if (!s1.equals(schedule.get(dayOfWeek).get(schedule.get(dayOfWeek).size() - 1)))
-                            sb.append(", ");
-                    });
-                    sb.append("]");
+            schedule.keySet().forEach(dayOfWeek -> {
+                sb.append("[" + dayOfWeek + " -> ");
+                schedule.get(dayOfWeek).forEach(s1 -> {
+                    sb.append(s1);
+                    if (!s1.equals(schedule.get(dayOfWeek).get(schedule.get(dayOfWeek).size() - 1)))
+                        sb.append(", ");
                 });
-            }
+                sb.append("]");
+            });
             s += sb.toString();
         } else {
             s += "[]";
@@ -117,11 +115,11 @@ public class Human implements HumanCreatorable {
         return r;
     }
 
-    public void greetPet(AbstractPet pet) {
+    public void greetPet(Pet pet) {
         System.out.println("Hello, " + pet.getNickname());
     }
 
-    public boolean feedPet(AbstractPet pet) {
+    public boolean feedPet(Pet pet) {
         System.out.println("isn't it time for feeding?");
         Random random = new Random();
         int x = random.nextInt(100);
@@ -135,7 +133,7 @@ public class Human implements HumanCreatorable {
         }
     }
 
-    public void describePet(AbstractPet pet) {
+    public void describePet(Pet pet) {
         String trickLevel = pet.getTrickLevel() > 50 ? "very sly" : "almost not sly";
         System.out.println("I have a " + pet.getSpecies() + ", he is " + pet.getAge() + " years old, he is " + trickLevel);
     }

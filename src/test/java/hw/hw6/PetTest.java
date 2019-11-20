@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class AbstractPetTest {
+public class PetTest {
 
     Pet p1;
     Pet p2;

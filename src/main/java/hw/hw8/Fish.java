@@ -3,7 +3,7 @@ package hw.hw8;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Fish extends AbstractPet {
+public class Fish extends Pet {
 
     public Fish() {
         super(Species.FISH, "", 0, 0, new HashSet<>());

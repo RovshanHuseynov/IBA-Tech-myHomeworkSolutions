@@ -9,7 +9,7 @@ import java.util.HashSet;
 
 import static org.junit.Assert.*;
 
-public class AbstractPetTest {
+public class PetTest {
 
     Dog myDog1;
     Dog myDog2;
@@ -19,7 +19,7 @@ public class AbstractPetTest {
     public void Before() {
         myDog1 = new Dog(Species.DOG, "Zeus", 3, 20, new HashSet<>(Arrays.asList("bark", "run fast", "smell well")));
         myDog2 = new Dog(Species.DOG, "Zeus", 3, 20, new HashSet<>(Arrays.asList("bark", "run fast", "smell well")));
-        myCat1 = new DomesticCat(Species.DOMESTICCAT, "Luna", 2, 30, new HashSet<>(Arrays.asList("jump", "lick", "sleep")));
+        myCat1 = new DomesticCat(Species.DOMESTIC_CAT, "Luna", 2, 30, new HashSet<>(Arrays.asList("jump", "lick", "sleep")));
     }
 
     @After

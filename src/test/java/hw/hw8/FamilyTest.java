@@ -32,9 +32,9 @@ public class FamilyTest {
         family1Child1 = new Human("Rovshan", "Huseynov", 1994);
         family1Child2 = new Human("Sabina", "Huseynova", 1993);
         family1Child3 = new Human("Kamil", "Huseynov", 1997);
-        family1Child4 = new Human("Elekber", "Huseynov", 1990, 90, new HashMap<DayOfWeek, List<String>>() {{ put(DayOfWeek.MONDAY, Arrays.asList("do homework"));put(DayOfWeek.SUNDAY, Arrays.asList("have a rest")); }});
+        family1Child4 = new Human("Elekber", "Huseynov", 1990, 90, new HashMap<DayOfWeek, List<String>>() {{ put(DayOfWeek.MONDAY, Arrays.asList("do homework")); put(DayOfWeek.SUNDAY, Arrays.asList("have a rest")); }});
         myDog1 = new Dog(Species.DOG, "Ares");
-        myCat1 = new DomesticCat(Species.DOMESTICCAT, "Luna", 2, 30, new HashSet<>(Arrays.asList("jump", "lick", "sleep")));
+        myCat1 = new DomesticCat(Species.DOMESTIC_CAT, "Luna", 2, 30, new HashSet<>(Arrays.asList("jump", "lick", "sleep")));
         myDog2 = new Dog(Species.DOG, "Zeus", 3, 20, new HashSet<>(Arrays.asList("bark", "run fast", "smell well")));
         f1 = new Family(family1Mother, family1Father);
         f1.addChild(family1Child1);

@@ -3,10 +3,10 @@ package hw.hw8;
 import java.util.HashSet;
 import java.util.Set;
 
-public class RoboCat extends AbstractPet implements Foulable {
+public class RoboCat extends Pet implements Foulable {
 
     public RoboCat() {
-        super(Species.ROBOCAT, "", 0, 0, new HashSet<>());
+        super(Species.ROBO_CAT, "", 0, 0, new HashSet<>());
     }
 
     public RoboCat(Species species) {

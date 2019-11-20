@@ -81,5 +81,4 @@ public class HumanTest {
     public void testHashCode2() {
         assertEquals(true, family1Child5.hashCode() == family1Child6.hashCode());
     }
-
 }
