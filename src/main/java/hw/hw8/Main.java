@@ -46,83 +46,83 @@ public class Main {
         System.out.println(family1Child6.toString());
 
         System.out.println("\n---------------- Family1 ------------------------");
-        Family f1 = new Family(family1Mother, family1Father);
-        family1Mother.setFamily(f1);
-        family1Father.setFamily(f1);
-        System.out.println(f1.toString());
-        System.out.println("Count Family: " + f1.countFamily());
+        Family family1 = new Family(family1Mother, family1Father);
+        family1Mother.setFamily(family1);
+        family1Father.setFamily(family1);
+        System.out.println(family1.toString());
+        System.out.println("Count Family: " + family1.countFamily());
 
-        f1.addChild(family1Child1);
-        System.out.println("New Child Added! Family Count is: " + f1.countFamily());
-        f1.addChild(family1Child2);
-        System.out.println("New Child Added! Family Count is: " + f1.countFamily());
-        f1.addChild(family1Child3);
-        System.out.println("New Child Added! Family Count is: " + f1.countFamily());
-        System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
-        System.out.println(deleteChildMessage(f1.deleteChild(family1Child1)) + " Family Count is: " + f1.countFamily());
-        System.out.println("New Child Added! Family Count is: " + f1.countFamily());
-        f1.addChild(family1Child4);
-        System.out.println("New Child Added! Family Count is: " + f1.countFamily());
-        f1.addChild(family1Child5);
-        System.out.println("New Child Added! Family Count is: " + f1.countFamily());
+        family1.addChild(family1Child1);
+        System.out.println("New Child Added! Family Count is: " + family1.countFamily());
+        family1.addChild(family1Child2);
+        System.out.println("New Child Added! Family Count is: " + family1.countFamily());
+        family1.addChild(family1Child3);
+        System.out.println("New Child Added! Family Count is: " + family1.countFamily());
+        System.out.println(deleteChildMessage(family1.deleteChild(0)) + " Family Count is: " + family1.countFamily());
+        System.out.println(deleteChildMessage(family1.deleteChild(family1Child1)) + " Family Count is: " + family1.countFamily());
+        System.out.println("New Child Added! Family Count is: " + family1.countFamily());
+        family1.addChild(family1Child4);
+        System.out.println("New Child Added! Family Count is: " + family1.countFamily());
+        family1.addChild(family1Child5);
+        System.out.println("New Child Added! Family Count is: " + family1.countFamily());
 
-        System.out.println(f1.toString());
-        System.out.println(f1.getChildren().get(3).toString());
+        System.out.println(family1.toString());
+        System.out.println(family1.getChildren().get(3).toString());
 
-        System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
-        System.out.println(f1.getChildren().get(0).toString());
-        System.out.println(deleteChildMessage(f1.deleteChild(6)) + " Family Count is: " + f1.countFamily());
-        System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
-        System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
-        System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
-        System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
-        System.out.println(deleteChildMessage(f1.deleteChild(0)) + " Family Count is: " + f1.countFamily());
+        System.out.println(deleteChildMessage(family1.deleteChild(0)) + " Family Count is: " + family1.countFamily());
+        System.out.println(family1.getChildren().get(0).toString());
+        System.out.println(deleteChildMessage(family1.deleteChild(6)) + " Family Count is: " + family1.countFamily());
+        System.out.println(deleteChildMessage(family1.deleteChild(0)) + " Family Count is: " + family1.countFamily());
+        System.out.println(deleteChildMessage(family1.deleteChild(0)) + " Family Count is: " + family1.countFamily());
+        System.out.println(deleteChildMessage(family1.deleteChild(0)) + " Family Count is: " + family1.countFamily());
+        System.out.println(deleteChildMessage(family1.deleteChild(0)) + " Family Count is: " + family1.countFamily());
+        System.out.println(deleteChildMessage(family1.deleteChild(0)) + " Family Count is: " + family1.countFamily());
 
-        f1.addChild(family1Child1);
-        System.out.println("New Child Added! Family Count is: " + f1.countFamily());
+        family1.addChild(family1Child1);
+        System.out.println("New Child Added! Family Count is: " + family1.countFamily());
 
-        System.out.println(f1.toString());
-        f1.addPet(myDog1);
+        System.out.println(family1.toString());
+        family1.addPet(myDog1);
         System.out.println("Pet Added! Welcome " + myDog1.getNickname());
-        System.out.println(f1.toString());
+        System.out.println(family1.toString());
 
         System.out.println("\n---------------- Family2 ------------------------");
         Human family2Mother = new Human("Ayise", "Agayeva", 1950);
         Human family2Father = new Human("Samir", "Agayev", 1945);
-        Family f2 = new Family(family2Mother, family2Father);
-        family2Mother.setFamily(f2);
-        family2Father.setFamily(f2);
+        Family family2 = new Family(family2Mother, family2Father);
+        family2Mother.setFamily(family2);
+        family2Father.setFamily(family2);
         Human family2Child1 = new Human("Amil", "Agayev", 1964);
         Human family2Child2 = new Human("Selim", "Agayev", 1970);
 
-        f2.addChild(family2Child1);
-        System.out.println("New Child Added! Family Count is: " + f2.countFamily());
-        f2.addChild(family2Child2);
-        System.out.println("New Child Added! Family Count is: " + f2.countFamily());
-        f2.addPet(myDog2);
+        family2.addChild(family2Child1);
+        System.out.println("New Child Added! Family Count is: " + family2.countFamily());
+        family2.addChild(family2Child2);
+        System.out.println("New Child Added! Family Count is: " + family2.countFamily());
+        family2.addPet(myDog2);
         System.out.println("Pet Added! Welcome " + myDog2.getNickname());
-        System.out.println("Family Count is: " + f2.countFamily());
-        System.out.println(f2.toString());
+        System.out.println("Family Count is: " + family2.countFamily());
+        System.out.println(family2.toString());
 
         System.out.println("\n---------------- Family3 ------------------------");
         Human family3Mother = new Human("Lale", "Melikova", 1950);
         Human family3Father = new Human("Zamiq", "Melikov", 1945);
-        Family f3 = new Family(family3Mother, family3Father);
-        family3Mother.setFamily(f3);
-        family3Father.setFamily(f3);
+        Family family3 = new Family(family3Mother, family3Father);
+        family3Mother.setFamily(family3);
+        family3Father.setFamily(family3);
         Human family3Child1 = new Human("Suqra", "Melikova", 1964);
         Human family3Child2 = new Human("Nergiz", "Melikova", 1970);
 
-        f3.addChild(family3Child1);
-        System.out.println("New Child Added! Family Count is: " + f3.countFamily());
-        f3.addChild(family3Child2);
-        System.out.println("New Child Added! Family Count is: " + f3.countFamily());
-        f3.addPet(myCat1);
+        family3.addChild(family3Child1);
+        System.out.println("New Child Added! Family Count is: " + family3.countFamily());
+        family3.addChild(family3Child2);
+        System.out.println("New Child Added! Family Count is: " + family3.countFamily());
+        family3.addPet(myCat1);
         System.out.println("Pet Added! Welcome " + myCat1.getNickname());
-        System.out.println("Family Count is: " + f3.countFamily());
-        System.out.println(deleteChildMessage(f3.deleteChild(1)) + " Family Count is: " + f3.countFamily());
-        System.out.println("Family Count is: " + f3.countFamily());
-        System.out.println(f3.toString());
+        System.out.println("Family Count is: " + family3.countFamily());
+        System.out.println(deleteChildMessage(family3.deleteChild(1)) + " Family Count is: " + family3.countFamily());
+        System.out.println("Family Count is: " + family3.countFamily());
+        System.out.println(family3.toString());
 
         myCat1.eat();
         myCat1.respond();
@@ -134,17 +134,17 @@ public class Main {
         System.out.println("Did the family feed their pet? --> " + isFeed);
 
         System.out.println("\n---------------- Family4 ------------------------");
-        Family f4 = new Family(family3Mother, family3Father);
-        f4.addChild(family3Child1);
-        System.out.println("New Child Added! Family Count is: " + f4.countFamily());
-        f4.addPet(myCat1);
+        Family family4 = new Family(family3Mother, family3Father);
+        family4.addChild(family3Child1);
+        System.out.println("New Child Added! Family Count is: " + family4.countFamily());
+        family4.addPet(myCat1);
         System.out.println("Pet Added! Welcome " + myCat1.getNickname());
 
-        System.out.println("hashCode(f1, f2): " + (f1.hashCode() == f2.hashCode()));
-        System.out.println("equals(f1, f2): " + f1.equals(f2));
-        System.out.println("hashCode(f3, f4): " + (f3.hashCode() == f4.hashCode()));
-        System.out.println("equals(f3, f4): " + f3.equals(f4));
-        f1.addPet(myDog3);
+        System.out.println("hashCode(family1, family2): " + (family1.hashCode() == family2.hashCode()));
+        System.out.println("equals(family1, family2): " + family1.equals(family2));
+        System.out.println("hashCode(family3, family4): " + (family3.hashCode() == family4.hashCode()));
+        System.out.println("equals(family3, family4): " + family3.equals(family4));
+        family1.addPet(myDog3);
 
         System.out.println("\n------------- Advanced Part ---------------------");
         Human randomSexChild = family2Father.bornChild(family1Father.getFamily());

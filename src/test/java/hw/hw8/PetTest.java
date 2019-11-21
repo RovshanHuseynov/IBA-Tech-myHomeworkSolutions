@@ -28,27 +28,27 @@ public class PetTest {
     }
 
     @Test
-    public void testEquals1() {
+    public void testEqualsMyDog1MyDog2() {
         assertEquals(true, myDog1.equals(myDog2));
     }
 
     @Test
-    public void testEqual2() {
+    public void testEqualsMyDog1MyCat1() {
         assertEquals(false, myDog1.equals(myCat1));
     }
 
     @Test
-    public void testHashCode1() {
+    public void testHashCodeMyDog1MyDog2() {
         assertEquals(myDog1.hashCode(), myDog2.hashCode());
     }
 
     @Test
-    public void testHashCode2() {
+    public void testHashCodeMyDog1MyCat1() {
         assertNotEquals(myDog1.hashCode(), myCat1.hashCode());
     }
 
     @Test
-    public void testGetAge1() {
+    public void testGetAgeMyDog2() {
         assertEquals(3, myDog2.getAge());
     }
 }

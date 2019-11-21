@@ -48,34 +48,34 @@ public class FamilyTest {
     }
 
     @Test
-    public void countFamily1() {
+    public void countFamily1Count() {
         assertEquals(4, f1.countFamily());
     }
 
     @Test
-    public void addChild1() {
+    public void addChildFamily1Child3() {
         int previous = f1.getChildren().size();
         f1.addChild(family1Child3);
         assertSame(previous + 1, f1.getChildren().size());
     }
 
     @Test
-    public void deleteChild1() {
+    public void deleteChildFamily1Child1() {
         assertEquals("Child was found and deleted!", main.deleteChildMessage(f1.deleteChild(family1Child1)));
     }
 
     @Test
-    public void deleteChild2() {
+    public void deleteChildFamily1Child4() {
         assertEquals("This child does not belong to this family!", main.deleteChildMessage(f1.deleteChild(family1Child4)));
     }
 
     @Test
-    public void deleteChild3() {
+    public void deleteChildIndex0() {
         assertEquals("Child was found and deleted!", main.deleteChildMessage(f1.deleteChild(0)));
     }
 
     @Test
-    public void deleteChild4() {
+    public void deleteChildIndex5() {
         assertEquals("This child does not belong to this family!", main.deleteChildMessage(f1.deleteChild(5)));
     }
 

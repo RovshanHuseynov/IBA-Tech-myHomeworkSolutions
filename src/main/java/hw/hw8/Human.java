@@ -36,29 +36,6 @@ public class Human implements HumanCreatorable {
     }
 
     @Override
-    public Human bornChild(Family family) {
-        String[] womanNames = {"Lale", "Kemale", "Fidan", "Nergiz", "Sunbul", "Lamiye", "Aydan"};
-        String[] manNames = {"Samir", "Amil", "Kamil", "Letif", "Eli", "Arif", "Ehed"};
-        Random random = new Random();
-        int childSex = random.nextInt(2);
-        String childName = "";
-        String childSurname = family.getFather().getSurname();
-        int childIq = (family.getFather().getIq() + family.getMother().getIq()) / 2;
-        if (childSex == 0) {
-            childName = womanNames[random.nextInt(7)];
-            Woman bornChild = new Woman(childName, childSurname, 1990, childIq);
-            family.addChild(bornChild);
-            return bornChild;
-        } else if (childSex == 1) {
-            childName = manNames[random.nextInt(7)];
-            Man bornChild = new Man(childName, childSurname, 1990, childIq);
-            family.addChild(bornChild);
-            return bornChild;
-        }
-        return new Human();
-    }
-
-    @Override
     protected void finalize() {
         System.out.println("Removal of Unnecessary Objects");
     }
@@ -113,6 +90,29 @@ public class Human implements HumanCreatorable {
         r = r * 31 + getYear();
         r = r * 31 + getIq();
         return r;
+    }
+
+    @Override
+    public Human bornChild(Family family) {
+        String[] womanNames = {"Lale", "Kemale", "Fidan", "Nergiz", "Sunbul", "Lamiye", "Aydan"};
+        String[] manNames = {"Samir", "Amil", "Kamil", "Letif", "Eli", "Arif", "Ehed"};
+        Random random = new Random();
+        int childSex = random.nextInt(2);
+        String childName = "";
+        String childSurname = family.getFather().getSurname();
+        int childIq = (family.getFather().getIq() + family.getMother().getIq()) / 2;
+        if (childSex == 0) {
+            childName = womanNames[random.nextInt(7)];
+            Woman bornChild = new Woman(childName, childSurname, 1990, childIq);
+            family.addChild(bornChild);
+            return bornChild;
+        } else if (childSex == 1) {
+            childName = manNames[random.nextInt(7)];
+            Man bornChild = new Man(childName, childSurname, 1990, childIq);
+            family.addChild(bornChild);
+            return bornChild;
+        }
+        return new Human();
     }
 
     public void greetPet(Pet pet) {

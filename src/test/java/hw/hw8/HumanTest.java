@@ -43,42 +43,42 @@ public class HumanTest {
     }
 
     @Test
-    public void testEquals1() {
+    public void testEqualsFamily1MotherFamily2Father() {
         assertEquals(false, family1Mother.equals(family1Father));
     }
 
     @Test
-    public void testEquals2() {
+    public void testEqualsFamily1Child3Family1Child4() {
+        assertEquals(false, family1Child3.equals(family1Child4));
+    }
+
+    @Test
+    public void testEqualsFamily1Child4Family1Child5() {
         assertEquals(false, family1Child4.equals(family1Child5));
     }
 
     @Test
-    public void testEquals3() {
-        assertEquals(false, family1Child4.equals(family1Child5));
-    }
-
-    @Test
-    public void testEquals4() {
+    public void testEqualsFamily1Child5Family1Child6() {
         assertEquals(true, family1Child5.equals(family1Child6));
     }
 
     @Test
-    public void testEquals5() {
+    public void testEqualsFamily1Child6Family1Child7() {
         assertEquals(false, family1Child6.equals(family1Child7));
     }
 
     @Test
-    public void testEquals6() {
+    public void testEqualsFamily1Child7Family1Child8() {
         assertEquals(false, family1Child7.equals(family1Child8));
     }
 
     @Test
-    public void testHashCode1() {
+    public void testHashCodeFamily1Child1Family1Child2() {
         assertEquals(false, family1Child1.hashCode() == family1Child2.hashCode());
     }
 
     @Test
-    public void testHashCode2() {
+    public void testHashCodeFamily1Child5Family1Child6() {
         assertEquals(true, family1Child5.hashCode() == family1Child6.hashCode());
     }
 }
