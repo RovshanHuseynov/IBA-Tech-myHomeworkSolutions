@@ -54,8 +54,10 @@ public class Family {
         else if (!(obj instanceof Family)) return false;
 
         Family that = (Family) obj;
-        if (this.getCountChildren() == that.getCountChildren() && this.getFather().toString().equals(that.getFather().toString())
-                && this.getMother().toString().equals(that.getMother().toString()) && this.getPet().toString().equals(that.getPet().toString())
+        if (this.getCountChildren() == that.getCountChildren()
+                && this.getFather().toString().equals(that.getFather().toString())
+                && this.getMother().toString().equals(that.getMother().toString())
+                && this.getPet().toString().equals(that.getPet().toString())
                 && Arrays.equals(this.children, that.children)) {
             return true;
         }

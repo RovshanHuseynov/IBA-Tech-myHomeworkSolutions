@@ -1,31 +1,32 @@
-package hw.hw7;
+package hw.hw9;
 
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public abstract class Pet {
     private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
-    private String[] habits;
+    private Set<String> habits;
 
     public Pet() {
-        this(Species.UNKNOWN, "", 0, 0, new String[]{});
+        this(Species.UNKNOWN, "", 0, 0, new HashSet<>());
     }
 
     public Pet(Species species) {
-        this(species, "", 0, 0, new String[]{});
+        this(species, "", 0, 0, new HashSet<>());
     }
 
     public Pet(Species species, String nickname) {
-        this(species, nickname, 0, 0, new String[]{});
+        this(species, nickname, 0, 0, new HashSet<>());
     }
 
     public Pet(Species species, String nickname, int age, int trickLevel) {
-        this(species, nickname, age, trickLevel, new String[]{});
+        this(species, nickname, age, trickLevel, new HashSet<>());
     }
 
-    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {
+    public Pet(Species species, String nickname, int age, int trickLevel, Set<String> habits) {
         this.species = species;
         this.nickname = nickname;
         this.age = age;
@@ -42,8 +43,17 @@ public abstract class Pet {
     public String toString() {
         String s = getSpecies() + "{" + "nickname='" + getNickname() + '\'' + ", age=" + getAge()
                 + ", trickLevel=" + getTrickLevel() + ", habits=";
-        if (habits.length > 0) {
-            s += Arrays.toString(habits);
+
+        if (habits.size() > 0) {
+            int cnt = 0;
+
+            s += "[";
+            for (String item : habits) {
+                cnt++;
+                s += item;
+                if (cnt < habits.size()) s += ", ";
+            }
+            s += "]";
         } else {
             s += "[]";
         }
@@ -63,11 +73,10 @@ public abstract class Pet {
         else if (!(obj instanceof Pet)) return false;
 
         Pet that = (Pet) obj;
-        if (that.getAge() == this.getAge()
-                && that.getTrickLevel() == this.getTrickLevel()
+        if (that.getAge() == this.getAge() && that.getTrickLevel() == this.getTrickLevel()
                 && that.getSpecies().equals(this.getSpecies())
                 && that.getNickname().equals(this.getNickname())
-                && Arrays.equals(this.habits, that.habits)) {
+                && this.habits.equals(that.habits)) {
             return true;
         }
 
@@ -105,7 +114,7 @@ public abstract class Pet {
         return trickLevel;
     }
 
-    public String[] getHabits() {
+    public Set<String> getHabits() {
         return habits;
     }
 }

@@ -1,4 +1,9 @@
-package hw.hw7;
+package hw.hw9;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 
 public class Main {
     @Override
@@ -12,20 +17,21 @@ public class Main {
         }
 
         Dog myDog1 = new Dog(Species.DOG, "Ares");
-        DomesticCat myCat1 = new DomesticCat(Species.DOMESTIC_CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
-        Dog myDog2 = new Dog(Species.DOG, "Zeus", 3, 20, new String[]{"bark", "run fast", "smell well"});
-        DomesticCat myCat2 = new DomesticCat(Species.DOMESTIC_CAT, "Luna", 2, 30, new String[]{"jump", "lick", "sleep"});
+        DomesticCat myCat1 = new DomesticCat(Species.DOMESTIC_CAT, "Luna", 2, 30, new HashSet<>(Arrays.asList("jump", "lick", "sleep")));
+        Dog myDog2 = new Dog(Species.DOG, "Zeus", 3, 20, new HashSet<>(Arrays.asList("bark", "run fast", "smell well")));
+        DomesticCat myCat2 = new DomesticCat(Species.DOMESTIC_CAT, "Luna", 2, 30, new HashSet<>(Arrays.asList("jump", "lick", "sleep")));
+        Dog myDog3 = new Dog(Species.DOG, "Boro", 1, 35, new HashSet<>(Arrays.asList("run fast", "chase people", "find drugs")));
 
-        Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new String[][]{{DayOfWeek.MONDAY.name(), "go shopping"}});
+        Human family1Mother = new Human("Sevinc", "Huseynova", 1967, 80, new HashMap<DayOfWeek, List<String>>() {{ put(DayOfWeek.MONDAY, Arrays.asList("go shopping", "take care of children")); }});
         Human family1Father = new Human("Mirze", "Huseynov", 1965, 90);
         Human family1Child1 = new Human("Rovshan", "Huseynov", 1994);
         Human family1Child2 = new Human("Sabina", "Huseynova", 1993);
         Human family1Child3 = new Human("Kamil", "Huseynov", 1997);
-        Human family1Child4 = new Human("Elekber", "Huseynov", 1990, 90, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
-        Human family1Child5 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
-        Human family1Child6 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
-        Human family1Child7 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "do homework"}, {DayOfWeek.TUESDAY.name(), "read books"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
-        Human family1Child8 = new Human("Ramin", "Huseynov", 1980, 80, new String[][]{{DayOfWeek.MONDAY.name(), "sleep"}, {DayOfWeek.TUESDAY.name(), "read books"}, {DayOfWeek.SUNDAY.name(), "have a rest"}});
+        Human family1Child4 = new Human("Elekber", "Huseynov", 1990, 90, new HashMap<DayOfWeek, List<String>>() {{ put(DayOfWeek.MONDAY, Arrays.asList("do homework"));put(DayOfWeek.SUNDAY, Arrays.asList("have a rest")); }});
+        Human family1Child5 = new Human("Ramin", "Huseynov", 1980, 80, new HashMap<DayOfWeek, List<String>>() {{ put(DayOfWeek.MONDAY, Arrays.asList("do homework"));put(DayOfWeek.SUNDAY, Arrays.asList("have a rest")); }});
+        Human family1Child6 = new Human("Ramin", "Huseynov", 1980, 80, new HashMap<DayOfWeek, List<String>>() {{ put(DayOfWeek.MONDAY, Arrays.asList("do homework"));put(DayOfWeek.SUNDAY, Arrays.asList("have a rest")); }});
+        Human family1Child7 = new Human("Ramin", "Huseynov", 1980, 80, new HashMap<DayOfWeek, List<String>>() {{ put(DayOfWeek.MONDAY, Arrays.asList("do homework"));put(DayOfWeek.TUESDAY, Arrays.asList("read books"));put(DayOfWeek.SUNDAY, Arrays.asList("have a rest")); }});
+        Human family1Child8 = new Human("Ramin", "Huseynov", 1980, 80, new HashMap<DayOfWeek, List<String>>() {{ put(DayOfWeek.MONDAY, Arrays.asList("sleep"));put(DayOfWeek.TUESDAY, Arrays.asList("read books"));put(DayOfWeek.SUNDAY, Arrays.asList("have a rest")); }});
 
         System.out.println("hashCode(family1Child1, family1Child2): " + (family1Child1.hashCode() == family1Child2.hashCode()));
         System.out.println("equals(family1Mother, family1Father): " + family1Mother.equals(family1Father));
@@ -64,10 +70,10 @@ public class Main {
         System.out.println("New Child Added! Family Count is: " + family1.countFamily());
 
         System.out.println(family1.toString());
-        System.out.println(family1.getChildren()[3].toString());
+        System.out.println(family1.getChildren().get(3).toString());
 
         System.out.println(deleteChildMessage(family1.deleteChild(0)) + " Family Count is: " + family1.countFamily());
-        System.out.println(family1.getChildren()[0].toString());
+        System.out.println(family1.getChildren().get(0).toString());
         System.out.println(deleteChildMessage(family1.deleteChild(6)) + " Family Count is: " + family1.countFamily());
         System.out.println(deleteChildMessage(family1.deleteChild(0)) + " Family Count is: " + family1.countFamily());
         System.out.println(deleteChildMessage(family1.deleteChild(0)) + " Family Count is: " + family1.countFamily());
@@ -116,16 +122,14 @@ public class Main {
         System.out.println("New Child Added! Family Count is: " + family3.countFamily());
         family3.addPet(myCat1);
         System.out.println("Pet Added! Welcome " + myCat1.getNickname());
-        System.out.println(family3.getPet().toString());
         System.out.println("Family Count is: " + family3.countFamily());
         System.out.println(deleteChildMessage(family3.deleteChild(1)) + " Family Count is: " + family3.countFamily());
         System.out.println("Family Count is: " + family3.countFamily());
         System.out.println(family3.toString());
 
-        family3.getPet().eat();
-        family3.getPet().respond();
+        myCat1.eat();
+        myCat1.respond();
         myCat1.foul();
-        System.out.println(family3.getPet().toString());
 
         family3Mother.greetPet(myCat1);
         family3Mother.describePet(myCat1);
@@ -143,9 +147,10 @@ public class Main {
         System.out.println("equals(family1, family2): " + family1.equals(family2));
         System.out.println("hashCode(family3, family4): " + (family3.hashCode() == family4.hashCode()));
         System.out.println("equals(family3, family4): " + family3.equals(family4));
+        family1.addPet(myDog3);
 
         System.out.println("\n------------- Advanced Part ---------------------");
-        Human randomSexChild = family1Father.bornChild(family1Father.getFamily());
+        Human randomSexChild = family2Father.bornChild(family1Father.getFamily());
         System.out.println("randomSexChild: " + randomSexChild.toString());
         System.out.println(family1Father.getFamily().toString());
     }

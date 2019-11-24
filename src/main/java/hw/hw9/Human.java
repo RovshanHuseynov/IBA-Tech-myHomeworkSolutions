@@ -1,6 +1,8 @@
-package hw.hw7;
+package hw.hw9;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class Human implements HumanCreatorable {
@@ -8,26 +10,26 @@ public class Human implements HumanCreatorable {
     private String surname;
     private int year;
     private int iq;
-    private String[][] schedule;
+    private Map<DayOfWeek, List<String>> schedule;
     private Family family;
 
     public Human() {
-        this("", "", 0, 0, new String[][]{}, null);
+        this("", "", 0, 0, new HashMap<>(), null);
     }
 
     public Human(String name, String surname, int year) {
-        this(name, surname, year, 0, new String[][]{}, null);
+        this(name, surname, year, 0, new HashMap<>(), null);
     }
 
     public Human(String name, String surname, int year, int iq) {
-        this(name, surname, year, iq, new String[][]{}, null);
+        this(name, surname, year, iq, new HashMap<>(), null);
     }
 
-    public Human(String name, String surname, int year, int iq, String[][] schedule) {
+    public Human(String name, String surname, int year, int iq, Map<DayOfWeek, List<String>> schedule) {
         this(name, surname, year, iq, schedule, null);
     }
 
-    public Human(String name, String surname, int year, int iq, String[][] schedule, Family family) {
+    public Human(String name, String surname, int year, int iq, Map<DayOfWeek, List<String>> schedule, Family family) {
         this.name = name;
         this.surname = surname;
         this.year = year;
@@ -37,7 +39,7 @@ public class Human implements HumanCreatorable {
     }
 
     @Override
-    protected void finalize() throws Throwable {
+    protected void finalize() {
         System.out.println("Removal of Unnecessary Objects");
     }
 
@@ -46,10 +48,18 @@ public class Human implements HumanCreatorable {
         String s = "Human{" + "name='" + getName() + '\'' + ", surname='" + getSurname() + '\'' +
                 ", year=" + getYear() + ", iq=" + getIq() + ", schedule=";
 
-        if (schedule.length > 0) {
-            for (int i = 0; i < schedule.length; i++) {
-                s += Arrays.toString(schedule[i]);
-            }
+        if (schedule.size() > 0) {
+            StringBuilder sb = new StringBuilder();
+            schedule.keySet().forEach(dayOfWeek -> {
+                sb.append("[" + dayOfWeek + " -> ");
+                schedule.get(dayOfWeek).forEach(s1 -> {
+                    sb.append(s1);
+                    if (!s1.equals(schedule.get(dayOfWeek).get(schedule.get(dayOfWeek).size() - 1)))
+                        sb.append(", ");
+                });
+                sb.append("]");
+            });
+            s += sb.toString();
         } else {
             s += "[]";
         }
@@ -68,16 +78,11 @@ public class Human implements HumanCreatorable {
         if (this.getYear() == that.getYear()
                 && this.getIq() == that.getIq()
                 && this.getName().equals(that.getName())
-                && this.getSurname().equals(that.getSurname())) {
-            if (this.schedule.length == that.schedule.length) {
-                for (int i = 0; i < this.schedule.length; i++) {
-                    if (!Arrays.equals(this.schedule[i], that.schedule[i])) {
-                        return false;
-                    }
-                }
-                return true;
-            }
-        }
+                && this.getSurname().equals(that.getSurname())
+                && this.schedule.size() == that.schedule.size()
+                && this.schedule.equals(that.schedule))
+            return true;
+
         return false;
     }
 
@@ -160,7 +165,7 @@ public class Human implements HumanCreatorable {
         return iq;
     }
 
-    public String[][] getSchedule() {
+    public Map<DayOfWeek, List<String>> getSchedule() {
         return schedule;
     }
 }
