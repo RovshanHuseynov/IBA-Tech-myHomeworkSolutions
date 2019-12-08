@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Family {
+    private int index;
     private Human mother;
     private Human father;
     private List<Human> children;

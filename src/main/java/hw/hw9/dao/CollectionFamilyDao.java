@@ -2,10 +2,11 @@ package hw.hw9.dao;
 
 import hw.hw9.entity.Family;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CollectionFamilyDao implements FamilyDao {
-    private List<Family> family;
+    private List<Family> family = new ArrayList<>();
 
     @Override
     public List<Family> getAllFamilies() {
@@ -14,6 +15,9 @@ public class CollectionFamilyDao implements FamilyDao {
 
     @Override
     public Family getFamilyByIndex(int index) {
+        if (index > family.size()) {
+            return null;
+        }
         return family.get(index);
     }
 
@@ -29,5 +33,15 @@ public class CollectionFamilyDao implements FamilyDao {
 
     @Override
     public void saveFamily(Family family) {
+        if (isFamilyExist(family)) {
+            //update an existing family in List<Family>
+        } else {
+            // save at the end of the list
+        }
+    }
+
+    @Override
+    public boolean isFamilyExist(Family family) {
+        return false;
     }
 }

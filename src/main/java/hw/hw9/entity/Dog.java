@@ -1,7 +1,7 @@
 package hw.hw9.entity;
 
-import hw.hw9.Foulable;
-import hw.hw9.Species;
+import hw.hw9.interfacee.Foulable;
+import hw.hw9.enumm.Species;
 
 import java.util.HashSet;
 import java.util.Set;

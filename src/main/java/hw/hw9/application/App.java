@@ -1,12 +1,11 @@
 package hw.hw9.application;
 
-import hw.hw9.DayOfWeek;
-import hw.hw9.Species;
+import hw.hw9.enumm.DayOfWeek;
+import hw.hw9.enumm.Species;
 import hw.hw9.entity.Dog;
 import hw.hw9.entity.DomesticCat;
 import hw.hw9.entity.Family;
 import hw.hw9.entity.Human;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,7 +13,7 @@ import java.util.List;
 
 public class App {
     @Override
-    protected void finalize() throws Throwable {
+    protected void finalize() {
         System.out.println("Removal of Unnecessary Objects");
     }
 

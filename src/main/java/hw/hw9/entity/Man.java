@@ -1,7 +1,6 @@
 package hw.hw9.entity;
 
-import hw.hw9.DayOfWeek;
-
+import hw.hw9.enumm.DayOfWeek;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
