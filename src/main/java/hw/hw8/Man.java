@@ -27,7 +27,7 @@ public final class Man extends Human {
     }
 
     public void repairCar() {
-        System.out.println("MakeUp");
+        System.out.println("Lets Repair My Car");
     }
 
     public void greetPet(Pet pet) {

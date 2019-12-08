@@ -1,6 +1,6 @@
 package hw.hw9;
 
-enum Species {
+public enum Species {
     DOMESTIC_CAT(false, 4, false),
     ROBO_CAT(false, 4, false),
     DOG(false, 4, false),

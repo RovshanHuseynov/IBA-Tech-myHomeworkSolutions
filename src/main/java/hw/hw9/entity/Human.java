@@ -1,4 +1,7 @@
-package hw.hw9;
+package hw.hw9.entity;
+
+import hw.hw9.DayOfWeek;
+import hw.hw9.HumanCreatorable;
 
 import java.util.HashMap;
 import java.util.List;

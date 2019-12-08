@@ -1,5 +1,5 @@
 package hw.hw9;
 
-interface Foulable {
+public interface Foulable {
     public void foul();
 }

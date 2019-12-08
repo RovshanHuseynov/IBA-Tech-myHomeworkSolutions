@@ -1,4 +1,6 @@
-package hw.hw9;
+package hw.hw9.entity;
+
+import hw.hw9.DayOfWeek;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +29,7 @@ public final class Man extends Human {
     }
 
     public void repairCar() {
-        System.out.println("MakeUp");
+        System.out.println("Lets Repair My Car");
     }
 
     public void greetPet(Pet pet) {

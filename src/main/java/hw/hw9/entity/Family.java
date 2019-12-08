@@ -1,4 +1,4 @@
-package hw.hw9;
+package hw.hw9.entity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
