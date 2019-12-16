@@ -15,6 +15,4 @@ public interface FamilyDao {
     public boolean deleteFamily(Family family);
 
     public void saveFamily(Family family);
-
-    public boolean isFamilyExist(Family family);
 }

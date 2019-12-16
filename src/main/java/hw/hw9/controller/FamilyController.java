@@ -1,54 +1,79 @@
 package hw.hw9.controller;
 
+import hw.hw9.dao.FamilyDao;
 import hw.hw9.databasee.Database;
+import hw.hw9.entity.Family;
+import hw.hw9.entity.Human;
+import hw.hw9.entity.Pet;
 import hw.hw9.service.FamilyService;
+
+import java.util.List;
+import java.util.Set;
 
 public class FamilyController {
     private final FamilyService familyService;
+    private final FamilyDao familyDao;
+    private final Database database;
 
-    public FamilyController(Database db) {
-        this.familyService = new FamilyService(db);
+    public FamilyController(FamilyService familyService, FamilyDao familyDao, Database database) {
+        this.familyService = familyService;
+        this.familyDao = familyDao;
+        this.database = database;
     }
 
-    public void getAllFamilies() {
+    public List<Family> getAllFamilies() {
+        return familyService.getAllFamilies();
     }
 
     public void displayAllFamilies() {
+        familyService.displayAllFamilies();
     }
 
-    public void getFamiliesBiggerThan() {
+    public List<Family> getFamiliesBiggerThan(int number) {
+        return familyService.getFamiliesBiggerThan(number);
     }
 
-    public void getFamiliesLessThan() {
+    public List<Family> getFamiliesLessThan(int number) {
+        return familyService.getFamiliesLessThan(number);
     }
 
-    public void countFamiliesWithMemberNumber() {
+    public List<Family> countFamiliesWithMemberNumber(int number) {
+        return familyService.countFamiliesWithMemberNumber(number);
     }
 
-    public void createNewFamily() {
+    public void createNewFamily(Human mother, Human father) {
+        familyService.createNewFamily(mother, father);
     }
 
-    public void deleteFamilyByIndex() {
+    public boolean deleteFamilyByIndex(int index) {
+        return familyService.deleteFamilyByIndex(index);
     }
 
-    public void bornChild() {
+    public void bornChild(Family family, String gender) {
+        familyService.bornChild(family, gender);
     }
 
-    public void adoptChild() {
+    public Family adoptChild(Family family, Human human) {
+        return familyService.adoptChild(family, human);
     }
 
-    public void deleteAllChildrenOlderThen() {
+    public void deleteAllChildrenOlderThen(int age) {
+        familyService.deleteAllChildrenOlderThen(age);
     }
 
-    public void count() {
+    public int count() {
+        return familyService.count();
     }
 
-    public void getFamilyById() {
+    public Family getFamilyById(int index) {
+        return familyService.getFamilyById(index);
     }
 
-    public void getPets() {
+    public Set<Pet> getPets(int index) {
+        return familyService.getPets(index);
     }
 
-    public void addPet() {
+    public void addPet(int index, Pet pet) {
+        familyService.addPet(index, pet);
     }
 }

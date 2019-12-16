@@ -8,8 +8,8 @@ import java.util.List;
 public class CollectionFamilyDao implements FamilyDao {
     private final List<Family> families;
 
-    public CollectionFamilyDao(Database db) {
-        this.families = db.getFamilies();
+    public CollectionFamilyDao(Database database) {
+        this.families = database.getFamilies();
     }
 
     @Override
@@ -58,15 +58,8 @@ public class CollectionFamilyDao implements FamilyDao {
 
     @Override
     public void saveFamily(Family family) {
-        if (isFamilyExist(family)) {
-            //update an existing family in List<Family>
-        } else {
-            // save at the end of the list
+        if (!families.contains(family)) {
+            families.add(family);
         }
-    }
-
-    @Override
-    public boolean isFamilyExist(Family family) {
-        return false;
     }
 }
