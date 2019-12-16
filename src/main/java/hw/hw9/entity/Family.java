@@ -12,16 +12,12 @@ public class Family {
     private List<Human> children;
     private Set<Pet> pet;
 
-    public Family(Human mother, Human father) {
+    public Family(int index, Human mother, Human father) {
+        this.index = index;
         this.mother = mother;
         this.father = father;
         this.children = new ArrayList<>();
         this.pet = new HashSet<>();
-    }
-
-    @Override
-    protected void finalize() {
-        System.out.println("Removal of Unnecessary Objects");
     }
 
     @Override
@@ -104,6 +100,10 @@ public class Family {
 
     public int countFamily() {
         return 2 + children.size();
+    }
+
+    public int getIndex() {
+        return index;
     }
 
     public Human getMother() {

@@ -5,6 +5,7 @@ import hw.hw9.entity.Family;
 import java.util.List;
 
 public interface FamilyDao {
+
     public List<Family> getAllFamilies();
 
     public Family getFamilyByIndex(int index);

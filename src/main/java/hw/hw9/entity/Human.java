@@ -41,11 +41,6 @@ public class Human implements HumanCreatorable {
     }
 
     @Override
-    protected void finalize() {
-        System.out.println("Removal of Unnecessary Objects");
-    }
-
-    @Override
     public String toString() {
         String s = "Human{" + "name='" + getName() + '\'' + ", surname='" + getSurname() + '\'' +
                 ", year=" + getYear() + ", iq=" + getIq() + ", schedule=";

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Family {
+    private int id;
     private Human mother;
     private Human father;
     private List<Human> children;
@@ -105,6 +106,14 @@ public class Family {
         return 2 + children.size();
     }
 
+    public Set<Pet> getPet() {
+        return pet;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Human getMother() {
         return mother;
     }
@@ -115,9 +124,5 @@ public class Family {
 
     public List<Human> getChildren() {
         return children;
-    }
-
-    public Set<Pet> getPet() {
-        return pet;
     }
 }

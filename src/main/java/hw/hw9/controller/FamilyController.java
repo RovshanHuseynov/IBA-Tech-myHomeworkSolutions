@@ -1,6 +1,15 @@
 package hw.hw9.controller;
 
+import hw.hw9.databasee.Database;
+import hw.hw9.service.FamilyService;
+
 public class FamilyController {
+    private final FamilyService familyService;
+
+    public FamilyController(Database db) {
+        this.familyService = new FamilyService(db);
+    }
+
     public void getAllFamilies() {
     }
 

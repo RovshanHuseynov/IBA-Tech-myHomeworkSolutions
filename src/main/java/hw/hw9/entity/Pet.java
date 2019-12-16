@@ -37,11 +37,6 @@ public abstract class Pet {
     }
 
     @Override
-    protected void finalize() throws Throwable {
-        System.out.println("Removal of Unnecessary Objects");
-    }
-
-    @Override
     public String toString() {
         String s = getSpecies() + "{" + "nickname='" + getNickname() + '\'' + ", age=" + getAge()
                 + ", trickLevel=" + getTrickLevel() + ", habits=";

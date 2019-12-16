@@ -1,34 +1,59 @@
 package hw.hw9.dao;
 
+import hw.hw9.databasee.Database;
 import hw.hw9.entity.Family;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CollectionFamilyDao implements FamilyDao {
-    private List<Family> family = new ArrayList<>();
+    private final List<Family> families;
+
+    public CollectionFamilyDao(Database db) {
+        this.families = db.getFamilies();
+    }
 
     @Override
     public List<Family> getAllFamilies() {
-        return family;
+        return families;
     }
 
     @Override
     public Family getFamilyByIndex(int index) {
-        if (index > family.size()) {
-            return null;
+        for (Family f : families) {
+            if (f.getIndex() == index) {
+                return f;
+            }
         }
-        return family.get(index);
+        return null;
     }
 
     @Override
     public boolean deleteFamily(int index) {
-        return family.remove(family.get(index));
+        for (Family f : families) {
+            if (f.getIndex() == index) {
+                return families.remove(f);
+            }
+        }
+        return false;
     }
 
     @Override
     public boolean deleteFamily(Family family) {
-        return this.family.remove(family);
+        if (families.contains(family)) {
+            return families.remove(family);
+        }
+        /*
+        for (Family f : families) {
+            if (f.getIndex() == family.getIndex() &&
+                    f.getFather().equals(family.getFather()) &&
+                    f.getMother().equals(family.getMother()) &&
+                    f.getPet().equals(family.getPet()) &&
+                    f.getChildren().equals(family.getChildren())) {
+                families.remove(family);
+            }
+        }
+        */
+        return false;
     }
 
     @Override
