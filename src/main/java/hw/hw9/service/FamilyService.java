@@ -12,11 +12,9 @@ import java.util.Set;
 
 public class FamilyService {
     private final FamilyDao familyDao;
-    private final Database database;
 
-    public FamilyService(FamilyDao familyDao, Database database) {
+    public FamilyService(FamilyDao familyDao) {
         this.familyDao = familyDao;
-        this.database = database;
     }
 
     public List<Family> getAllFamilies() {

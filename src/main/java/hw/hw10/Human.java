@@ -1,41 +1,47 @@
-package hw.hw9.entity;
+package hw.hw10;
 
-import hw.hw9.interfacee.HumanCreatorable;
+import hw.hw9.entity.Family;
+import hw.hw9.entity.Man;
+import hw.hw9.entity.Pet;
+import hw.hw9.entity.Woman;
 import hw.hw9.enumm.DayOfWeek;
+import hw.hw9.interfacee.HumanCreatorable;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
-public class Human implements HumanCreatorable {
+// implements HumanCreatorable
+public class Human {
     private String name;
     private String surname;
-    private int year;
+    private LocalDate birthDate;
     private int iq;
     private Map<DayOfWeek, List<String>> schedule;
     private Family family;
 
     public Human() {
-        this("", "", 0, 0, new HashMap<>(), null);
+        this("", "", "0/0/1950", 0, new HashMap<>(), null);
     }
 
-    public Human(String name, String surname, int year) {
-        this(name, surname, year, 0, new HashMap<>(), null);
+    public Human(String name, String surname, String birthDate) {
+        this(name, surname, birthDate, 0, new HashMap<>(), null);
     }
 
-    public Human(String name, String surname, int year, int iq) {
-        this(name, surname, year, iq, new HashMap<>(), null);
+    public Human(String name, String surname, String birthDate, int iq) {
+        this(name, surname, birthDate, iq, new HashMap<>(), null);
     }
 
-    public Human(String name, String surname, int year, int iq, Map<DayOfWeek, List<String>> schedule) {
-        this(name, surname, year, iq, schedule, null);
+    public Human(String name, String surname, String birthDate, int iq, Map<DayOfWeek, List<String>> schedule) {
+        this(name, surname, birthDate, iq, schedule, null);
     }
 
-    public Human(String name, String surname, int year, int iq, Map<DayOfWeek, List<String>> schedule, Family family) {
+    public Human(String name, String surname, String birthDate, int iq, Map<DayOfWeek, List<String>> schedule, Family family) {
         this.name = name;
         this.surname = surname;
-        this.year = year;
+        String[] splitter = birthDate.split("/");
+        this.birthDate = LocalDate.of(Integer.parseInt(splitter[2]), Integer.parseInt(splitter[1]), Integer.parseInt(splitter[0]));
         this.iq = iq;
         this.schedule = schedule;
         this.family = family;
@@ -43,26 +49,14 @@ public class Human implements HumanCreatorable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Human{ name=");
-        sb.append("\'");
-        sb.append(name);
-        sb.append("\'");
-        sb.append(", surname=");
-        sb.append("\'");
-        sb.append(surname);
-        sb.append("\'");
-        sb.append(", year=");
-        sb.append(year);
-        sb.append(", iq=");
-        sb.append(iq);
-        sb.append(", schedule=");
+        String s = "Human{" + "name='" + name + '\'' + ", surname='" + surname + '\'' +
+                ", birthDate=" + birthDate.getDayOfMonth() + "/" + birthDate.getMonthValue() + "/" +
+                birthDate.getYear() + ", iq=" + getIq() + ", schedule=";
 
         if (schedule.size() > 0) {
+            StringBuilder sb = new StringBuilder();
             schedule.keySet().forEach(dayOfWeek -> {
-                sb.append("[");
-                sb.append(dayOfWeek);
-                sb.append(" -> ");
+                sb.append("[" + dayOfWeek + " -> ");
                 schedule.get(dayOfWeek).forEach(s1 -> {
                     sb.append(s1);
                     if (!s1.equals(schedule.get(dayOfWeek).get(schedule.get(dayOfWeek).size() - 1)))
@@ -70,12 +64,13 @@ public class Human implements HumanCreatorable {
                 });
                 sb.append("]");
             });
+            s += sb.toString();
         } else {
-            sb.append("[]");
+            s += "[]";
         }
 
-        sb.append("}");
-        return sb.toString();
+        s += "}";
+        return s;
     }
 
     @Override
@@ -85,8 +80,8 @@ public class Human implements HumanCreatorable {
         else if (!(obj instanceof Human)) return false;
 
         Human that = (Human) obj;
-        if (this.getYear() == that.getYear()
-                && this.getIq() == that.getIq()
+        if (this.getIq() == that.getIq()
+                && this.getBirthDate().equals(that.getBirthDate())
                 && this.getName().equals(that.getName())
                 && this.getSurname().equals(that.getSurname())
                 && this.schedule.size() == that.schedule.size()
@@ -100,11 +95,11 @@ public class Human implements HumanCreatorable {
     public int hashCode() {
         int r = getName().hashCode();
         r = r * 31 + getSurname().hashCode();
-        r = r * 31 + getYear();
+        r = r * 31 + getBirthDate().hashCode();
         r = r * 31 + getIq();
         return r;
     }
-
+/*
     @Override
     public Human bornChild(Family family) {
         String[] womanNames = {"Lale", "Kemale", "Fidan", "Nergiz", "Sunbul", "Lamiye", "Aydan"};
@@ -126,6 +121,11 @@ public class Human implements HumanCreatorable {
             return bornChild;
         }
         return new Human();
+    }
+ */
+
+    public String describeAge() {
+        return birthDate.toString();
     }
 
     public void greetPet(Pet pet) {
@@ -167,8 +167,8 @@ public class Human implements HumanCreatorable {
         return surname;
     }
 
-    public int getYear() {
-        return year;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
     public int getIq() {

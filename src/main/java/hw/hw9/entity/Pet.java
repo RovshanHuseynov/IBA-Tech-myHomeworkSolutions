@@ -38,36 +38,48 @@ public abstract class Pet {
 
     @Override
     public String toString() {
-        String s = getSpecies() + "{" + "nickname='" + getNickname() + '\'' + ", age=" + getAge()
-                + ", trickLevel=" + getTrickLevel() + ", habits=";
+        StringBuilder sb = new StringBuilder();
+        sb.append(species);
+        sb.append("{ nickname=");
+        sb.append("\'");
+        sb.append(nickname);
+        sb.append("\'");
+        sb.append(", age=");
+        sb.append(age);
+        sb.append(", trickLevel=");
+        sb.append(trickLevel);
+        sb.append(", habits=");
 
         if (habits.size() > 0) {
             int cnt = 0;
 
-            s += "[";
-            for (String item : habits) {
+            sb.append("[");
+            for (String h : habits) {
                 cnt++;
-                s += item;
-                if (cnt < habits.size()) s += ", ";
+                sb.append(h);
+                if (cnt < habits.size()) sb.append(", ");
             }
-            s += "]";
+            sb.append("]");
         } else {
-            s += "[]";
+            sb.append("[]");
         }
 
-        s += ", canFly=" + getSpecies().isCanFly();
-        s += ", numberOfLegs=" + getSpecies().getNumberOfLegs();
-        s += ", hasFur=" + getSpecies().isHasFur();
+        sb.append(", canFly=");
+        sb.append(species.isCanFly());
+        sb.append(", numberOfLegs=");
+        sb.append(species.getNumberOfLegs());
+        sb.append(", hasFur=");
+        sb.append(species.isHasFur());
+        sb.append("}");
 
-        s += "}";
-        return s;
+        return sb.toString();
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj == null) return false;
-        else if (obj == this) return true;
         else if (!(obj instanceof Pet)) return false;
+        else if (obj == this) return true;
 
         Pet that = (Pet) obj;
         if (that.getAge() == this.getAge() && that.getTrickLevel() == this.getTrickLevel()

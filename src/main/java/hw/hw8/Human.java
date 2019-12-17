@@ -42,13 +42,26 @@ public class Human implements HumanCreatorable {
 
     @Override
     public String toString() {
-        String s = "Human{" + "name='" + getName() + '\'' + ", surname='" + getSurname() + '\'' +
-                ", year=" + getYear() + ", iq=" + getIq() + ", schedule=";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Human{ name=");
+        sb.append("\'");
+        sb.append(name);
+        sb.append("\'");
+        sb.append(", surname=");
+        sb.append("\'");
+        sb.append(surname);
+        sb.append("\'");
+        sb.append(", year=");
+        sb.append(year);
+        sb.append(", iq=");
+        sb.append(iq);
+        sb.append(", schedule=");
 
         if (schedule.size() > 0) {
-            StringBuilder sb = new StringBuilder();
             schedule.keySet().forEach(dayOfWeek -> {
-                sb.append("[" + dayOfWeek + " -> ");
+                sb.append("[");
+                sb.append(dayOfWeek);
+                sb.append(" -> ");
                 schedule.get(dayOfWeek).forEach(s1 -> {
                     sb.append(s1);
                     if (!s1.equals(schedule.get(dayOfWeek).get(schedule.get(dayOfWeek).size() - 1)))
@@ -56,13 +69,12 @@ public class Human implements HumanCreatorable {
                 });
                 sb.append("]");
             });
-            s += sb.toString();
         } else {
-            s += "[]";
+            sb.append("[]");
         }
 
-        s += "}";
-        return s;
+        sb.append("}");
+        return sb.toString();
     }
 
     @Override

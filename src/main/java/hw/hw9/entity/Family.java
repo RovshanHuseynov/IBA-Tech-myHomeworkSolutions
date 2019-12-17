@@ -22,34 +22,42 @@ public class Family {
 
     @Override
     public String toString() {
-        String s = "Family{" + "mother=" + getMother() + ", father=" + getFather() + ", children=";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Family{ mother=");
+        sb.append(mother);
+        sb.append(", father=");
+        sb.append(father);
+        sb.append(", children=");
 
         if (children.size() > 0) {
             for (int i = 0; i < children.size() - 1; i++) {
-                s += children.get(i).toString() + ", ";
+                sb.append(children.get(i).toString());
+                sb.append(", ");
             }
-            s += children.get(children.size() - 1).toString();
+            sb.append(children.get(children.size() - 1).toString());
         } else {
-            s += "{}";
+            sb.append("{}");
         }
-        s += ", pet=";
+        sb.append(", pet=");
 
         if (pet.size() > 0) {
-            for (Pet item : pet) {
-                s += "[" + item.toString() + "]";
+            for (Pet p : pet) {
+                sb.append("[");
+                sb.append(p.toString());
+                sb.append("]");
             }
         } else {
-            s += "{}";
+            sb.append("{}");
         }
-        s += "}";
-        return s;
+        sb.append("}");
+        return sb.toString();
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj == null) return false;
-        else if (this == obj) return true;
         else if (!(obj instanceof Family)) return false;
+        else if (this == obj) return true;
 
         Family that = (Family) obj;
         if (this.children.size() == that.children.size()

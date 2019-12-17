@@ -10,8 +10,10 @@ public class App {
     public static void main(String[] args) {
         Database database = new Database();
         FamilyDao familyDao = new CollectionFamilyDao(database);
-        FamilyService familyService = new FamilyService(familyDao, database);
-        FamilyController familyController = new FamilyController(familyService, familyDao, database);
+        FamilyService familyService = new FamilyService(familyDao);
+        FamilyController familyController = new FamilyController(familyService);
+        System.out.println(familyController.getAllFamilies().size());
+        familyController.displayAllFamilies();
         System.out.println("Hello");
     }
 }
