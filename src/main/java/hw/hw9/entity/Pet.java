@@ -82,9 +82,10 @@ public abstract class Pet {
         else if (obj == this) return true;
 
         Pet that = (Pet) obj;
-        if (that.getAge() == this.getAge() && that.getTrickLevel() == this.getTrickLevel()
-                && that.getSpecies().equals(this.getSpecies())
-                && that.getNickname().equals(this.getNickname())
+        if (that.age == this.age
+                && that.trickLevel == this.trickLevel
+                && that.species.equals(this.species)
+                && that.nickname.equals(this.nickname)
                 && this.habits.equals(that.habits)) {
             return true;
         }
@@ -94,10 +95,10 @@ public abstract class Pet {
 
     @Override
     public int hashCode() {
-        int r = getSpecies().hashCode();
-        r = r * 31 + getNickname().hashCode();
-        r = r * 31 + getAge();
-        r = r * 31 + getTrickLevel();
+        int r = age;
+        r = r * 31 + trickLevel;
+        r = r * 31 + species.hashCode();
+        r = r * 31 + nickname.hashCode();
         return r;
     }
 

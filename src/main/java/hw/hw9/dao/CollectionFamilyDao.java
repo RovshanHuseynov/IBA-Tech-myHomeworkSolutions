@@ -20,7 +20,7 @@ public class CollectionFamilyDao implements FamilyDao {
     @Override
     public Family getFamilyByIndex(int index) {
         for (Family f : families) {
-            if (f.getIndex() == index) {
+            if (f.getId() == index) {
                 return f;
             }
         }
@@ -30,7 +30,7 @@ public class CollectionFamilyDao implements FamilyDao {
     @Override
     public boolean deleteFamily(int index) {
         for (Family f : families) {
-            if (f.getIndex() == index) {
+            if (f.getId() == index) {
                 return families.remove(f);
             }
         }

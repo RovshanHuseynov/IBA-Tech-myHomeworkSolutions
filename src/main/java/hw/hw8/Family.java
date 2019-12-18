@@ -6,17 +6,16 @@ import java.util.List;
 import java.util.Set;
 
 public class Family {
-    private int id;
     private Human mother;
     private Human father;
     private List<Human> children;
-    private Set<Pet> pet;
+    private Set<Pet> pets;
 
     public Family(Human mother, Human father) {
         this.mother = mother;
         this.father = father;
         this.children = new ArrayList<>();
-        this.pet = new HashSet<>();
+        this.pets = new HashSet<>();
     }
 
     @Override
@@ -44,8 +43,8 @@ public class Family {
         }
         sb.append(", pet=");
 
-        if (pet.size() > 0) {
-            for (Pet p : pet) {
+        if (pets.size() > 0) {
+            for (Pet p : pets) {
                 sb.append("[");
                 sb.append(p.toString());
                 sb.append("]");
@@ -65,9 +64,10 @@ public class Family {
 
         Family that = (Family) obj;
         if (this.children.size() == that.children.size()
-                && this.getFather().toString().equals(that.getFather().toString())
-                && this.getMother().toString().equals(that.getMother().toString())
-                && this.getPet().toString().equals(that.getPet().toString())
+                && this.pets.size() == that.pets.size()
+                && this.mother.toString().equals(that.mother.toString())
+                && this.father.toString().equals(that.father.toString())
+                && this.pets.toString().equals(that.pets.toString())
                 && this.children.toString().equals(that.children.toString())) {
             return true;
         }
@@ -77,10 +77,11 @@ public class Family {
     @Override
     public int hashCode() {
         int r = children.size();
-        r = r * 31 + pet.size();
-        r = r * 31 + getMother().hashCode();
-        r = r * 31 + getFather().hashCode();
-        r = r * 31 + getPet().hashCode();
+        r = r * 31 + pets.size();
+        r = r * 31 + mother.hashCode();
+        r = r * 31 + father.hashCode();
+        r = r * 31 + pets.hashCode();
+        r = r * 31 + children.hashCode();
         return r;
     }
 
@@ -90,7 +91,7 @@ public class Family {
     }
 
     public void addPet(Pet pet) {
-        this.pet.add(pet);
+        pets.add(pet);
     }
 
     public boolean deleteChild(int index) {
@@ -114,12 +115,8 @@ public class Family {
         return 2 + children.size();
     }
 
-    public Set<Pet> getPet() {
-        return pet;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public Set<Pet> getPets() {
+        return pets;
     }
 
     public Human getMother() {

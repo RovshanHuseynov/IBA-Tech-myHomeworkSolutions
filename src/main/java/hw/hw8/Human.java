@@ -80,14 +80,14 @@ public class Human implements HumanCreatorable {
     @Override
     public boolean equals(Object obj) {
         if (obj == null) return false;
-        else if (this == obj) return true;
         else if (!(obj instanceof Human)) return false;
+        else if (this == obj) return true;
 
         Human that = (Human) obj;
-        if (this.getYear() == that.getYear()
-                && this.getIq() == that.getIq()
-                && this.getName().equals(that.getName())
-                && this.getSurname().equals(that.getSurname())
+        if (this.year == that.year
+                && this.iq == that.iq
+                && this.name.equals(that.name)
+                && this.surname.equals(that.surname)
                 && this.schedule.size() == that.schedule.size()
                 && this.schedule.equals(that.schedule))
             return true;
@@ -97,10 +97,10 @@ public class Human implements HumanCreatorable {
 
     @Override
     public int hashCode() {
-        int r = getName().hashCode();
-        r = r * 31 + getSurname().hashCode();
-        r = r * 31 + getYear();
-        r = r * 31 + getIq();
+        int r = iq;
+        r = r * 31 + year;
+        r = r * 31 + surname.hashCode();
+        r = r * 31 + name.hashCode();
         return r;
     }
 

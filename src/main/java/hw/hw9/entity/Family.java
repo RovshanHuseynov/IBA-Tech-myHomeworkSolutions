@@ -6,24 +6,26 @@ import java.util.List;
 import java.util.Set;
 
 public class Family {
-    private int index;
+    private int id;
     private Human mother;
     private Human father;
     private List<Human> children;
-    private Set<Pet> pet;
+    private Set<Pet> pets;
 
-    public Family(int index, Human mother, Human father) {
-        this.index = index;
+    public Family(int id, Human mother, Human father) {
+        this.id = id;
         this.mother = mother;
         this.father = father;
         this.children = new ArrayList<>();
-        this.pet = new HashSet<>();
+        this.pets = new HashSet<>();
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Family{ mother=");
+        sb.append("Family{ id=");
+        sb.append(id);
+        sb.append(", mother=");
         sb.append(mother);
         sb.append(", father=");
         sb.append(father);
@@ -40,8 +42,8 @@ public class Family {
         }
         sb.append(", pet=");
 
-        if (pet.size() > 0) {
-            for (Pet p : pet) {
+        if (pets.size() > 0) {
+            for (Pet p : pets) {
                 sb.append("[");
                 sb.append(p.toString());
                 sb.append("]");
@@ -60,10 +62,12 @@ public class Family {
         else if (this == obj) return true;
 
         Family that = (Family) obj;
-        if (this.children.size() == that.children.size()
-                && this.getFather().toString().equals(that.getFather().toString())
-                && this.getMother().toString().equals(that.getMother().toString())
-                && this.getPet().toString().equals(that.getPet().toString())
+        if (this.id == that.id
+                && this.children.size() == that.children.size()
+                && this.pets.size() == that.pets.size()
+                && this.mother.toString().equals(that.mother.toString())
+                && this.father.toString().equals(that.father.toString())
+                && this.pets.toString().equals(that.pets.toString())
                 && this.children.toString().equals(that.children.toString())) {
             return true;
         }
@@ -72,11 +76,13 @@ public class Family {
 
     @Override
     public int hashCode() {
-        int r = children.size();
-        r = r * 31 + pet.size();
-        r = r * 31 + getMother().hashCode();
-        r = r * 31 + getFather().hashCode();
-        r = r * 31 + getPet().hashCode();
+        int r = id;
+        r = r * 31 + children.size();
+        r = r * 31 + pets.size();
+        r = r * 31 + mother.hashCode();
+        r = r * 31 + father.hashCode();
+        r = r * 31 + pets.hashCode();
+        r = r * 31 + children.hashCode();
         return r;
     }
 
@@ -86,7 +92,7 @@ public class Family {
     }
 
     public void addPet(Pet pet) {
-        this.pet.add(pet);
+        pets.add(pet);
     }
 
     public boolean deleteChild(int index) {
@@ -106,12 +112,16 @@ public class Family {
         return false;
     }
 
-    public int countFamily() {
-        return 2 + children.size();
+    public int countChildren() {
+        return children.size();
     }
 
-    public int getIndex() {
-        return index;
+    public int countFamily() {
+        return 2 + countChildren();
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Human getMother() {
@@ -126,7 +136,7 @@ public class Family {
         return children;
     }
 
-    public Set<Pet> getPet() {
-        return pet;
+    public Set<Pet> getPets() {
+        return pets;
     }
 }

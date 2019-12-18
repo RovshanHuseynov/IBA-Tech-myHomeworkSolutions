@@ -65,7 +65,7 @@ public class FamilyService {
         int max = 0;
         List<Family> families = getAllFamilies();
         for (Family family : families) {
-            max = Math.max(family.getIndex(), max);
+            max = Math.max(family.getId(), max);
         }
         Family family = new Family(max + 1, mother, father);
         familyDao.saveFamily(family);
@@ -74,7 +74,7 @@ public class FamilyService {
     public boolean deleteFamilyByIndex(int index) {
         List<Family> families = getAllFamilies();
         for (Family family : families) {
-            if (family.getIndex() == index) {
+            if (family.getId() == index) {
                 return familyDao.deleteFamily(family);
             }
         }
@@ -128,7 +128,7 @@ public class FamilyService {
     public Family getFamilyById(int index) {
         List<Family> families = getAllFamilies();
         for (Family family : families) {
-            if (family.getIndex() == index) {
+            if (family.getId() == index) {
                 return family;
             }
         }
@@ -138,8 +138,8 @@ public class FamilyService {
     public Set<Pet> getPets(int index) {
         List<Family> families = getAllFamilies();
         for (Family family : families) {
-            if (family.getIndex() == index) {
-                return family.getPet();
+            if (family.getId() == index) {
+                return family.getPets();
             }
         }
         return null;
@@ -148,7 +148,7 @@ public class FamilyService {
     public void addPet(int index, Pet pet) {
         List<Family> families = getAllFamilies();
         for (Family family : families) {
-            if (family.getIndex() == index) {
+            if (family.getId() == index) {
                 familyDao.deleteFamily(family);
                 family.addPet(pet);
                 familyDao.saveFamily(family);

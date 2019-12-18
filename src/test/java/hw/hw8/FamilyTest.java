@@ -84,6 +84,6 @@ public class FamilyTest {
         f1.addPet(myCat1);
         f1.addPet(myDog1);
         f1.addPet(myDog2);
-        assertEquals(3, f1.getPet().size());
+        assertEquals(3, f1.getPets().size());
     }
 }
